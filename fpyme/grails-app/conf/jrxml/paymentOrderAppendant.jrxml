@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="paymentOrderAppendant" pageWidth="612" pageHeight="792" columnWidth="582" leftMargin="20" rightMargin="10" topMargin="30" bottomMargin="20" uuid="0b5b2911-e5bb-4c83-93ba-1df34264de92">
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<property name="ireport.zoom" value="0.75"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="generationDate" class="java.lang.String"/>
+	<parameter name="providerRfc" class="java.lang.String"/>
+	<parameter name="folio" class="java.lang.String"/>
+	<parameter name="provider" class="java.lang.String"/>
+	<parameter name="inadem" class="java.lang.String"/>
+	<parameter name="private" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="validatedCoupons" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="account" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="125">
+			<staticText>
+				<reportElement x="5" y="81" width="270" height="36" uuid="8f0709b8-afea-41bf-90fa-3375f9999d83"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ORDEN DE PAGO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="20" width="135" height="36" uuid="c501e277-e233-498f-b3a6-7ad6c6495363"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Generación: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="81" width="297" height="36" uuid="a5b30a53-0f41-4c28-b04a-43045d7fb6a4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="20" width="163" height="36" uuid="225c406c-45ae-4035-9acb-2afc57715e83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{generationDate}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="7" y="9" width="223" height="50" uuid="fa57e5c1-84bb-4f1b-a64a-9ff8da11c807"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="231" splitType="Stretch">
+			<textField>
+				<reportElement x="202" y="38" width="374" height="36" uuid="6e2c4e9a-524c-4842-8c7b-a7a222a36eb9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{providerRfc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="76" width="195" height="36" uuid="7dbae13f-a533-4523-b77f-be35305ee398"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLABE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="202" y="0" width="374" height="36" uuid="29537f28-7907-457f-b911-ed2b6ca6e722"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{provider}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="76" width="374" height="36" uuid="6e2599b8-b155-4758-99f8-976bdb1cd4e9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{account}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="188" width="195" height="36" uuid="15bddbf2-1556-4c6f-bc7e-3048fb36d6c7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Total: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="116" width="195" height="36" uuid="74c9d15a-108b-4983-93b0-e6f17ad9149e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Total INADEM: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="0" width="195" height="36" uuid="4806883c-97a0-4050-a438-465eda4fb0dd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="38" width="195" height="36" uuid="bf0eff22-f9a7-4768-b817-45b8a2b61004"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC Proveedor: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="202" y="152" width="374" height="36" uuid="32ce34b7-1c07-4335-aafc-75c1754436f2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{private}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="188" width="374" height="36" uuid="d3ce9ed5-f8ce-41a9-b7c1-a2d02fabe42c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="202" y="116" width="374" height="36" uuid="a776babd-23c8-46da-af7a-5cc63d828b3d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{inadem}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="4" y="152" width="195" height="36" uuid="b167b7ad-5d38-47c3-a548-655e623b7607"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Total Privado: ]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement x="0" y="6" width="582" height="38" isPrintWhenDetailOverflows="true" uuid="dfd024fa-44fc-41de-ab0e-e4794a6d8226"/>
+				<dataSourceExpression><![CDATA[$P{validatedCoupons}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["validatedCoupons.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

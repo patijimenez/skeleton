@@ -1,0 +1,149 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div>
+  <h1>BATCH PROCESS BOARD</h1>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div ng-show="message" class="alert alert-info">
+      <span>{{message}}</span>
+      <div ng-show="currentProcess">
+        <br/>
+        <a ng-show="currentProcess" href="{{baseUrl}}/#/batchProcessEvents/{{currentProcess.id}}">* Ir a los eventos del proceso</a><br/>
+        <a ng-show="currentProcess" href="{{baseUrl}}/#/batchProcessLog/{{currentProcess.eventId}}">* Ir a las tareas del evento {{currentProcess.eventId}}</a><br/>
+        <a ng-show="currentProcess" href="{{baseUrl}}/#/batchProcessEventConsole/{{currentProcess.eventId}}">* Ir a el log de consola del evento {{currentProcess.eventId}}</a><br/>
+      </div>
+    </div>
+    <div ng-show="errorMessage" class="alert alert-error">
+      <span>{{errorMessage}}</span>
+    </div>
+    <a id="save-spinner" href=""></a>
+  </div>
+</div>
+
+<div ng-show="action=='list'" class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="navbar-form pull-left" action="list">
+        <button class="btn btn-info" ng-click="listBatchProcesses()"><i class="icon-refresh"></i></button>
+        <input type="text" placeholder="Buscar nombre, descripcion" class="search-query" ng-model="searchCriteria"
+               style="width: 600px">
+        <button ng-click="listBatchProcesses()" class="btn">Buscar</button>
+        <a class="btn btn-success" ng-click="action='create'">Agregar Proceso</a>
+        <p></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="span12">
+      <br/>
+      <table class="table tale-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripcion</th>
+          <th>Activo</th>
+          <th>Thread Pool</th>
+          <th>CronExpression</th>
+          <th>Usuario</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="process in processesList">
+          <td>{{process.id}}</td>
+          <td><a href ng-click="edit(process)">{{process.name}}</a></td>
+          <td>{{process.description}}</td>
+          <td>{{process.active}}</td>
+          <td>{{process.threadPoolSize}}</td>
+          <td>
+            <span ng-show="process.businessProcess">Business Process</span>
+            <span ng-show="process.onDemand=='true'">OnDemand</span>
+            <span ng-show="process.cronExpression">{{process.cronExpression}}</span>
+          </td>
+          <td>{{process.user}}</td>
+          <td><a ng-show="process.onDemand=='true' || process.cronExpression" ng-click="executeBatchProcess(process)" href>Ejecutar</a>
+            <a ng-show="process.cronExpression && process.active== true" ng-click="disableBatchProcess(process)" href>Pausar</a>
+            <a ng-show="process.cronExpression && process.active== false" ng-click="enableBatchProcess(process)" href>Reanudar</a>
+          </td>
+          <td><a href="{{baseUrl}}/#/batchProcessEvents/{{process.id}}">Eventos</a></td>
+        </tr>
+        </tbody>
+      </table>
+      <pagination ng-click="listBatchProcesses()" boundary-links="true" num-pages="noOfPages" current-page="currentPage" max-size="maxSize"></pagination>
+    </div>
+  </div>
+</div>
+
+<div ng-show="action=='create' || action=='edit'" class="container">
+  <div class="row">
+    <div class="span12">
+      <h3 ng-show="action=='create'">Agregar proceso</h3>
+      <h3 ng-show="action=='edit'">Editar proceso {{process.id}}</h3>
+      <fieldset class="row-fluid">
+        <div class="span6">
+          <label>Nombre del proceso:</label>
+          <input type="text" ng-model="process.name" placeholder="Nombre del reporte" class="input-xxlarge"/>
+          <label>Descripcion:</label>
+          <textarea type="text" ng-model="process.description" style="width: 525px; height: 80px;"></textarea>
+        </div>
+        <div class="span6">
+          <label>Número de hilos:</label>
+          <input type="number" class="input-small" ng-model="process.threadPoolSize" ng-readonly="process.businessProcess || process.multipleTasks==false" placeholder="size" min="1">
+          <label class="checkbox">Business Process<input type="checkbox" ng-model="process.businessProcess" /></label>
+          <div ng-hide="process.businessProcess">
+            <label ng-init="onDemand=false">Tipo de ejecución:</label>
+            <label class="radio">OnDemand <input type="radio" name="onDemand" ng-model="process.onDemand" value="true" /></label>
+            <label class="radio">Cron Expression <input type="radio" name="onDemand" ng-model="process.onDemand" value="false" /></label>
+            <input type="text" ng-hide="process.onDemand" ng-model="process.cronExpression" placeholder="*    *    *    *    *"/>
+          </div>
+          <label ng-hide="process.businessProcess" class="checkbox">Activo <input ng-hide="process.businessProcess" type="checkbox" ng-model="process.active" /></label>
+        </div>
+      </fieldset>
+    </div>
+    <br/>
+  </div>
+  <div ng-hide="process.businessProcess" class="row">
+    <div class="span12" ng-init="process.multipleTasks=true">
+      <legend>Scripts</legend>
+      <label ng-hide="process.businessProcess" class="checkbox">Múltiples tareas:<input ng-hide="process.businessProcess" type="checkbox" ng-model="process.multipleTasks" /></label>
+      <legend> </legend>
+      <label ng-show="process.multipleTasks==false"><strong>Proceso de una sola tarea</strong></label>
+      <div ng-hide="process.multipleTasks==false">
+        <label >Script de tareas:</label>
+        <textarea  ui-codemirror="editorOptions" ng-model="process.tasksScript"></textarea>
+      </div>
+      <div>
+        <label>Script de funcionalidad:</label>
+        <textarea ui-codemirror="funcScriptEditor" ng-model="process.functionalityScript"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div id="guardar" class="row">
+    <div class="span12">
+      <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav pull-left">
+              <li><button class="btn btn-primary" type="button" ng-click="saveProcess()">Guardar</button></li>
+              <li> </li>
+              <li><button class="btn" type="button" ng-click="clean()">Limpiar</button></li>
+              <li> </li>
+              <li><button class="btn" type="button" ng-click="cancel()">Cancelar</button></li>
+            </ul>
+            <div class="nav pull-right">
+              <h4>{{process.name}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

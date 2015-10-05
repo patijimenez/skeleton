@@ -1,0 +1,17 @@
+<div class="row" ng-show="invalidToken">
+    <div class="span12" style="min-height: 400px">
+        <h2>Ocurrió un error</h2>
+        <p>
+            Parece que la liga para activar tu cuenta no es válida.
+        </p>
+    </div>
+</div>
+<div class="row" ng-show="validToken">
+    <div class="span12">
+        <h2>Correo confirmado</h2>
+        <p>
+            Has confirmado tu correo electrónico correctamente, ahora sabemos que te llegarán las notificaciones.
+            Continúa <a href="#/welcome">completando tu perfil</a>
+        </p>
+    </div>
+</div>

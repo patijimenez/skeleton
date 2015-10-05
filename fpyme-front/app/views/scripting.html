@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<h1>Consola de scripting</h1>
+<div class="alert alert-error" ng-show="errorMessage">{{errorMessage}}</div>
+<div class="container">
+  <div class="row-fluid">
+    <div class="well span12">
+      def grailsApplication = org.codehaus.groovy.grails.commons.ApplicationHolder.getApplication()<br/>
+      def tuServicio = grailsApplication.mainContext.getBean("tuServicio")
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="form-inline">
+      <label class="control-label" for="tempScriptKey">Nombre: </label>
+      <input type="text" id="tempScriptKey" class="input input-xxlarge" placeholder="Nombre de script ..." ng-model="tempScript.key"/>
+    </div>
+  </div>
+  <br/>
+  <div class="row-fluid" ng-show="loadingMessage">
+    <div class="span12">
+      <div class="alert alert-info" ng-show="showLoadingMessage"> {{loadingMessage}} ... <a id="loadInfo-spinner" href=""></a></div>
+    </div>
+  </div>
+  <textarea ui-codemirror="editorOptions" ng-model="script"></textarea>  
+  <br/>
+  <div class="results">
+    <div ng-show="result.exception">
+      <alert type="'error'" style="white-space: pre">{{result.exception}}</alert>
+    </div>
+    <div ng-show="result.errorOutput">
+      <alert type="'warning'" style="white-space: pre">{{result.errorOutput}}</alert>
+    </div>
+    <div ng-show="result.output">
+      <alert type="'info'" style="white-space: pre">{{result.output}}</alert>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <div class="navbar navbar-fixed-bottom">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" ng-hred="">{{tempScript.key}}</a>
+          <ul class="nav pull-right">
+            <li><a id="save-spinner" href=""></a></li>
+            <li ng-show="now"><a href="">Guardado a las {{now | date:'mediumTime'}}</a></li>
+            <li><a href="" ng-click="saveScript()"><i class="icon-download-alt"></i> Guardar</a></li>
+            <li><button class="btn btn-success" ng-disabled="processing" ng-click="executeScript(script)"><i class="icon-play-circle"></i> Ejecutar</button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

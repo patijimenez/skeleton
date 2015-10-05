@@ -1,0 +1,13 @@
+<div class="container" ng-controller="MessageCtrl">
+  <div ng-repeat="message in messages" ng-switch="message.severity.name">
+    <alert ng-switch-when="DANGER" type="'error'">
+      <span style="white-space: pre" ng-bind-html="message.message"></span>
+    </alert>
+    <alert ng-switch-when="INFO" type="'info'">
+      <span style="white-space: pre" ng-bind-html="message.message"></span>
+    </alert>
+    <alert ng-switch-when="WARNING">
+      <span style="white-space: pre" ng-bind-html="message.message"></span>
+    </alert>
+  </div>
+</div>

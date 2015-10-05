@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="firmasEntregaRecepcion" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="ea26100d-7463-4a9b-8f50-24c1982d0af7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="beneficiario" class="java.lang.String"/>
+	<parameter name="cadenaOriginalB" class="java.lang.String"/>
+	<parameter name="selloDigitalB" class="java.lang.String"/>
+	<parameter name="proveedor" class="java.lang.String"/>
+	<parameter name="cadenaOriginalP" class="java.lang.String"/>
+	<parameter name="selloDigitalP" class="java.lang.String"/>
+	<parameter name="hasMixedSignatures" class="java.lang.Boolean"/>
+	<parameter name="stringDate" class="java.lang.String"/>
+	<queryString language="json">
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<band height="114">
+			<printWhenExpression><![CDATA[$P{hasMixedSignatures} == false]]></printWhenExpression>
+			<textField>
+				<reportElement x="140" y="21" width="392" height="15" uuid="f62ed06b-3865-49e3-9693-5105eb41620d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{beneficiario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="35" width="392" height="15" uuid="2887e7de-3e54-4169-bb42-8b91a9a14008"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cadenaOriginalB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="49" width="392" height="15" uuid="bec1c34f-8e6c-4f3c-94dd-9ddba6146c52"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{selloDigitalB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="21" width="130" height="15" uuid="dca3cbeb-cf0a-4ba0-988f-cdc298684829"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Beneficiario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="35" width="130" height="15" uuid="0e5538f0-ec31-4d10-a339-d55d0a6cabca"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cadena Original]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="49" width="130" height="15" uuid="db71e3c3-db55-441e-be6b-8884066ed4bf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sello digital]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="77" width="130" height="15" uuid="b294699a-2f67-4f2b-9bf6-0462e7064655"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Cadena Original]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="63" width="130" height="15" uuid="4b9eb352-607e-499b-9a74-690806c3e391"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="91" width="130" height="15" uuid="f4e0fbca-580b-46d6-9139-2d64c4b5d93f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="6" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sello Digital]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="91" width="392" height="15" uuid="2cf70cee-da00-4227-8817-09b341640814"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{selloDigitalP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="77" width="392" height="15" uuid="e94e79db-bb1c-46c8-b7cb-24902e44d3fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cadenaOriginalP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="63" width="392" height="15" uuid="74853653-ca11-418f-a3cb-d5d7af92066e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{proveedor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="2" width="500" height="15" uuid="1c23320f-2ba1-48a1-a699-f6c8d6d8a66a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{stringDate}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="86">
+			<staticText>
+				<reportElement x="0" y="0" width="533" height="28" uuid="8a3cae6f-d011-4dea-a712-fa52072716f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTE PROGRAMA ES PÚBLICO, AJENO A CUALQUIER PARTIDO POLITICO QUEDA PROHIBIDO EL USO PARA FINES DISTINTOS A LOS ESTABLECIDOS EN EL PROGRAMA
+
+PROTECCIÓN DE DATOS PERSONALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="29" width="533" height="53" uuid="038d6ed3-6a06-4998-98e0-142e96fea913"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Los datos recabados de las personas físicas, morales, organismos empresariales, instituciones académicas, de investigación, de desarrollo y organismos públicos, privados  o mixtos sin fines de lucro serán protegidos en los términos de la Ley Federal de Transparencia y Acceso a la Información Pública Gubernamental y demás disposiciones aplicables, y serán incorporados a una base de datos, cuya finalidad es llevar el control y operación de aquellos que recibieron apoyo del FNE.
+El INADEM es el responsable  de los datos recabados del solicitante, la dirección donde el interesado podrá ejercer los derechos de acceso, rectificación, cancelación y oposición ante la misma es la Unidad de Enlace de la Secretaría de Economía, con domicilio en Alfonso Reyes No. 30, Planta Baja, colonia Hipódromo Condesa, C.P. 06140, México, D.F., teléfono: 57299100, extensión 11327, correo electrónico contacto@economia.gob.mx]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

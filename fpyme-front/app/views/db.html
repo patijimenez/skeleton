@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+  <div class="span12">
+    <textarea ui-codemirror="editorOptions" ng-model="query"></textarea>
+    <br />
+    <button ng-click="executeQuery(query)" class="pull-right btn">Ejecutar</button>
+  </div>
+</div>
+<div class="results" ng-show="queryData.operation=='update'">
+  Se modificaron {{queryData.updateCount}} registros.
+</div>
+<div class="results" ng-show="queryData.operation=='query'">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th ng-repeat="column in queryData.columns">{{column}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in queryData.result">
+        <td ng-repeat="column in queryData.columns">{{row[column]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

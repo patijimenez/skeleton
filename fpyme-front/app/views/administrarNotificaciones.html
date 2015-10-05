@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+  <h1>Administra Notificaciones </h1>
+  <div>
+    <div class="alert alert-error alert-block" ng-show="showError">
+      {{resultMessage}}
+    </div>
+    <div class="alert alert-info alert-block" ng-show="showInfo">
+      {{resultMessage}}
+    </div>
+  </div>
+  <div class="span12">
+    <table class="table">
+      <thead>
+      <title>Lista de notificaciones</title>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Estatus</th>
+      <th>Frecuencia</th>
+      <th>Script</th>
+      <th>Plantilla</th>
+      <th>Accion</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="notification in notifications">
+        <td>{{notification.id}} </td>
+        <td><a ng-click="viewNotification(notification)">{{notification.name}}</a></td>
+        <td>{{notification.status}}</td>
+        <td>{{notification.cronExpression}}</td>
+        <td>{{notification.script.name}}</td>
+        <td>{{notification.mailTemplate.key}}</td>
+        <td>
+          <button class="btn" type="button" ng-click="pauseNotification(notification)">Pausar</button>
+          <button class="btn" type="button" ng-click="resumeNotification(notification)">Reiniciar</button>
+          <button class="btn" type="button" ng-click="deleteNotification(notification)">Eliminar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <form>
+    <div class="fluid">
+      <div class="span6">
+        <fieldset>
+          <legend>Datos generales</legend>
+          <label>Nombre de la notificacion</label>
+          <input type="text" ng-model="notificationData.name" placeholder="Nombre de la notificacion"/>
+          <label>Expresion CRON</label>
+          <input type="text" ng-model="notificationData.cronExpression" placeholder="*    *    *    *    *"/>
+          <label>Descripcion</label>
+          <input type="text" ng-model="notificationData.description" class="input-xxlarge"/>
+          <label>Script</label>
+          <select ng-model="notificationData.script" ng-options="script.id as script.name for script in scripts" placeholder="Script" class="input-xlarge" required></select>
+          <label>Plantilla</label>
+          <select ng-model="notificationData.mailTemplate" ng-options="mailTemplate.id as mailTemplate.key for mailTemplate in mailTemplates" placeholder="Plantilla" class="input-xlarge" required></select>
+        </fieldset>
+      </div>
+    </div>
+    <div class="span12">
+      <button class="btn btn-primary" type="button" ng-click="saveNotification()">
+        <span ng-hide="notificationData.id" >Guardar</span>
+        <span ng-show="notificationData.id">Editar</span>
+      </button>
+      <button class="btn" type="button" ng-click="clean()">Limpiar</button>
+    </div>
+  </form>
+</div>

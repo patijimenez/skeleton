@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="aportacionesAnteriores" columnCount="3" pageWidth="612" pageHeight="792" columnWidth="204" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="0a558283-ea3c-43ca-871d-eba28b987fcb">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[application.previousContributions]]>
+	</queryString>
+	<field name="amount" class="java.lang.String">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="participant" class="java.lang.String">
+		<fieldDescription><![CDATA[participant.id]]></fieldDescription>
+	</field>
+	<field name="contributionType" class="java.lang.String">
+		<fieldDescription><![CDATA[contributionType.name]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[new Float ($F{amount})]]></variableExpression>
+	</variable>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="df847ab5-05bc-489f-bc2a-b2ba538f4ec4" x="0" y="0" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="bd19b593-ca68-4bbc-a21b-236a50db6624" x="204" y="0" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="ae88171a-08b6-49a5-b12e-c412634bcf09" x="408" y="0" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6b3e76a1-2bca-416e-8036-0697fc770873" x="3" y="3" width="100" height="15" forecolor="#666666"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aportante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5b650c4-a099-4354-8a28-5a3e8769ebe0" x="208" y="3" width="100" height="15" forecolor="#666666"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c8177bc4-1ced-414c-b360-3cdddde4534e" x="409" y="4" width="100" height="15" forecolor="#666666"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="f933d239-aff1-4f34-b80e-27b83b2e514f" x="0" y="0" width="204" height="20" forecolor="#787878" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="52fdb31c-54dd-4f26-8344-1bc073f08fbf" x="204" y="0" width="204" height="20" forecolor="#787878" backcolor="#FFFFFF"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0081f123-2758-4a98-9cb8-da3c703ab351" x="408" y="0" width="204" height="20" forecolor="#787878" backcolor="#FFFFFF"/>
+			</rectangle>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement uuid="3900074c-fe43-4f76-9751-827ab833b19b" stretchType="RelativeToBandHeight" x="208" y="0" width="200" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="880db3c2-22e0-42fa-bb17-1900c0051d04" x="3" y="0" width="125" height="20">
+					<printWhenExpression><![CDATA[(new Integer($F{participant}))==1]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[INADEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="880db3c2-22e0-42fa-bb17-1900c0051d01" x="3" y="0" width="100" height="20">
+					<printWhenExpression><![CDATA[(new Integer($F{participant}))==2]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Gobierno Estatal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="880db3c2-22e0-42fa-bb17-1900c0051d01" x="3" y="0" width="100" height="20">
+					<printWhenExpression><![CDATA[(new Integer($F{participant}))==3]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Gobierno Municipal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e118a9c5-6ccb-45d9-8a9f-efa688021bfc" x="4" y="0" width="110" height="20">
+					<printWhenExpression><![CDATA[(new Integer($F{participant}))==4]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Sector academico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="880db3c2-22e0-42fa-bb17-1900c0051d01" x="3" y="0" width="100" height="20">
+					<printWhenExpression><![CDATA[(new Integer($F{participant}))==5]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Sector privado]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+				<reportElement uuid="8e1ef581-0800-41bc-9bb4-52d0900f2cb2" stretchType="RelativeToBandHeight" x="410" y="-1" width="148" height="20" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new Float ($F{amount})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="b2b92a01-d5d6-43b6-a90b-b8e809ce0622" x="408" y="1" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="44ffa55b-4818-4a92-ba21-75552344808b" x="0" y="1" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="1cb49cbd-b261-4714-9678-e5ecfede4f8e" x="204" y="1" width="204" height="20" forecolor="#787878" backcolor="#F5F5F5"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="040cc12e-368c-410a-898e-820b5410cf8e" x="3" y="4" width="100" height="15" forecolor="#666666"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="f164b922-e70d-40db-b447-bfb2cc205c0d" x="410" y="1" width="148" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+</jasperReport>

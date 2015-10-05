@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="providers" pageWidth="532" pageHeight="792" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="10c3ace8-15c3-446c-9f3b-19086221acf3">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="293"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="b6c416d3-9e48-4f44-9d2a-adec8a39d5c7"/>
+	<parameter name="providers" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<queryString language="json">
+		<![CDATA[providers]]>
+	</queryString>
+	<field name="code" class="java.lang.String">
+		<fieldDescription><![CDATA[code]]></fieldDescription>
+	</field>
+	<field name="provider" class="java.lang.String">
+		<fieldDescription><![CDATA[provider]]></fieldDescription>
+	</field>
+	<field name="quantity" class="java.lang.String">
+		<fieldDescription><![CDATA[quantity]]></fieldDescription>
+	</field>
+	<field name="inademAmount" class="java.lang.String">
+		<fieldDescription><![CDATA[inademAmount]]></fieldDescription>
+	</field>
+	<field name="solutionName" class="java.lang.String">
+		<fieldDescription><![CDATA[solutionName]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="26">
+			<staticText>
+				<reportElement mode="Transparent" x="185" y="0" width="157" height="25" backcolor="#C9C9C9" uuid="f9ac2427-50fe-4baa-b31b-d7f225dce868"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto de apoyo del INADEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="344" y="0" width="188" height="25" forecolor="#010101" backcolor="#C9C9C9" uuid="ade482b3-0b83-4cce-b62d-bfac0ccf8f40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del proveedor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="0" width="118" height="25" backcolor="#C9C9C9" uuid="8440dce8-cefb-4027-83ea-bcf712d1e491"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código de solución]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="120" y="0" width="63" height="25" backcolor="#C9C9C9" uuid="5d232e3d-51ec-4245-a78b-6f132a301ce7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="25" width="532" height="1" uuid="9f4e2067-424b-4637-956b-39034707931b"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="118" height="21" isPrintWhenDetailOverflows="true" uuid="b809d6ee-a795-4fc1-869f-58ee350b1c16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="1" width="63" height="21" uuid="fcbb5ca4-b651-4404-abcf-d1cb9b468600"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="344" y="1" width="188" height="21" isPrintWhenDetailOverflows="true" uuid="08fdfba1-428b-44c7-956f-cbdd32d0a427"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{provider}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="1" width="157" height="21" uuid="f323b70e-e6ce-4bce-b0a3-9d2d7adb3d4b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inademAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="55" splitType="Immediate">
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="2" width="143" height="18" backcolor="#C9C9C9" uuid="12a7a851-0886-4502-a800-2f16380c6389"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre de la solución:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="146" y="2" width="386" height="24" isPrintWhenDetailOverflows="true" uuid="496fb7bc-678b-484f-97f2-3273b80dc1c4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solutionName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="146" y="28" width="386" height="24" isPrintWhenDetailOverflows="true" uuid="44df0283-3f66-405f-aca3-f000ed2217c1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="28" width="144" height="23" backcolor="#C9C9C9" uuid="ecdd0300-38e7-4971-a983-a022ddc7723e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción de la solución:]]></text>
+			</staticText>
+		</band>
+		<band height="32" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="2" width="532" height="23" uuid="9646dae3-237e-4ffd-8dd8-34742bbac9ba"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{providers}).subDataSource("itemsDetails")]]></dataSourceExpression>
+				<subreportExpression><![CDATA["productDetail.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

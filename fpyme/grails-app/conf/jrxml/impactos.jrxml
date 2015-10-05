@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="impactos" language="groovy" pageWidth="550" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="550" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="4a61e888-05a9-4d62-b65c-6628bee11f4b">
+	<property name="ireport.zoom" value="6.0"/>
+	<property name="ireport.x" value="2080"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[application.goals]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="amount2" class="java.lang.Float">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.lang.String">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[type]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="2093dd04-be15-411a-adb7-b5ef1e2c1913" x="0" y="0" width="479" height="15" backcolor="#F5F5F5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="9d72d3d0-14ba-41d4-beea-5605aac13c7f" x="6" y="0" width="117" height="15" forecolor="#666666"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="4014552d-a093-4fe5-8131-dcb8c7dc0141" x="479" y="0" width="71" height="15" backcolor="#F5F5F5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ea2e6a38-2a6e-4159-84d2-aec0fc48b4a4" x="490" y="0" width="59" height="15" forecolor="#666666"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="7f512948-e9a7-474d-ae3d-8920927e6801" stretchType="RelativeToBandHeight" x="479" y="0" width="71" height="15" backcolor="#FFFFFF"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="80d110da-60a6-45b5-b23d-da461b4f65e7" stretchType="RelativeToBandHeight" x="0" y="0" width="479" height="15" isPrintWhenDetailOverflows="true" backcolor="#FFFFFF"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="19f7acb7-30a8-40d2-ae74-b2f48824e041" stretchType="RelativeToBandHeight" x="10" y="0" width="469" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement uuid="74ecec34-1508-4509-a487-2fe6187c5b1b" x="488" y="0" width="56" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("MONEY")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amount2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="08070817-0f68-4d5b-a380-a943733892dc" x="488" y="0" width="56" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("PERCENT")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amount} +" %"]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement uuid="90126d2b-bcd8-4c08-b670-5c2c6b3cb3cb" x="487" y="0" width="42" height="15">
+					<printWhenExpression><![CDATA[!$F{type}.equals("PERCENT") && !$F{type}.equals("MONEY")]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

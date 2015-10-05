@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="solicitud" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d62a2121-bf38-4c5e-a598-37d4a9135459">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="975"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="datosGenerales" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="presupuestos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="sectores" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="otroSectores" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="impactos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="documentos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<queryString language="json">
+		<![CDATA[application]]>
+	</queryString>
+	<field name="folio" class="java.lang.String">
+		<fieldDescription><![CDATA[general.folio]]></fieldDescription>
+	</field>
+	<field name="totalSum" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalSum]]></fieldDescription>
+	</field>
+	<field name="totalInKind" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalInKind]]></fieldDescription>
+	</field>
+	<field name="totalPrevious" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalPrevious]]></fieldDescription>
+	</field>
+	<field name="projectName" class="java.lang.String">
+		<fieldDescription><![CDATA[general.projectName]]></fieldDescription>
+	</field>
+	<field name="objectives" class="java.lang.String">
+		<fieldDescription><![CDATA[general.objectives]]></fieldDescription>
+	</field>
+	<field name="calendar" class="java.lang.String">
+		<fieldDescription><![CDATA[general.calendar]]></fieldDescription>
+	</field>
+	<field name="modalidades" class="java.lang.String">
+		<fieldDescription><![CDATA[modalidades]]></fieldDescription>
+	</field>
+	<field name="durationUnit" class="java.lang.String">
+		<fieldDescription><![CDATA[general.durationUnit.name]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[general.description]]></fieldDescription>
+	</field>
+	<field name="femaleCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.femaleCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="femalePreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.femalePreservedJobs]]></fieldDescription>
+	</field>
+	<field name="handicappedCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.handicappedCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="attendedEntrepeneurs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.attendedEntrepeneurs]]></fieldDescription>
+	</field>
+	<field name="benefitingCompanies" class="java.lang.String">
+		<fieldDescription><![CDATA[general.benefitingCompanies]]></fieldDescription>
+	</field>
+	<field name="handicappedPreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.handicappedPreservedJobs]]></fieldDescription>
+	</field>
+	<field name="indigenousCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.indigenousCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="indigenousPreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.indigenousPreservedJobs]]></fieldDescription>
+	</field>
+	<field name="maleCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.maleCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="malePreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.malePreservedJobs]]></fieldDescription>
+	</field>
+	<field name="newCompanies" class="java.lang.String">
+		<fieldDescription><![CDATA[general.newCompanies]]></fieldDescription>
+	</field>
+	<field name="postalCode" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.postalCode]]></fieldDescription>
+	</field>
+	<field name="settlement" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlement.name]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.street]]></fieldDescription>
+	</field>
+	<field name="externalNumber1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.externalNumber1]]></fieldDescription>
+	</field>
+	<field name="externalNumber2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.externalNumber2]]></fieldDescription>
+	</field>
+	<field name="internalNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.internalNumber]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[address.state.name]]></fieldDescription>
+	</field>
+	<field name="settlementType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlementType.name]]></fieldDescription>
+	</field>
+	<field name="municipality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.municipality.name]]></fieldDescription>
+	</field>
+	<field name="locality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.locality.name]]></fieldDescription>
+	</field>
+	<field name="streetRoadsType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.streetRoadsType.name]]></fieldDescription>
+	</field>
+	<field name="roadsType1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.roadsType1.name]]></fieldDescription>
+	</field>
+	<field name="roadsName1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.roadsName1]]></fieldDescription>
+	</field>
+	<field name="roadsType2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.roadsType2.name]]></fieldDescription>
+	</field>
+	<field name="roadsName2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.roadsName2]]></fieldDescription>
+	</field>
+	<field name="backRoadsType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.backRoadsType.name]]></fieldDescription>
+	</field>
+	<field name="backRoadsName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.backRoadsName]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="572" height="20" forecolor="#990000" uuid="464bb23f-eeca-4a42-ab17-d3ca28e7b27c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ANEXO  UNICO - SOLICITUD]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<image>
+				<reportElement x="5" y="4" width="211" height="61" uuid="89d19e8d-28b9-4ca9-afed-d8e99ac0228e"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="57" width="160" height="15" uuid="ce4edc27-2221-4405-9884-ff26ac9a51af"/>
+				<text><![CDATA[Nombre del Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="23" width="100" height="15" uuid="65a6a077-4444-4e5c-aa05-e88a70f2d86e"/>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="170" height="20" forecolor="#990000" uuid="4709bd64-f2a7-4ee7-a684-31c3c9b4c627"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sección General]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="22" y="37" width="538" height="20" uuid="a310ab7c-f718-4082-b323-cb895580dc4a"/>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="22" y="71" width="538" height="20" uuid="3c8889f7-d4f4-43af-9ba5-532cd6f81efb"/>
+				<textFieldExpression><![CDATA[$F{projectName}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="39">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="15" uuid="5ecc52c4-a555-4f3e-b64a-57d7885dd3c9"/>
+				<text><![CDATA[Valor total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="100" height="15" uuid="eb270cb4-143d-4a7c-b536-763c6cd14d13"/>
+				<text><![CDATA[Tiempo de duración]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="284" y="16" width="67" height="15" uuid="d4f9fde1-784f-478b-9732-8aee1c530891"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{calendar}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="22" y="15" width="124" height="15" uuid="cc99a023-a152-4aed-b42a-a02f1458ce00"/>
+				<textFieldExpression><![CDATA[$F{totalSum} + $F{totalInKind} + $F{totalPrevious}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="16" width="36" height="15" uuid="442497e8-1d53-4542-93a1-f19e92ba5044">
+					<printWhenExpression><![CDATA[$F{durationUnit}.equals("MONTHS")]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Meses]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="16" width="36" height="15" uuid="f94b41fd-32ba-4fbb-821e-bacaf3bad0d5">
+					<printWhenExpression><![CDATA[$F{durationUnit}.equals("DAYS")]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Días]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="354" y="16" width="67" height="15" uuid="0f1ca424-8eec-436c-9507-e553fbde42e9">
+					<printWhenExpression><![CDATA[$F{durationUnit}.equals("WEEKS")]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Semanas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="16" width="67" height="15" uuid="541936c7-ec7d-4af6-a46f-cfe5747f500a">
+					<printWhenExpression><![CDATA[$F{durationUnit}.equals("YEARS")]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Años]]></text>
+			</staticText>
+		</band>
+		<band height="49">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="15" uuid="9beb7649-1a8d-4f02-8442-52e5a28d6a2e"/>
+				<text><![CDATA[Modalidades]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="23" y="15" width="547" height="34" uuid="2480d1e4-ff7b-4aac-b6bd-ccfb85f90a07"/>
+				<textFieldExpression><![CDATA[$F{modalidades}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="71">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="15" uuid="c2299cf7-eaff-4247-b127-9df9a5a89b42"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Objetivos]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="23" y="16" width="548" height="55" isPrintWhenDetailOverflows="true" uuid="4295656f-b1ef-406b-81a4-048d6cb284df"/>
+				<textFieldExpression><![CDATA[$F{objectives}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="15" uuid="f058f53e-b660-4df4-bfcf-cb307915884c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="22" y="15" width="548" height="50" isPrintWhenDetailOverflows="true" uuid="1382b36d-0624-4a76-a952-96ae845ec9b2"/>
+				<textElement markup="none"/>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="15" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="03582cdc-bc7b-4dfa-8445-789f11e4441c"/>
+				<dataSourceExpression><![CDATA[$P{datosGenerales}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["datosGenerales.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="147">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="d99c270a-fdfa-4eae-a3e6-f595ad362f7d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Metas del proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="24" width="123" height="15" uuid="0d53ebcb-dbf8-4706-9ee7-ad3d751ca1ec"/>
+				<text><![CDATA[a) Empresas beneficiadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="99" width="73" height="15" uuid="639c6b6d-c45f-4ece-88f3-441ee16b9c0f"/>
+				<text><![CDATA[Indígenas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="122" width="85" height="25" uuid="5c09e50d-01cb-4efe-8caf-28c9398373be"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[e) Emprendedores beneficiados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="84" width="73" height="15" uuid="5b031d29-cb6e-4f85-9d40-d8581667389f"/>
+				<text><![CDATA[Discapacitados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="99" width="73" height="15" uuid="9a854295-8b6e-4f7b-a725-db0644d5722f"/>
+				<text><![CDATA[Indígenas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="54" width="73" height="15" uuid="066257d7-9a27-451a-9ea1-a32b037163ee"/>
+				<text><![CDATA[Mujeres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="54" width="73" height="15" uuid="c7b41f79-91f0-4b2c-bb37-e5822867397a"/>
+				<text><![CDATA[Mujeres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="39" width="237" height="15" uuid="262db73c-f017-4529-9045-6ee375366bd5"/>
+				<text><![CDATA[d) Creación de nuevos empleos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="69" width="73" height="15" uuid="992d3c59-9650-46a7-a6c2-800dbf14d2c0"/>
+				<text><![CDATA[Hombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="24" width="118" height="15" uuid="042c4e81-f8df-4df0-bbab-7b0c38b30461"/>
+				<text><![CDATA[b) Empresas creadas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="69" width="73" height="15" uuid="1536a01f-396a-4995-b5ff-b9f137283e6e"/>
+				<text><![CDATA[Hombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="84" width="73" height="15" uuid="1f824056-252a-441a-8c72-14ae156bf759"/>
+				<text><![CDATA[Discapacitados]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="39" width="123" height="15" uuid="210313d6-2143-4e03-ad04-049cb745cea6"/>
+				<text><![CDATA[c) Empleos conservados]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="133" y="24" width="124" height="15" uuid="c32b4f0a-91af-44a4-940d-497d0fb5fbff"/>
+				<textFieldExpression><![CDATA[$F{benefitingCompanies}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="54" width="159" height="15" uuid="6a98b36a-793a-4dca-b1d2-e87c65894caa"/>
+				<textFieldExpression><![CDATA[$F{femalePreservedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="69" width="159" height="15" uuid="a85dbd8f-4b4f-4e23-bbdb-672d1ed4cadd"/>
+				<textFieldExpression><![CDATA[$F{malePreservedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="84" width="159" height="15" uuid="4f472144-4730-437d-aa33-6750607d8ba2"/>
+				<textFieldExpression><![CDATA[$F{handicappedPreservedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="95" y="99" width="159" height="15" uuid="cc777431-0021-4c2e-b92f-063bc99d952b"/>
+				<textFieldExpression><![CDATA[$F{indigenousPreservedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="54" width="156" height="15" uuid="8fd2c139-c47f-4575-a9fe-99646147fd11"/>
+				<textFieldExpression><![CDATA[$F{femaleCreatedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="99" width="156" height="15" uuid="a725f095-7c89-475b-8f07-2d25a479bad1"/>
+				<textFieldExpression><![CDATA[$F{indigenousCreatedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="419" y="24" width="124" height="15" uuid="f9f991cb-7fd2-468c-8daa-4a778bd6451e"/>
+				<textFieldExpression><![CDATA[$F{newCompanies}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="69" width="156" height="15" uuid="73ee56eb-2de4-4d7d-85ca-804aa283f2c5"/>
+				<textFieldExpression><![CDATA[$F{maleCreatedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="84" width="156" height="15" uuid="0350bb4a-953d-4ce0-806a-1e4b2e76ed84"/>
+				<textFieldExpression><![CDATA[$F{handicappedCreatedJobs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="122" width="144" height="15" uuid="8c8e9ba5-4abc-4c59-95ac-958277830c8c"/>
+				<textFieldExpression><![CDATA[$F{attendedEntrepeneurs}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="73">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="a9af2959-fed1-4eeb-8c1b-8ef9dbcee72f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Sectores estratégicos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="257" height="20" forecolor="#990000" uuid="71ff6b21-d7dd-45c0-b337-935965276c6d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Otros Sectores]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="0" y="20" width="275" height="30" uuid="12e094ef-5610-486e-b406-67022826d200"/>
+				<dataSourceExpression><![CDATA[$P{sectores}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["sectoresEstrategicos.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="280" y="20" width="275" height="30" uuid="76ef3e27-2260-4dc0-9b7a-cb84073807d8"/>
+				<dataSourceExpression><![CDATA[$P{otroSectores}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["nonStrategicSectors.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="70">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="60f33179-0f66-4d07-a9d9-f80685e00d21"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Presupuestos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="20" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="c1ae238b-955f-49d6-af63-28bb475bc72b"/>
+				<dataSourceExpression><![CDATA[$P{presupuestos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["presupuestos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="193">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="63473269-35e0-40ec-9dd0-838024992e10"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dirección del proyecto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="295" y="126" width="270" height="1" forecolor="#CCCCCC" uuid="4b180f38-62ec-439f-aef5-935f7248d734"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="24" width="100" height="15" uuid="47cdc43b-2432-4ea4-b8e6-bd54c57f691d"/>
+				<text><![CDATA[Asentamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="54" width="90" height="15" uuid="a4f059f8-9ba0-4a6e-89a7-e72ebf0f12a9"/>
+				<text><![CDATA[Número  exterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="142" width="100" height="15" uuid="ec9e8c4d-2d02-4f82-a89f-9bf067054bf7"/>
+				<text><![CDATA[Nombre de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="84" width="90" height="15" uuid="0d072d7b-fe0b-4f15-ad6e-0e12c2a25a80"/>
+				<text><![CDATA[Número Interior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="69" width="90" height="15" uuid="fc36576d-0eb0-4854-a125-2fc3e310a9f3"/>
+				<text><![CDATA[Número exterior 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="99" width="100" height="15" uuid="921643e3-5653-4865-a552-4a4d24f9c715"/>
+				<text><![CDATA[Localidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="39" width="90" height="15" uuid="3b7eb9d0-bff0-410d-9edd-e294f2e7e9c9"/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="84" width="100" height="15" uuid="57d7f99f-a96a-42db-b79e-be0dff4e193b"/>
+				<text><![CDATA[Municipio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="172" width="100" height="15" uuid="800f01fa-54b6-4d21-bbd4-e134fde3a720"/>
+				<text><![CDATA[Nombre de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="157" width="100" height="15" uuid="8fd8212f-0b5a-461c-92b0-2cbb4090beb5"/>
+				<text><![CDATA[Tipo de vialidad]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="22" width="280" height="1" forecolor="#CCCCCC" uuid="c3a895f4-bc94-4298-b0e9-aeb405cd91e7"/>
+			</line>
+			<staticText>
+				<reportElement x="297" y="129" width="89" height="28" uuid="bcc2b6e6-c10c-47f9-9e3d-ac0c4fc813f2"/>
+				<text><![CDATA[Tipo de vialidad posterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="157" width="89" height="28" uuid="5c813b31-331b-4920-aae9-ba5bd046edc9"/>
+				<text><![CDATA[Nombre de vialidad posterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="297" y="24" width="90" height="15" uuid="536b46c1-8072-48c9-9ad1-dbd1ae811531"/>
+				<text><![CDATA[Calle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="54" width="100" height="15" uuid="c9864674-8676-4879-817c-dd8dade5cc4b"/>
+				<text><![CDATA[Código Postal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="39" width="100" height="15" uuid="4bf627f8-859f-4111-8b1c-ccf0e8c811ce"/>
+				<text><![CDATA[Tipo Asentamiento]]></text>
+			</staticText>
+			<line>
+				<reportElement x="296" y="22" width="270" height="1" forecolor="#CCCCCC" uuid="332a110b-38aa-4bdb-a68a-5459ea55eb1d"/>
+			</line>
+			<line>
+				<reportElement x="10" y="126" width="280" height="1" forecolor="#CCCCCC" uuid="9f9b79ba-1e29-4089-8b72-5cd677200c1b"/>
+			</line>
+			<staticText>
+				<reportElement x="11" y="127" width="100" height="15" uuid="9948fa61-9d5e-4e56-a364-640db96ba7b1"/>
+				<text><![CDATA[Tipo de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="11" y="69" width="100" height="15" backcolor="#FFFFFF" uuid="46daecb9-9653-4609-8805-6e2c30eeeeaa"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="112" y="24" width="172" height="15" uuid="a13e6b82-e1d6-4ada-ab17-0a4b83b73dd5"/>
+				<textFieldExpression><![CDATA[$F{settlement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="39" width="172" height="15" uuid="4f5acac1-4b64-4c96-a459-2ecfbc9aa538"/>
+				<textFieldExpression><![CDATA[$F{settlementType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="69" width="172" height="15" uuid="c1a28742-d937-4a8e-8e26-58c38782c664"/>
+				<textFieldExpression><![CDATA[$F{state}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="54" width="172" height="15" uuid="111ce7bb-aa83-4302-a232-f9b4edd8e3af"/>
+				<textFieldExpression><![CDATA[$F{postalCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="84" width="172" height="15" uuid="8ff70faa-25f0-4dd7-8167-f0f415463b34"/>
+				<textFieldExpression><![CDATA[$F{municipality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="99" width="172" height="15" uuid="d5d97dd7-8a7d-4772-a33e-9c439f376da7"/>
+				<textFieldExpression><![CDATA[$F{locality}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="39" width="179" height="15" uuid="7b35fb21-ad0e-4f1a-952a-68bb1d5fae10"/>
+				<textFieldExpression><![CDATA[$F{streetRoadsType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="24" width="179" height="15" uuid="3ea06904-d6d6-46b8-b449-7cc54c3d084f"/>
+				<textFieldExpression><![CDATA[$F{street}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="84" width="179" height="15" uuid="2e6c8fc0-9f82-408d-90fc-bb4b124973bf">
+					<printWhenExpression><![CDATA[!$F{folio}.equals("")]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{internalNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="54" width="179" height="15" uuid="47341f34-ad67-4bb6-a05f-7185bb4f86e5"/>
+				<textFieldExpression><![CDATA[$F{externalNumber1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="69" width="179" height="15" uuid="3f9abf76-b424-4ec6-8947-85da0560bf59"/>
+				<textFieldExpression><![CDATA[$F{externalNumber2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="142" width="172" height="15" uuid="63944170-d9eb-43e0-af65-4be163ec76bf"/>
+				<textFieldExpression><![CDATA[$F{roadsName1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="127" width="172" height="15" uuid="991c94f0-d2f7-4538-a5c5-cf3a24e2748f"/>
+				<textFieldExpression><![CDATA[$F{roadsType1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="157" width="172" height="15" uuid="c636e707-66fd-49bf-a4b1-19dfec4c7cd2"/>
+				<textFieldExpression><![CDATA[$F{roadsType2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="172" width="172" height="15" uuid="ab5fea6a-ec98-4b12-983e-c99a08543c1d"/>
+				<textFieldExpression><![CDATA[$F{roadsName2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="157" width="172" height="15" uuid="5ac691fc-aac4-4fc0-99a5-b4ec1858fba6"/>
+				<textFieldExpression><![CDATA[$F{backRoadsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="129" width="172" height="15" uuid="940c68b8-47a0-4c6d-bf9d-acf0823339e4"/>
+				<textFieldExpression><![CDATA[$F{backRoadsType}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="69">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="0871c389-c52e-4da5-812a-8b00509f8e4c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Impactos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="24" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="89289482-6953-4dfc-9fb7-90fb6d4b9c92"/>
+				<dataSourceExpression><![CDATA[$P{impactos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["impactos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="62">
+			<staticText>
+				<reportElement x="2" y="0" width="257" height="20" forecolor="#990000" uuid="29fe5fba-ef2a-4c40-a252-4ecf2caad00a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Documentos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="20" width="570" height="42" isPrintWhenDetailOverflows="true" uuid="199beff4-b026-47c4-bd85-24ee7a6c4045"/>
+				<dataSourceExpression><![CDATA[$P{documentos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["documentos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="26" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

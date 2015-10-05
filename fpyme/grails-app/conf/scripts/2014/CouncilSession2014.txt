@@ -1,0 +1,249 @@
+import java.math.MathContext
+import mx.gob.inadem.*
+
+class CouncilSession{
+
+  def listApplications(def call, def user) {
+    def councilSessionApps = TecFinBusinessAverageEvent.executeQuery('SELECT app as application, a.totalScore as totalScore, ' +
+      'eval as evaluation, s.totalScore as stateAverage, (s.totalScore + (a.totalScore * 0.9)) as average FROM TecFinBusinessAverageEvent a, ' +
+      'StateAverageEvent s, Evaluation eval, Application app where eval.application = a.application ' +
+      'and app = eval.application and a.application = s.application and a.application.mainCall.id = :mainCallId and ' +
+      '((s.totalScore + (a.totalScore * 0.9)) > :average or (s.totalScore + (a.totalScore * 0.9)) <= :average and app.availableForCouncil = true)',
+      [ mainCallId: call.id, average: new Double(60.0)])
+
+    def notApprovedNormative = NormativeEvaluationEvent.executeQuery('SELECT application, normativeEvaluation, eval FROM NormativeEvaluationEvent normativeEvaluation, ' +
+      'Application as application, Evaluation eval where normativeEvaluation.application = application and eval.application = application '+
+      'and normativeEvaluation.passedEvaluation = false and application.availableForCouncil = true and application.mainCall.id = :mainCallId',
+      [mainCallId: call.id])
+
+    def seniorEvaluationComments = SeniorEvaluationEvent.executeQuery('SELECT c FROM SeniorEvaluationEvent s, SeniorEvaluationComment c ' +
+      'where c.evaluationEvent = s and s.callId.id = :callId ', [ callId: call.id])
+
+    def mapSeniorComments = [:]
+    seniorEvaluationComments.each{
+      mapSeniorComments[it.application.id] = it
+    }
+
+    def inademParticipant = Participant.findByName("Instituto Nacional del Emprendedor")
+
+    def totalInadem = { app ->
+      def total = app.participations.grep{
+        it.participant.id == inademParticipant.id
+      }.sum{
+        it.amount
+      }
+
+      total
+    }
+
+    def councilEvents = CouncilEvaluationEvent.withCriteria{
+      application{
+        eq('mainCall.id',call.id)
+      }
+      eq('user',user)
+    }
+
+    def mapCouncilEvents = councilEvents.collectEntries{
+      def data = [score: it.score, approved: it.approved, comment: it.mainComment, reason:it.reason, version: it.version ]
+      [it.application.id, data]
+    }
+
+    councilSessionApps.addAll(notApprovedNormative)
+
+    def applications = []
+    def listObjNames = ['application','tfnAverage','evaluation', 'stateAverage','average']
+    councilSessionApps.each{ councilSessionAppValues ->
+      def councilSessionApp = [:]
+      if(councilSessionAppValues.size() > 3){
+        councilSessionAppValues.eachWithIndex {it, index ->
+          councilSessionApp[listObjNames[index]] = it
+        }
+        councilSessionApp.normativeApproval = true
+      }else{
+        councilSessionApp = [application:councilSessionAppValues[0], normativeEvaluation: councilSessionAppValues[1], normativeApproval: false]
+        councilSessionApp.evaluation = councilSessionAppValues[2]
+      }
+
+      def inademAmount = totalInadem(councilSessionApp.application)
+      def stateName = councilSessionApp.normativeApproval ? councilSessionApp.evaluation.state.name : null
+      def agreement = Agreement.findByApplication(councilSessionApp.application)
+      def hasRegisteredAgreement
+
+      if(agreement){
+        hasRegisteredAgreement = (agreement.status == AgreementStatus.REGISTERED? true:false)
+      }
+
+      applications.push([folio: councilSessionApp.application.folio,
+        name: councilSessionApp.application.projectName,
+        normativeEvaluation: councilSessionApp.normativeApproval,
+        nationalEvaluatorScore: councilSessionApp.normativeApproval ? councilSessionApp.tfnAverage : null,
+        statalScore: councilSessionApp.normativeApproval ? councilSessionApp.stateAverage : null,
+        state: stateName,
+        inademAmount: inademAmount,
+        average: councilSessionApp.normativeApproval ? new BigDecimal(councilSessionApp.average, MathContext.DECIMAL64).round(new MathContext(4)) : null,
+        councelorScore: mapCouncilEvents[councilSessionApp.application.id]?.score,
+        councelorApproval: mapCouncilEvents[councilSessionApp.application.id]?.approved,
+        councelorComment:  mapCouncilEvents[councilSessionApp.application.id]?.comment,
+        councelorReason: mapCouncilEvents[councilSessionApp.application.id]?.reason,
+        evaluationVersion: mapCouncilEvents[councilSessionApp.application.id]?.version,
+        councilEvaluationsCount: councilSessionApp.evaluation.councilEvaluationsCount,
+        id: councilSessionApp.application.id,
+        selected: councilSessionApp.application.selected,
+        finalApproval: councilSessionApp.evaluation.finalApproval,
+        hasRegisteredAgreement : hasRegisteredAgreement,
+        analysisGroupOpinion: councilSessionApp.application.availableForCouncil,
+        analysisGroupComment: mapSeniorComments[councilSessionApp.application.id]?.comment,
+        status : councilSessionApp.application.status
+      ])
+    }
+    if(call.openCouncilSession){
+      applications = applications.sort { a, b ->
+        b.average <=> a.average
+      }
+    }else{
+      def compareValue = { val ->
+        val ? 1 : 0
+      }
+      applications = applications.sort { a, b ->
+        compareValue(b.finalApproval) <=> compareValue(a.finalApproval) ?:  b.average <=> a.average
+      }
+    }
+
+    [ applications: applications, template: 'views/templates/2014/councilSessionList.html' ]
+
+  }
+
+  def getCouncilHeader(def call){
+    def councilSessionApps = TecFinBusinessAverageEvent.executeQuery('SELECT app as application, a.totalScore as totalScore, ' +
+      'eval as evaluation, s.totalScore as stateAverage, (s.totalScore + (a.totalScore * 0.9)) as average FROM TecFinBusinessAverageEvent a, ' +
+      'StateAverageEvent s, Evaluation eval, Application app where eval.application = a.application ' +
+      'and app = eval.application and a.application = s.application and a.application.mainCall.id = :mainCallId and ' +
+      '((s.totalScore + (a.totalScore * 0.9)) > :average or (s.totalScore + (a.totalScore * 0.9)) <= :average and app.availableForCouncil = true)',
+      [ mainCallId: call.id, average: new Double(60.0)])
+
+    def notApprovedNormative = NormativeEvaluationEvent.executeQuery('SELECT application, normativeEvaluation, eval FROM NormativeEvaluationEvent normativeEvaluation, ' +
+       'Application as application, Evaluation eval where normativeEvaluation.application = application and eval.application = application '+
+       'and normativeEvaluation.passedEvaluation = false and application.availableForCouncil = true and application.mainCall.id = :mainCallId', [mainCallId: call.id])
+
+    def inademParticipant = Participant.findByName("Instituto Nacional del Emprendedor")
+    def totalInadem = { app ->
+      def total = app.participations.grep{
+        it.participant.id == inademParticipant.id
+      }.sum{
+        it.amount
+      }
+
+      total
+    }
+
+    def applications = []
+    def listObjNames = ['application','tfnAverage','evaluation', 'stateAverage','average']
+    councilSessionApps.each{ councilSessionAppValues ->
+      def councilSessionApp = [:]
+      if(councilSessionAppValues.size() > 3){
+        councilSessionAppValues.eachWithIndex {it, index ->
+          councilSessionApp[listObjNames[index]] = it
+        }
+        councilSessionApp.normativeApproval = true
+      }else{
+        councilSessionApp = [application:councilSessionAppValues[0], normativeEvaluation: councilSessionAppValues[1], normativeApproval: false]
+        councilSessionApp.evaluation = councilSessionAppValues[2]
+      }
+
+      def inademAmount = totalInadem(councilSessionApp.application)
+      applications.push([folio: councilSessionApp.application.folio,
+        inademAmount: inademAmount,
+        id: councilSessionApp.application.id,
+        selected: councilSessionApp.application.selected])
+    }
+
+    def approved_applications = applications.size()
+    def selected_applications = applications.grep({ it.selected }).size()
+    selected_applications = selected_applications == null ? 0 : selected_applications
+    def approved_amount = applications.sum{ it.inademAmount }
+    def selected_amount = applications.grep({ it.selected }).sum{ it.inademAmount }
+    selected_amount = selected_amount == null ? 0 : selected_amount
+
+    def councilHeader = [:]
+    councilHeader.approved_applications = approved_applications
+    councilHeader.selected_applications = selected_applications
+    councilHeader.total_amount = call.maxBudget
+    councilHeader.approved_amount = approved_amount
+    councilHeader.selected_amount = selected_amount
+    councilHeader.available_amount = (call.maxBudget? call.maxBudget : 0) - selected_amount
+
+    councilHeader
+    [ councilHeader: councilHeader, template: 'views/templates/2014/councilSessionHeader.html']
+  }
+
+  def closeCallCouncilSession(def callId){
+    def openCouncilSession
+    def call = Call.get(callId)
+    openCouncilSession = call.openCouncilSession
+
+    if(openCouncilSession){
+
+      def councilSessionApps = TecFinBusinessAverageEvent.executeQuery('SELECT app as application, a.totalScore as totalScore, ' +
+        'eval as evaluation, s.totalScore as stateAverage, (s.totalScore + (a.totalScore * 0.9)) as average FROM TecFinBusinessAverageEvent a, ' +
+        'StateAverageEvent s, Evaluation eval, Application app where eval.application = a.application ' +
+        'and app = eval.application and a.application = s.application and a.application.mainCall.id = :mainCallId and ' +
+        '((s.totalScore + (a.totalScore * 0.9)) > :average or (s.totalScore + (a.totalScore * 0.9)) <= :average and app.availableForCouncil = true)',
+        [ mainCallId: call.id, average: new Double(60.0)])
+
+      def notApprovedNormative = NormativeEvaluationEvent.executeQuery('SELECT application, normativeEvaluation, eval FROM NormativeEvaluationEvent normativeEvaluation, ' +
+       'Application as application, Evaluation eval where normativeEvaluation.application = application and eval.application = application '+
+       'and normativeEvaluation.passedEvaluation = false and application.availableForCouncil = true and application.mainCall.id = :mainCallId', [mainCallId: call.id])
+
+
+      def councilEvaluations = { app ->
+          def evals = CouncilEvaluationEvent.findAllByApplication(app)
+          evals.collect{ it.approved }
+      }
+
+      councilSessionApps.addAll(notApprovedNormative)
+
+      def applications = []
+      def listObjNames = ['application','tfnAverage','evaluation', 'stateAverage','average']
+      councilSessionApps.each{ councilSessionAppValues ->
+        def councilSessionApp = [:]
+        if(councilSessionAppValues.size() > 3){
+          councilSessionAppValues.eachWithIndex {it, index ->
+            councilSessionApp[listObjNames[index]] = it
+          }
+          councilSessionApp.normativeApproval = true
+        }else{
+          councilSessionApp = [application:councilSessionAppValues[0], normativeEvaluation: councilSessionAppValues[1], normativeApproval: false]
+          councilSessionApp.evaluation = councilSessionAppValues[2]
+        }
+
+        def councilEvals = councilEvaluations(councilSessionApp.application)
+        def unanimous = councilEvals.groupBy{ it }.collect{k, v ->
+           [approval: k, size: v.size()]
+          }.max{ it.size }?.approval
+        councilSessionApp.evaluation.finalApproval = unanimous
+        councilSessionApp.evaluation.councilEvaluationsCount = councilEvals.size()
+        councilSessionApp.evaluation.save(failOnError: true)
+      }
+
+      call.openCouncilSession = false
+      call.save(failOnError: true)
+    }
+  }
+	
+	def getCouncilEvaluationDetail (def councilSession, def application){
+		def evaluations = CouncilEvaluationEvent.findAllByCouncilSessionAndApplication(councilSession, application)
+		
+		def result = evaluations.collect {
+			[
+				id: it.id, 
+				user: it.user, 
+				name: "${it.user.name} ${it.user.lastName} ${it.user.secondLastName}", 
+				approved: it.approved, 
+				mainComment: it.mainComment,
+				reason: it.reason
+			]
+		}
+
+		result
+	}
+}

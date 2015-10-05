@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="solicitud" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d62a2121-bf38-4c5e-a598-37d4a9135459">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="45"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="datosGenerales" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="presupuestos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="sectores" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="otroSectores" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="impactos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="documentos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="productos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<queryString language="json">
+		<![CDATA[application]]>
+	</queryString>
+	<field name="folio" class="java.lang.String">
+		<fieldDescription><![CDATA[general.folio]]></fieldDescription>
+	</field>
+	<field name="totalSum" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalSum]]></fieldDescription>
+	</field>
+	<field name="totalInKind" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalInKind]]></fieldDescription>
+	</field>
+	<field name="totalPrevious" class="java.lang.Float">
+		<fieldDescription><![CDATA[totalPrevious]]></fieldDescription>
+	</field>
+	<field name="projectName" class="java.lang.String">
+		<fieldDescription><![CDATA[general.projectName]]></fieldDescription>
+	</field>
+	<field name="objectives" class="java.lang.String">
+		<fieldDescription><![CDATA[general.objectives]]></fieldDescription>
+	</field>
+	<field name="calendar" class="java.lang.String">
+		<fieldDescription><![CDATA[general.calendar]]></fieldDescription>
+	</field>
+	<field name="modalidades" class="java.lang.String">
+		<fieldDescription><![CDATA[modalidades]]></fieldDescription>
+	</field>
+	<field name="durationUnit" class="java.lang.String">
+		<fieldDescription><![CDATA[general.durationUnit.name]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[general.description]]></fieldDescription>
+	</field>
+	<field name="femaleCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.femaleCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="femalePreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.femalePreservedJobs]]></fieldDescription>
+	</field>
+	<field name="handicappedCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.handicappedCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="attendedEntrepeneurs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.attendedEntrepeneurs]]></fieldDescription>
+	</field>
+	<field name="benefitingCompanies" class="java.lang.String">
+		<fieldDescription><![CDATA[general.benefitingCompanies]]></fieldDescription>
+	</field>
+	<field name="handicappedPreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.handicappedPreservedJobs]]></fieldDescription>
+	</field>
+	<field name="indigenousCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.indigenousCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="indigenousPreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.indigenousPreservedJobs]]></fieldDescription>
+	</field>
+	<field name="maleCreatedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.maleCreatedJobs]]></fieldDescription>
+	</field>
+	<field name="malePreservedJobs" class="java.lang.String">
+		<fieldDescription><![CDATA[general.malePreservedJobs]]></fieldDescription>
+	</field>
+	<field name="newCompanies" class="java.lang.String">
+		<fieldDescription><![CDATA[general.newCompanies]]></fieldDescription>
+	</field>
+	<field name="postalCode" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.postalCode]]></fieldDescription>
+	</field>
+	<field name="settlement" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlement.name]]></fieldDescription>
+	</field>
+	<field name="street" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.street]]></fieldDescription>
+	</field>
+	<field name="externalNumber1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.externalNumber1]]></fieldDescription>
+	</field>
+	<field name="externalNumber2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.externalNumber2]]></fieldDescription>
+	</field>
+	<field name="internalNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.internalNumber]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[address.state.name]]></fieldDescription>
+	</field>
+	<field name="settlementType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlementType.name]]></fieldDescription>
+	</field>
+	<field name="municipality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.municipality.name]]></fieldDescription>
+	</field>
+	<field name="locality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.locality.name]]></fieldDescription>
+	</field>
+	<field name="streetRoadsType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.streetRoadsType.name]]></fieldDescription>
+	</field>
+	<field name="roadsType1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.roadsType1.name]]></fieldDescription>
+	</field>
+	<field name="roadsName1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.roadsName1]]></fieldDescription>
+	</field>
+	<field name="roadsType2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.roadsType2.name]]></fieldDescription>
+	</field>
+	<field name="roadsName2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.roadsName2]]></fieldDescription>
+	</field>
+	<field name="backRoadsType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.backRoadsType.name]]></fieldDescription>
+	</field>
+	<field name="backRoadsName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.address.backRoadsName]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="69" splitType="Stretch">
+			<image>
+				<reportElement x="5" y="4" width="211" height="61" uuid="89d19e8d-28b9-4ca9-afed-d8e99ac0228e"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="134" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="81" width="160" height="15" uuid="ce4edc27-2221-4405-9884-ff26ac9a51af"/>
+				<text><![CDATA[Nombre del Proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="47" width="100" height="15" uuid="65a6a077-4444-4e5c-aa05-e88a70f2d86e"/>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="24" width="170" height="20" forecolor="#990000" uuid="4709bd64-f2a7-4ee7-a684-31c3c9b4c627"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Sección General]]></text>
+			</staticText>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="22" y="61" width="538" height="20" uuid="a310ab7c-f718-4082-b323-cb895580dc4a"/>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="22" y="95" width="538" height="20" uuid="3c8889f7-d4f4-43af-9ba5-532cd6f81efb"/>
+				<textFieldExpression><![CDATA[$F{projectName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="118" width="100" height="15" uuid="5ecc52c4-a555-4f3e-b64a-57d7885dd3c9"/>
+				<text><![CDATA[Valor total]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="111" y="118" width="124" height="15" uuid="cc99a023-a152-4aed-b42a-a02f1458ce00"/>
+				<textFieldExpression><![CDATA[$F{totalSum} + $F{totalInKind} + $F{totalPrevious}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="2" width="572" height="20" forecolor="#990000" uuid="464bb23f-eeca-4a42-ab17-d3ca28e7b27c"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ANEXO  UNICO - SOLICITUD]]></text>
+			</staticText>
+		</band>
+		<band height="49">
+			<staticText>
+				<reportElement x="10" y="0" width="100" height="15" uuid="9beb7649-1a8d-4f02-8442-52e5a28d6a2e"/>
+				<text><![CDATA[Modalidades]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement x="23" y="15" width="547" height="34" uuid="2480d1e4-ff7b-4aac-b6bd-ccfb85f90a07"/>
+				<textFieldExpression><![CDATA[$F{modalidades}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="60">
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="15" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="03582cdc-bc7b-4dfa-8445-789f11e4441c"/>
+				<dataSourceExpression><![CDATA[$P{datosGenerales}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["datosGenerales.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="70">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="60f33179-0f66-4d07-a9d9-f80685e00d21"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Presupuestos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="20" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="c1ae238b-955f-49d6-af63-28bb475bc72b"/>
+				<dataSourceExpression><![CDATA[$P{presupuestos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["presupuestos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="69">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="2f06fc9e-3e2f-4994-b539-7738b0df634a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Resumen productos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="24" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="89289482-6953-4dfc-9fb7-90fb6d4b9c92"/>
+				<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["productos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="69">
+			<staticText>
+				<reportElement x="0" y="0" width="257" height="20" forecolor="#990000" uuid="0871c389-c52e-4da5-812a-8b00509f8e4c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Impactos]]></text>
+			</staticText>
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="2" y="24" width="570" height="45" isPrintWhenDetailOverflows="true" uuid="89289482-6953-4dfc-9fb7-90fb6d4b9c92"/>
+				<dataSourceExpression><![CDATA[$P{impactos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["impactos.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+</jasperReport>

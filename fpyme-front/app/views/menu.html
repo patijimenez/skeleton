@@ -1,0 +1,69 @@
+<div ng-controller="MenuCtrl">
+  <ul class="nav nav-pills pull-right">
+      <li class="active" ng-show="subject.class == 'mx.gob.inadem.ExternalUser'">
+          <a href="#/dashboard">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/applicantDashboard" ng-show="subject.class == 'mx.gob.inadem.Applicant' && !subject.profile.rifSAT">Principal</a>
+          <a href="#/rifSATDashboard" ng-show="subject.class == 'mx.gob.inadem.Applicant' && subject.profile.rifSAT">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/councilDashboard" ng-show="subject.class == 'mx.gob.inadem.OpsUser'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardConsejeroEstatal" ng-show="subject.class == 'mx.gob.inadem.StateCouncelor'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardEvaluator" ng-show="subject.class == 'mx.gob.inadem.Evaluator'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardLegal" ng-show="subject.class == 'mx.gob.inadem.LegalDeptUser'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardSuperUsuarioNegocio" ng-show="subject.class == 'mx.gob.inadem.SuperBusinessUser'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardSeguimiento" ng-show="subject.class == 'mx.gob.inadem.TrackingUser'">Principal</a>
+      </li>
+      <li class="active">
+          <a href="#/dashboardAreas" ng-show="subject.class == 'mx.gob.inadem.InademUser'">Principal</a>
+      </li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Mi perfil <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+              <li><a href="#changeData">Datos generales</a></li>
+              <li class="divider"></li>
+              <li><a href="#/changePassword">Modificar contraseña</a></li>
+              <!--<li><a href="#/generalFiel">Administrar fiel</a></li>-->
+              <li class="divider"></li>
+              <li><a href="{{baseUrl}}/app/auth/signOut">Salir</a></li>
+          </ul>
+      </li>
+  </ul>
+  <div class="span10" ng-show="hasAccreditation && isApplicant">
+    <h4 style="display: inline" class="text-info">
+      {{accreditation.denominationName}} {{accreditation.denominationRfc}}
+      <br/>
+      {{accreditation.name}} {{accreditation.lastName}} {{accreditation.secondLastName}} {{accreditation.rfc}}
+    </h4>
+    <small>
+          <span
+            popover="Para actualizar el nombre de tu razón social conforme a la FIEL, favor de volver a subir tu FIEL."
+            popover-title="Datos de la FIEL" popover-trigger="mouseenter" popover-placement="bottom">
+
+              <a ng-show="hasCompleteAccreditation && rifSAT == false" href ng-click="updateProfile(1)" class="text-error">Actualizar</a>
+          </span>
+    </small>
+  </div>
+  <div class="span10 text-info" ng-show="!hasAccreditation && isApplicant">
+    <h4 style="display: inline" class="text-info">
+      {{profile.name}} {{profile.rfcInfo}}
+      <br/>
+      {{profile.profile.individualName}} {{profile.profile.individualLastName}} {{profile.profile.individualSecondLastName}} {{profile.profile.individualRfc}}
+    </h4>
+  </div>
+  <div class="span10">
+    <p class="text-info">{{profileLabel}} <span ng-show="subject.profile.status.name=='REJECTED'" class="text-error">(PERFIL RECHAZADO)</span> </p>
+  </div>
+  <legend class="span12" ng-show="isApplicant"></legend>
+</div>

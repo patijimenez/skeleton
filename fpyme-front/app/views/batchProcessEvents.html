@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div>
+  <h1>BATCH PROCESS EVENTS</h1>
+  <h3 ng-show="process">Process: {{process.name}} ({{ process.id }})</h3>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div ng-show="message" class="alert alert-info">
+      <span>{{message}}</span>
+    </div>
+    <div ng-show="errorMessage" class="alert alert-error">
+      <span>{{errorMessage}}</span>
+    </div>
+    <a id="save-spinner" href=""></a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <a href="{{baseUrl}}/#/batchProcessBoard">Regresar a lista de procesos.</a>
+      <br/>
+      <table class="table tale-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Estatus</th>
+          <th>Console</th>
+          <th>Inicio de Ejecución</th>
+          <th>Fin de Ejecución</th>
+          <th>Thread Pool</th>
+          <th>Usuario</th>
+          <th>Total de tareas</th>
+          <th>Encoladas</th>
+          <th>Completadas</th>
+          <th>Con error</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="event in eventsList">
+          <td><a href="{{baseUrl}}/#/batchProcessLog/{{event.id}}">{{event.id}}</a></td>
+          <td>{{event.status}}</td>
+          <td><a href="{{baseUrl}}/#/batchProcessEventConsole/{{event.id}}">Console Log</a></td>
+          <td>{{event.startExecution}}</td>
+          <td>{{event.endExecution}}</td>
+          <td>{{event.threadPoolSize}}</td>
+          <td>{{event.user}}</td>
+          <td>{{event.numTasks}}</td>
+          <td>{{event.queuedTotal}}</td>
+          <td>{{event.completedTotal}}</td>
+          <td>{{event.errorTotal}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <pagination boundary-links="true" num-pages="noOfPages" current-page="currentPage" max-size="max"></pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="productDetail" language="groovy" pageWidth="532" pageHeight="792" columnWidth="532" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="10c3ace8-15c3-446c-9f3b-19086221acf3">
+	<property name="ireport.zoom" value="5.0"/>
+	<property name="ireport.x" value="1932"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[itemsDetails]]>
+	</queryString>
+	<field name="category" class="java.lang.String">
+		<fieldDescription><![CDATA[category]]></fieldDescription>
+	</field>
+	<field name="stringItem" class="java.lang.String">
+		<fieldDescription><![CDATA[stringItem]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="25" splitType="Immediate">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="144" height="25" isPrintWhenDetailOverflows="true" uuid="b809d6ee-a795-4fc1-869f-58ee350b1c16"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="144" y="0" width="388" height="25" uuid="fcbb5ca4-b651-4404-abcf-d1cb9b468600"/>
+				<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3">
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stringItem}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

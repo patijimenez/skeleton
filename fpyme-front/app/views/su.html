@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+    <div class="span12" ng-show="release == true">
+        <h2>Regresar al usuario inicial</h2>
+        <form name="suForm">
+            <fieldset>
+                <button ng-click="releaseRunAs()" type="submit" class="btn">Regresar</button>
+            </fieldset>
+        </form>
+    </div>
+    <div class="span12" ng-show="release == false">
+        <h2>Convertirse en usuario</h2>
+        <form name="suForm">
+            <fieldset>
+                <legend>Escriba el usuario en el que se quiera convertir</legend>
+                <div class="control-group">
+                    <label class="control-label" for="password">Usuario</label>
+                    <div class="controls">
+                        <input name="email" type="email" ng-model="username" required="required">
+                    </div>
+                </div>
+                <button ng-click="su(username)" type="submit" class="btn">Convertirse</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

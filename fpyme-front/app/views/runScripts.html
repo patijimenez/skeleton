@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+    <div class="span12">
+        <h6>Scripts</h6>
+        <select ng-model="script" ng-options="s as s.name for s in scripts" placeholder="Scripts" required="required" class="input-xxlarge"></select>
+        <br/>
+        <h6>Descripcion</h6>
+        <div>{{script.description}}</div>
+        <br/>
+        <h6>Variables y Valores</h6>
+        <table>
+            <thead>
+                <th>Variable</th>
+                <th>Valor</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="variable in script.mapVariables">
+                    <td>{{variable.name}}</td>
+                    <td><input type="text" ng-model="variable.value" class="input-xxlarge" /></td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <div ng-app="fpymeFrontApp">
+        <button ng-show="!processing" ng-click="executeStoredScript(script)" class="pull-left btn">Ejecutar</button>
+        <form ng-show="script.generateFile" id="scriptForm" name="scriptForm" action="{{baseUrl}}/app/report/generateFile" method="post">
+            <input type="hidden" name="id" value="{{script.id}}" />
+            <input type="hidden" name="mapVariables" value="{{script.mapVariables}}" />
+            <input type="submit" class="pull-left btn" value="Generar Archivo">
+        </form>
+        </div>
+        <a style="margin-left:50px;" id="save-spinner" href=""></a>
+    </div>
+</div>
+<div class="results">
+    <div ng-show="result.exception">
+        <alert type="'error'" style="white-space: pre">{{result.exception}}</alert>
+    </div>
+    <div ng-show="result.errorOutput">
+        <alert type="'warning'" style="white-space: pre">{{result.errorOutput}}</alert>
+    </div>
+    <div ng-show="result.output">
+        <alert type="'info'" style="white-space: pre">{{result.output}}</alert>
+    </div>
+</div>

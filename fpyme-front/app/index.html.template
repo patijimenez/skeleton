@@ -1,0 +1,534 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <title>Sistema emprendedor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <base href="/emprende/" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
+    <!--link type="text/css" rel="stylesheet" href="http://www.encuentra.gob.mx/css/apf.css"/-->
+    <link rel="stylesheet" href="components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="components/sir-trevor-js/sir-trevor-icons.css" />
+    <link rel="stylesheet" href="components/sir-trevor-js/sir-trevor.css" />
+    <link rel="stylesheet" href="components/select2/select2.css" />
+    <link rel="stylesheet" href="components/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="https://codemirror.net/theme/solarized.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="scripts/providers/guiders/guiders-1.3.0.css" />
+  </head>
+  <body ng-app="fpymeFrontApp">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="components/es5-shim/es5-shim.js"></script>
+      <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Header -->
+    <div class="header container">
+      <div class="row logos-bar">
+        <div class="span9">
+      <img src="images/logos/fondo_pyme_logotype.jpg" title="Logo INADEM Completo" />
+      <!-- <img src="images/logos/fondo_pyme_logotype_alone.jpg" title="Logo INADEM Solo" /> -->
+        </div>
+        <div class="span3">
+          <form id="search" method="get" action="#" class="searchField">
+        <span class="search-container">
+              <div id="gobmx-searchbox-container-se"></div>
+            </span>
+            <!--input(type="text",name="search", value="Buscar")-->
+            <input type="submit" value="buscar"/>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!--- Show errors here!---->
+    <div class="container" ng-controller="NotificationsCtrl" style="display: none">
+        <div class="row" ng-show="configParams.showErrors && !permissions.errorDetail">
+                    <div class="span12">
+                        <button class="btn" ng-click="requestNotificationPermission()" ng-show="false && hasPermission() == 1">Aceptar notificationes</button>
+                        <div ng-repeat="notification in notifications" ng-show="notification.errorKey">
+                            <alert type="notification.type" close="closeNotification($index)">
+                                <div ng-show="notification.async">
+                                    <strong>{{notification.title}}</strong>
+                                    <p style="word-wrap: break-word">{{notification.message}}</p>
+                                </div>
+                                <div ng-show="!notification.async" style="word-wrap: break-word">
+                                    Ocurrió un error en la aplicación, ¡ayudanos reportandolo!
+                                    <p ng-show="notification.errorKey">
+                                        <a ng-href="#/e/{{notification.errorKey}}">Ayudanos a reportar el error</a>
+                                    </p>
+                                </div>
+                           </alert>
+                        </div>
+                    </div>
+        </div>
+        <div class="row" ng-show="permissions.errorDetail">
+                    <div class="span12">
+                        <button class="btn" ng-click="requestNotificationPermission()" ng-show="false && hasPermission() == 1">Aceptar notificationes</button>
+                        <alert ng-repeat="notification in notifications" type="notification.type" close="closeNotification($index)">
+                        <div ng-show="notification.async">
+                            <strong>{{notification.title}}</strong>
+                            <p style="word-wrap: break-word">{{notification.message}}</p>
+                        </div>
+                        <div ng-show="!notification.async" style="word-wrap: break-word">
+                            Error:
+                            {{notification.description}}
+                            <br />
+                            Detalle:
+                            {{notification.msg}}
+                            <p ng-show="notification.errorKey">
+                                <a ng-href="#/error/{{notification.errorKey}}">Ver más detalles</a>
+                            </p>
+                        </div>
+                        </alert>
+                    </div>
+        </div>
+    </div>
+    <ng-include src="'views/mensaje.html'"></ng-include>
+    <!-- Add your site or application content here -->
+    <div class="container mainContainer" ng-view></div>
+
+    <div class="container footer" id="footer">
+      <div class="row" id="footerINADEM">
+        <div class="span12">
+          <p class="copy">Fondo Nacional Emprendedor - ALGUNOS DERECHOS RESERVADOS © 2014</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="span12 centered-footer">
+          <div style="border-top: 4px double #d6d6d6;"></div>
+          <a class="logo-pyme-footer" href="/">
+             <img src="images/logos/fondo_pyme_logotype_mini.png" />
+          </a>
+          <p>Insurgentes Sur 1940, Col. Florida, CP 01030, Del. Álvaro Obregón<br /> México, Distrito Federal,Tel. (55) 5229-6100 | 01(800) 08 32-666 [ECONOMIA]</p>
+          <br /> 
+          <p>
+        Este programa es de carácter público, no es patrocinado ni promovido por partido político
+        alguno y sus recursos provienen de los impuestos que pagan todos los contribuyentes.<br />Está prohibido el uso de este programa con fines políticos, electorales, de lucro y otros
+        distintos a los establecidos. Quien haga uso indebido de los recursos de este programa
+        deberá ser denunciado y sancionado de acuerdo con la ley aplicable y ante la autoridad competente.<br /><br /><a href="http://www.sistemaemprendedor.gob.mx/politicas_de_privacidad.html" target="_blank">Políticas de Privacidad </a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="components/jquery/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCiofpAJbIAp9m4xDjpfpXn_rO2ahaB0f8&sensor=false"></script>
+    <script src="components/lodash/dist/lodash.min.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/ngUpload/ng-upload.min.js"></script>
+    <script src="components/angular-i18n/angular-locale_es-419.js"></script>
+    <script src="components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="components/Eventable/eventable.js"></script>
+    <script src="components/sir-trevor-js/sir-trevor.min.js"></script>
+    <script src="components/angular-ui-date/src/date.js"></script>
+    <script src="components/select2/select2.min.js"></script>
+    <script src="components/select2/select2_locale_es.js"></script>
+    <script src="components/angular-ui-select2/src/select2.js"></script>
+    <script src="components/codemirror/lib/codemirror.js"></script>
+    <script src="components/codemirror/mode/sql/sql.js"></script>
+    <script src="components/codemirror/mode/groovy/groovy.js"></script>
+    <script src="components/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="components/angular-ui-codemirror/ui-codemirror.js"></script>
+    <script src="components/spin.js/spin.js"></script>
+    <script src="components/angular-ui-utils/ui-utils.min.js"></script>
+    <script src="components/tinymce/tinymce.min.js"></script>
+    <script src="components/angular-ui-tinymce/src/tinymce.js"></script>
+    <script src="scripts/providers/guiders/guiders-1.3.0.js"></script>
+    <script src="components/postal.js/lib/postal.min.js"></script>
+    <script src="components/stringjs/lib/string.min.js"></script>
+    <script src="components/html-md/dist/md.min.js"></script>
+    <script src="components/marked/lib/marked.js"></script>
+    <script src="components/checklist-model/checklist-model.js"></script>
+    <script src="components/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.js"></script>
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
+    <script src="scripts/directives/rfc.js"></script>
+    <script src="scripts/services/loggedService.js"></script>
+    <script src="scripts/services/notificationsService.js"></script>
+    <script src="scripts/controllers/errors.js"></script>
+    <script src="scripts/controllers/notifications.js"></script>
+    <script src="scripts/services/windowNotifications.js"></script>
+    <script src="scripts/services/errorHttpInterceptor.js"></script>
+    <script src="scripts/services/registrationService.js"></script>
+    <script src="scripts/services/catalogService.js"></script>
+    <script src="scripts/controllers/welcome.js"></script>
+    <script src="scripts/controllers/recover.js"></script>
+    <script src="scripts/controllers/error.js"></script>
+    <script src="scripts/services/urlService.js"></script>
+    <script src="scripts/directives/curp.js"></script>
+    <script src="scripts/controllers/genericDialog.js"></script>
+    <script src="scripts/controllers/recoverPassword.js"></script>
+    <script src="scripts/controllers/tokenConfirm.js"></script>
+    <script src="scripts/directives/rfcMoral.js"></script>
+    <script src="scripts/services/profileService.js"></script>
+    <script src="scripts/services/fielService.js"></script>
+    <script src="scripts/controllers/evaluatorSpecialization.js"></script>
+    <script src="scripts/directives/smartFloat.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/applicantDashboard.js"></script>
+    <script src="scripts/controllers/welcomeOps.js"></script>
+    <script src="scripts/controllers/welcomeExternal.js"></script>
+    <script src="scripts/controllers/welcomeEvaluator.js"></script>
+    <script src="scripts/controllers/sesion.js"></script>
+    <script src="scripts/controllers/sesionHistorica.js"></script>
+    <script src="scripts/controllers/welcomeStateCouncil.js"></script>
+    <script src="scripts/controllers/changePassword.js"></script>
+    <script src="scripts/controllers/generalFiel.js"></script>
+    <script src="scripts/controllers/changeData.js"></script>
+    <script src="scripts/controllers/plantillasConvocatorias.js"></script>
+    <script src="scripts/controllers/plantillaConvocatoria.js"></script>
+    <script src="scripts/services/callService.js"></script>
+    <script src="scripts/controllers/listaConvocatoriasActivas.js"></script>
+    <script src="scripts/controllers/crearConvocatoria.js"></script>
+    <script src="scripts/controllers/capturaSolicitud.js"></script>
+    <script src="scripts/directives/documentViewer.js"></script>
+    <script src="scripts/controllers/test.js"></script>
+    <script src="scripts/controllers/installationSession.js"></script>
+    <script src="scripts/services/installationService.js"></script>
+    <script src="scripts/controllers/dashboardConsejeroEstatal.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/controllers/confirmDialog.js"></script>
+    <script src="scripts/controllers/modalityDetail.js"></script>
+    <script src="scripts/services/modalityService.js"></script>
+    <script src="scripts/controllers/convocatorias.js"></script>
+    <script src="scripts/services/guiderService.js"></script>
+    <script src="scripts/services/applicationService.js"></script>
+    <script src="scripts/controllers/participar.js"></script>
+    <script src="scripts/controllers/asignacionManual.js"></script>
+    <script src="scripts/services/assignmentService.js"></script>
+    <script src="scripts/controllers/stateCouncelor.js"></script>
+    <script src="scripts/controllers/dashboardEvaluator.js"></script>
+    <script src="scripts/services/developerService.js"></script>
+    <script src="scripts/controllers/developer.js"></script>
+    <script src="scripts/controllers/evaluacionNormativa.js"></script>
+    <script src="scripts/controllers/listaAsignadas.js"></script>
+    <script src="scripts/services/evaluationService.js"></script>
+    <script src="scripts/directives/documentListViewer.js"></script>
+    <script src="scripts/services/documentService.js"></script>
+    <script src="scripts/controllers/evaluacionTecFinNegocio.js"></script>
+    <script src="scripts/directives/signature.js"></script>
+    <script src="scripts/controllers/firmaEvaluacionNormativa.js"></script>
+    <script src="scripts/controllers/firmaEvaluacionTecFinNegocio.js"></script>
+    <script src="scripts/controllers/procesoAsignacion.js"></script>
+    <script src="scripts/filters/ellipsize.js"></script>
+    <script src="scripts/controllers/firmaSolicitud.js"></script>
+    <script src="scripts/controllers/resumenSolicitud.js"></script>
+    <script src="scripts/directives/numbersOnly.js"></script>
+    <script src="scripts/directives/numberMax.js"></script>
+    <script src="scripts/controllers/db.js"></script>
+    <script src="scripts/controllers/proposerDialog.js"></script>
+    <script src="scripts/services/solicitudValidator.js"></script>
+    <script src="scripts/controllers/editDocumentDialog.js"></script>
+    <script src="scripts/controllers/editEligibilityDialog.js"></script>
+    <script src="scripts/services/configService.js"></script>
+    <script src="scripts/controllers/e.js"></script>
+    <script src="scripts/controllers/scripting.js"></script>
+    <script src="scripts/controllers/listaEvaluaciones.js"></script>
+    <script src="scripts/controllers/detalleEvaluacion.js"></script>
+    <script src="scripts/controllers/listaEvaluacionesSolicitud.js"></script>
+    <script src="scripts/controllers/correctDocs.js"></script>
+    <script src="scripts/controllers/councilDashboard.js"></script>
+    <script src="scripts/controllers/approved.js"></script>
+    <script src="scripts/controllers/callApproved.js"></script>
+    <script src="scripts/services/councilEvaluationService.js"></script>
+    <script src="scripts/controllers/councilDetail.js"></script>
+    <script src="scripts/controllers/runScripts.js"></script>
+    <script src="scripts/controllers/administraReportes.js"></script>
+    <script src="scripts/services/jobService.js"></script>
+    <script src="scripts/controllers/secretarioTecnico.js"></script>
+    <script src="scripts/controllers/secretarioTecnicoDetalle.js"></script>
+    <script src="scripts/controllers/welcomeLegal.js"></script>
+    <script src="scripts/controllers/dashboardLegal.js"></script>
+    <script src="scripts/controllers/acreditacion.js"></script>
+    <script src="scripts/controllers/dashboardCounselor.js"></script>
+    <script src="scripts/controllers/dashboardCounselorDetail.js"></script>
+    <script src="scripts/controllers/signCouncil.js"></script>
+    <script src="scripts/services/accreditationService.js"></script>
+    <script src="scripts/controllers/message.js"></script>
+    <script src="scripts/services/messageService.js"></script>
+    <script src="scripts/controllers/evaluaAcreditacion.js"></script>
+    <script src="scripts/controllers/generateDocuments.js"></script>
+    <script src="scripts/controllers/config/juridico.js"></script>
+    <script src="scripts/controllers/juridico/elaboracion.js"></script>
+    <script src="scripts/controllers/juridico/revision.js"></script>
+    <script src="scripts/controllers/juridico/solicitud.js"></script>
+    <script src="scripts/services/documentGeneratorService.js"></script>
+    <script src="scripts/services/legalReqDocsService.js"></script>
+    <script src="scripts/controllers/uploadCouncilAct.js"></script>
+    <script src="scripts/controllers/signCouncilAct.js"></script>
+    <script src="scripts/controllers/cargaDocsMinistracion.js"></script>
+    <script src="scripts/services/ministrationService.js"></script>
+    <script src="scripts/controllers/listaJuridicoAsignadas.js"></script>
+    <script src="scripts/services/solicitudLegalValidator.js"></script>
+    <script src="scripts/controllers/agreements.js"></script>
+    <script src="scripts/services/agreementService.js"></script>
+    <script src="scripts/controllers/asignacionManualJuridica.js"></script>
+    <script src="scripts/controllers/assignedValidations.js"></script>
+    <script src="scripts/controllers/listaMinistracion.js"></script>
+    <script src="scripts/controllers/detalleMinistracion.js"></script>
+    <script src="scripts/controllers/detalleMinistracionConvocatoria.js"></script>
+    <script src="scripts/controllers/cargarConvenio.js"></script>
+    <script src="scripts/controllers/firmaConvenio.js"></script>
+    <script src="scripts/controllers/convenios.js"></script>
+    <script src="scripts/services/userService.js"></script>
+    <script src="scripts/controllers/convenioDetalle.js"></script>
+    <script src="scripts/controllers/generaConvenio.js"></script>
+    <script src="scripts/controllers/administrarNotificaciones.js"></script>
+    <script src="scripts/controllers/evaluaMinistracion.js"></script>
+    <script src="scripts/controllers/listaMinistracionAsignadas.js"></script>
+    <script src="scripts/controllers/listaConvenios.js"></script>
+    <script src="scripts/controllers/clonarConvocatoria.js"></script>
+    <script src="scripts/controllers/councilSession.js"></script>
+    <script src="scripts/controllers/tareasJuridico.js"></script>
+    <script src="scripts/services/legalAdminService.js"></script>
+    <script src="scripts/controllers/listaConveniosRegistrados.js"></script>
+    <script src="scripts/controllers/capturaQueja.js"></script>
+    <script src="scripts/services/complaintService.js"></script>
+    <script src="scripts/controllers/listaQuejas.js"></script>
+    <script src="scripts/controllers/respondeQueja.js"></script>
+    <script src="scripts/services/responseComplaintService.js"></script>
+    <script src="scripts/controllers/asignacionConveniosConv.js"></script>
+    <script src="scripts/controllers/listaActasFirma.js"></script>
+    <script src="scripts/services/councilSessionService.js"></script>
+    <script src="scripts/controllers/descargaActasFirmadas.js"></script>
+    <script src="scripts/controllers/listaMinistracionPendientes.js"></script>
+    <script src="scripts/controllers/dashboardSuperUsuarioNegocio.js"></script>
+    <script src="scripts/controllers/gestionConvenio.js"></script>
+    <script src="scripts/controllers/listaInformesSeguimiento.js"></script>
+    <script src="scripts/controllers/informeSeguimiento.js"></script>
+    <script src="scripts/services/trackingReportService.js"></script>
+    <script src="scripts/controllers/listaConsultaSeguimiento.js"></script>
+    <script src="scripts/controllers/cargaExpMinistracion.js"></script>
+    <script src="scripts/controllers/welcomeGeneralData.js"></script>
+    <script src="scripts/controllers/conveniosDesistidos.js"></script>
+    <script src="scripts/directives/rfcIndividualOrMoral.js"></script>
+    <script src="scripts/controllers/listaEnRevision.js"></script>
+    <script src="scripts/controllers/selectProfile.js"></script>
+    <script src="scripts/controllers/subsanarSolicitud.js"></script>
+    <script src="scripts/controllers/firmaCambiosSolicitud.js"></script>
+    <script src="scripts/controllers/addProfiles.js"></script>
+    <script src="scripts/controllers/capturaOpinion.js"></script>
+    <script src="scripts/directives/ngHtmlCompile.js"></script>
+    <script src="scripts/controllers/su.js"></script>
+    <script src="scripts/controllers/vistaSeguimiento.js"></script>
+    <script src="scripts/controllers/spentResourceDetailsDialog.js"></script>
+    <script src="scripts/controllers/receivedResourceDetailsDialog.js"></script>
+    <script src="scripts/controllers/dashboardSeguimiento.js"></script>
+    <script src="scripts/controllers/vistaSeguimiento.js"></script>
+    <script src="scripts/controllers/evaluacionEstatal.js"></script>
+    <script src="scripts/controllers/firmaEstatal.js"></script>
+    <script src="scripts/controllers/firmaInformeSeguimiento.js"></script>
+    <script src="scripts/controllers/pruebaFirma.js"></script>
+    <script src="scripts/controllers/convenioUnico.js"></script>
+    <script src="scripts/controllers/evaluacionSenior.js"></script>
+    <script src="scripts/controllers/evaluacionSeniorDetalle.js"></script>
+    <script src="scripts/controllers/firmaEvaluacionSenior.js"></script>
+    <script src="scripts/controllers/evaluacionSeniorResult.js"></script>
+    <script src="scripts/controllers/sesionGrupoAnalisis.js"></script>
+    <script src="scripts/services/analysisGroupService.js"></script>
+    <script src="scripts/controllers/sesionesGrupoAnalisis.js"></script>
+    <script src="scripts/controllers/councilSessionCommentDialog.js"></script>
+    <script src="scripts/controllers/listaPorFirmar.js"></script>
+    <script src="scripts/controllers/news.js"></script>
+    <script src="scripts/controllers/sessions.js"></script>
+    <script src="scripts/controllers/visorJuridico.js"></script>
+    <script src="scripts/controllers/adminRoles.js"></script>
+    <script src="scripts/controllers/detalleJuridico.js"></script>
+    <script src="scripts/controllers/councilSessionIndividualVotes.js"></script>
+    <script src="scripts/controllers/convenioUnico.js"></script>
+    <script src="scripts/controllers/configuraImpactos.js"></script>
+    <script src="scripts/services/configureImpactsService.js"></script>
+    <script src="scripts/services/impactsService.js"></script>
+    <script src="scripts/controllers/councilSessionDialog.js"></script>
+    <script src="scripts/controllers/busquedaMinistracion.js"></script>
+    <script src="scripts/controllers/listaImpactos.js"></script>
+    <script src="scripts/controllers/runscriptsbusqueda.js"></script>
+    <script src="scripts/controllers/vistaImpacto.js"></script>
+    <script src="scripts/controllers/listaministracionjuridico.js"></script>
+    <script src="scripts/controllers/asignacionministracion.js"></script>
+    <script src="scripts/controllers/editCompany.js"></script>
+    <script src="scripts/controllers/capturaVariables.js"></script>
+    <script src="scripts/controllers/verImpacto.js"></script>
+    <script src="scripts/controllers/reporteFinal.js"></script>
+    <script src="scripts/controllers/firmaEvalEstatalVitrina.js"></script>
+    <script src="scripts/controllers/finalReportDialog.js"></script>
+    <script src="scripts/controllers/canjearVale.js"></script>
+    <script src="scripts/services/showcaseService.js"></script>
+    <script src="scripts/controllers/firmaConvenioVitrina.js"></script>
+    <script src="scripts/controllers/encuestaEmprendeTIC.js"></script>
+    <script src="scripts/services/surveyService.js"></script>
+    <script src="scripts/controllers/validarTempUser.js"></script>
+    <script src="scripts/controllers/vistaSeguimientoFinal.js"></script>
+    <script src="scripts/controllers/impactsDialog.js"></script>
+    <script src="scripts/controllers/informeSeguimientoDocs.js"></script>
+    <script src="scripts/controllers/listaSeguimientoDocs.js"></script>
+    <script src="scripts/controllers/convenioProveedores.js"></script>
+    <script src="scripts/controllers/convenioBeneficiarioVitrina.js"></script>
+    <script src="scripts/controllers/listaJuridicoAsignadasVitrina.js"></script>
+    <script src="scripts/controllers/accountBalanceDetailsDialog.js"></script>
+    <script src="scripts/controllers/productosProveedor.js"></script>
+    <script src="scripts/controllers/listaVitrinaSolicitudesFirmadas.js"></script>
+    <script src="scripts/controllers/detalleProductosProveedor.js"></script>
+    <script src="scripts/controllers/helpDialog.js"></script>
+    <script src="scripts/controllers/conveniosProveedor.js"></script>
+    <script src="scripts/controllers/firmaConvenioProveedor.js"></script>
+    <script src="scripts/controllers/detalleConvenio.js"></script>
+    <script src="scripts/controllers/subsanaSeguimiento.js"></script>
+    <script src="scripts/controllers/welcomeTrackingUser.js"></script>
+    <script src="scripts/controllers/firmaCanjeCupon.js"></script>     
+    <script src="scripts/controllers/evaluacionSeguimiento.js"></script>
+    <script src="scripts/services/trackingEvaluationService.js"></script>
+    <script src="scripts/controllers/asignacionDespacho.js"></script>
+    <script src="scripts/controllers/reportesDespacho.js"></script>
+    <script src="scripts/controllers/reportesAsignadosEvaluacion.js"></script>
+    <script src="scripts/controllers/welcomeTrackingUser.js"></script>
+    <script src="scripts/controllers/exchangeCouponsValidation.js"></script>
+    <script src="scripts/controllers/paymentOrderGeneration.js"></script>
+    <script src="scripts/controllers/firmaCanjeCupon.js"></script>
+    <script src="scripts/controllers/evaluacionSeguimiento.js"></script>
+    <script src="scripts/controllers/couponProviderDetail.js"></script>
+    <script src="scripts/controllers/paymentOrder.js"></script>    
+    <script src="scripts/controllers/paymentOrderDialog.js"></script>
+    <script src="scripts/controllers/listaCuponesProveedores.js"></script>
+    <script src="scripts/controllers/dashboardAreas.js"></script>
+    <script src="scripts/controllers/listaConveniosVitrina.js"></script>
+    <script src="scripts/controllers/paymentOrders.js"></script>
+    <script src="scripts/controllers/paymentOrderValidation.js"></script>
+    <script src="scripts/controllers/habilitaInformeSeguimiento.js"></script>
+    <script src="scripts/controllers/listaReportesValidar.js"></script>
+    <script src="scripts/controllers/reportesAsignadosValidacion.js"></script>
+    <script src="scripts/controllers/historialEvaluacion.js"></script>
+    <script src="scripts/controllers/dictaminacionSolicitud.js"></script>
+    <script src="scripts/controllers/reporteBansefi.js"></script>
+    <script src="scripts/controllers/firmaReporteBansefi.js"></script>
+    <script src="scripts/controllers/reportesEvaluados.js"></script>
+    <script src="scripts/controllers/verDictamen.js"></script>
+    <script src="scripts/controllers/firmaCorreccionInforme.js"></script>
+    <script src="scripts/controllers/cargarFielRif.js"></script>
+    <script src="scripts/controllers/convenioProveedorDetalle.js"></script>
+    <script src="scripts/controllers/listaReportesDictaminar.js"></script>
+    <script src="scripts/controllers/reportesPorUsuario.js"></script>
+    <script src="scripts/controllers/firmaEvaluacionSeguimiento.js"></script>
+    <script src="scripts/controllers/firmaDictamenSolicitud.js"></script>
+    <script src="scripts/controllers/usuariosConFoliosRechazados.js"></script>
+    <script src="scripts/controllers/providerBilling.js"></script>
+    <script src="scripts/controllers/reviewProviderTasks.js"></script>
+    <script src="scripts/controllers/toReviewCoupons.js"></script>
+    <script src="scripts/controllers/batchProcessBoard.js"></script>
+    <script src="scripts/services/batchProcessService.js"></script>
+    <script src="scripts/controllers/batchProcessEvents.js"></script>
+    <script src="scripts/controllers/batchProcessLog.js"></script>
+    <script src="scripts/controllers/rifSATDashboard.js"></script>
+    <script src="scripts/controllers/batchProcessEventConsole.js"></script>
+    <script src="scripts/services/infotecservice.js"></script>
+    <script src="scripts/controllers/demoInvocaServicio.js"></script>
+    <script src="scripts/controllers/listaCuponesPorAsignar.js"></script>
+    <script src="scripts/controllers/userData.js"></script>
+    <script src="scripts/controllers/revisaconvenio.js"></script>
+    <script src="scripts/controllers/subsanaConvenio.js"></script>
+    <script src="scripts/controllers/vistaInformeSeguimientoDocs.js"></script>
+    <script src="scripts/controllers/technicalSecretaryCommentDialog.js"></script>
+    <script src="scripts/controllers/validationAssignmentResume.js"></script>
+    <script src="scripts/controllers/historialSolicitudes.js"></script>
+    <script src="scripts/controllers/listaExpMinistracionAsignadas.js"></script>
+    <script src="scripts/controllers/cuestionariovitrina.js"></script>
+    <script src="scripts/controllers/resumencuestionariovitrina.js"></script>
+    <script src="scripts/controllers/guiaNormativa.js"></script>
+    <script src="scripts/services/guiaNormativaService.js"></script>
+    <script src="scripts/controllers/listaConvocatoriasNormativa.js"></script>
+    <script src="scripts/controllers/solicitudaclaracion.js"></script>
+    <script src="scripts/services/feedbackservice.js"></script>
+    <script src="scripts/controllers/aclaracionespendientes.js"></script>
+    <script src="scripts/controllers/feedbackapplication.js"></script>
+    <script src="scripts/controllers/solicitudretroalimentacion.js"></script>
+    <script src="scripts/controllers/listaaclaraciones.js"></script>
+    <script src="scripts/controllers/responderaclaraciones.js"></script>
+    <script src="scripts/controllers/listaaclaracionesevaluador.js"></script>
+    <script src="scripts/controllers/listaaclaracionessedeco.js"></script>
+    <script src="scripts/controllers/loadAllMinistration.js"></script>
+    <script src="scripts/controllers/cargaDocsPendingMinistration.js"></script>
+    <script src="scripts/controllers/criterioevaldialog.js"></script>
+    <script src="scripts/controllers/cuestionariovitrina.js"></script>
+    <script src="scripts/controllers/resumencuestionariovitrina.js"></script>
+    <script src="scripts/controllers/loadAllMinistration.js"></script>
+    <script src="scripts/controllers/cargaDocsPendingMinistration.js"></script>
+    <script src="scripts/controllers/applicationdocshistory.js"></script>
+    <script type="text/javascript" src="scripts/controllers/boardTracking.js"></script>
+    <script src="scripts/directives/applicationDetail.js"></script>
+    <script src="scripts/controllers/councilDetailAlertas.js"></script>
+    <script src="scripts/directives/normativeDetail.js"></script>
+    <script src="scripts/controllers/applicationResume.js"></script>
+    <script src="scripts/directives/tfnDetail.js"></script>
+    <script src="scripts/controllers/responderalerta.js"></script>
+    <script src="scripts/controllers/informeseguimientobansefi.js"></script>
+    <script src="scripts/controllers/detalleaclaracion.js"></script>
+    <script src="scripts/controllers/listaalertasevaluador.js"></script>
+    <script src="scripts/controllers/responderalertaevaluador.js"></script>
+    <script src="scripts/controllers/detallealerta.js"></script>
+    <script src="scripts/controllers/detallealertaporsolicitud.js"></script>
+    <script src="scripts/controllers/cuestionarioConvocatoriaDos.js"></script>
+    <script src="scripts/controllers/configExtraPoints.js"></script>
+    <script src="scripts/services/extraPointsService.js"></script>
+    <script src="scripts/directives/statalDetail.js"></script>
+    <script src="scripts/controllers/callanalysis.js"></script>
+    <script src="scripts/controllers/listaconvocatorias.js"></script>
+    <script src="scripts/controllers/detalleCuestionarioConvocatoriaDos.js"></script>
+    <script src="scripts/controllers/rifTrackingEvaluation.js"></script>
+    <script src="scripts/controllers/listrifreports.js"></script>
+    <script src="scripts/controllers/signRifEvaluation.js"></script>
+    <script src="scripts/controllers/rifReportApplicantReview.js"></script>
+    <script src="scripts/controllers/signRifBillsReview.js"></script>
+    <script src="scripts/controllers/rifReportEvaluationDetail.js"></script>
+<script src="scripts/controllers/detallesolicitudreposicion.js"></script>
+<script src="scripts/controllers/crearsolicitudreposicion.js"></script>
+<script src="scripts/controllers/respondersolicitudreposicion.js"></script>
+<script src="scripts/controllers/listasolicitudreposicion.js"></script>
+<script src="scripts/controllers/listasolicitudreposicionevaluador.js"></script>
+<script src="scripts/controllers/listaposiblereposicion.js"></script>
+    <!-- endbuild -->
+
+
+    <!--script type="text/javascript" src="http://www.encuentra.gob.mx/api/gobmxWidgetAPI-min.js"></script>
+    <script type="text/javascript" src="http://www.encuentra.gob.mx/properties/gobmxWidgetAPI-conf.js"></script-->
+    <!--script>
+      _gmx.loadGobMXsearchAPI({container:'gobmx-searchbox-container-se',client:'se',newWindow:true});
+
+    </script-->
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-41849378-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+      //Validacion del dominio
+      var host = location.hostname;
+      var tipoHost = host.indexOf("prologyca") > -1;
+      if(tipoHost){
+        document.getElementById('footerINADEM').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>

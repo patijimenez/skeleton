@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="showcaseCoupon" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="30" bottomMargin="20" uuid="ea26100d-7463-4a9b-8f50-24c1982d0af7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="280"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="applicant" class="java.lang.String"/>
+	<parameter name="rfc" class="java.lang.String"/>
+	<parameter name="folio" class="java.lang.String"/>
+	<parameter name="compromisedAmount" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="consecutive" class="java.lang.String"/>
+	<parameter name="providers" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="providerDetail" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="header" class="java.lang.String"/>
+	<parameter name="signature" class="java.lang.String"/>
+	<parameter name="originalString" class="java.lang.String"/>
+	<parameter name="url" class="java.lang.String"/>
+	<parameter name="effectiveDate" class="java.lang.String"/>
+	<parameter name="qrCode" class="java.io.InputStream"/>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement x="344" y="20" width="73" height="20" uuid="5b179891-9910-4963-8e65-51dfe52518cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ México D.F. a]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="344" y="41" width="73" height="20" uuid="6119bbb5-1364-4fe6-b4ae-784033095ca9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Número: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="417" y="20" width="115" height="20" uuid="b1d00cf5-3d05-447b-878e-9c47deb0ee07"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="41" width="115" height="20" uuid="d0ba048f-f882-4dec-8335-6d4cb73733b8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{consecutive}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="211" height="61" uuid="31a5a6ee-5516-43d9-a879-d710005cfc22"/>
+				<imageExpression><![CDATA["INADEM_logotipo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="92" splitType="Stretch">
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="32" width="532" height="60" uuid="ae06c200-0486-4016-b8f9-22994e185a43"/>
+				<textElement textAlignment="Justified">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{header}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="59">
+			<textField>
+				<reportElement mode="Opaque" x="232" y="0" width="300" height="30" backcolor="#C0C0C0" uuid="f5a246ed-a5e1-464f-a123-b51d3e5d7ce5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{applicant}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="39" width="532" height="17" uuid="4f01b055-8636-4ff1-963f-5142fa94d5de"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Con los siguientes datos de identificación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="198" height="30" backcolor="#C0C0C0" uuid="78bd743f-45a6-42c1-a2ec-906aa149ab6b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[VALE CANJEABLE a favor de:]]></text>
+			</staticText>
+		</band>
+		<band height="54">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="4" width="80" height="25" backcolor="#C9C9C9" uuid="d1820980-bf01-4161-aaf8-dc522a17035d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RFC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="80" y="4" width="171" height="25" backcolor="#C9C9C9" uuid="a3f20243-0833-41fe-97c8-92732ed99ecf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Representante Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="252" y="4" width="138" height="25" backcolor="#C9C9C9" uuid="afc74fca-0f3b-4d00-99de-f6982fc16af5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio de solicitud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="392" y="4" width="140" height="25" backcolor="#C9C9C9" uuid="28b0a92e-b4a9-4f45-90ad-3c2e99c1659e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto comprometido]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="32" width="78" height="20" isPrintWhenDetailOverflows="true" uuid="2c0ef703-f0dc-4a84-ba6e-22924c3ac5fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="32" width="171" height="20" isPrintWhenDetailOverflows="true" uuid="e64e61e3-9452-417c-8891-87650e13c68c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{applicant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="32" width="138" height="20" uuid="30707faf-cb99-4b2b-9989-87bbe09641db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="392" y="32" width="140" height="20" uuid="28fbf6c4-3a53-408c-92f9-7befea2d035d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{compromisedAmount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="30" width="532" height="1" uuid="c745cb7f-2f32-49bc-a339-5981b41d2bfb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="68" splitType="Immediate">
+			<subreport isUsingCache="true">
+				<reportElement x="0" y="0" width="532" height="49" uuid="217169a0-ab76-427c-9273-44a30447660b"/>
+				<subreportParameter name="providers">
+					<subreportParameterExpression><![CDATA[$P{providers}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{providers}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["providers.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="171">
+			<textField>
+				<reportElement x="153" y="140" width="379" height="20" uuid="fdef4229-b15b-4a2e-9135-485dc046c654"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{url}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="153" y="35" width="380" height="105" uuid="a112b5d1-f755-42a0-829e-10ec385dd1ba"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Con este código podrás acceder al Sistema Emprendedor para consultar y canjear este vale.
+
+Para acceder desde un teléfono inteligente:
+
+(1) Es necesario que primero inicies sesión desde tu teléfono en:
+    www.sistemaemprendedor.gob.mx/emprende
+(2) Escanear el código desde tu teléfono.
+
+Si no cuentas con un teléfono inteligente, podrás acceder desde cualquier computadora:
+
+(1) Iniciar sesión en: www.sistemaemprendedor.gob.mx/emprende
+(2) En la barra de dirección del navegador escribir la URL que se muestra a continuación: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="153" height="20" uuid="b5730c81-ed06-42ef-af01-3f79f9c42421"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Código de comprobación del INADEM: ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="22" width="153" height="137" uuid="8f49c32d-ecc0-4970-918a-73ba33531f7c"/>
+				<imageExpression><![CDATA[$P{qrCode}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="43">
+			<textField>
+				<reportElement x="76" y="21" width="457" height="20" uuid="5fb28bfc-1898-4d16-a37b-160aae5673f2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signature}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="21" width="76" height="20" uuid="da4e5720-e2b5-4044-97f1-c551083665e4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Sello digital:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="0" width="457" height="20" uuid="cc4a8674-f0d0-4455-9caf-0e02c41ff7e0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{originalString}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="76" height="20" uuid="c756352b-04be-4e53-b8df-4e9d33028614"/>
+				<textElement verticalAlignment="Middle">
+					<font size="7"/>
+				</textElement>
+				<text><![CDATA[Cadena original:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

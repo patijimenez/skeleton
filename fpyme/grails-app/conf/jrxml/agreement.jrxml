@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="agreement" language="groovy" pageWidth="612" pageHeight="792" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="b9be807f-b215-44bc-9b5d-494f149b801a">
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="52"/>
+	<parameter name="head" class="java.lang.String"/>
+	<parameter name="statements" class="java.lang.String"/>
+	<parameter name="clauses" class="java.lang.String"/>
+	<parameter name="records" class="java.lang.String"/>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<image>
+				<reportElement uuid="89d19e8d-28b9-4ca9-afed-d8e99ac0228e" x="5" y="5" width="211" height="61"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="896fd7b9-3f45-42ad-a135-834fbad09f2e" stretchType="RelativeToTallestObject" x="0" y="0" width="532" height="45"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{head}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6ac4ac91-d4df-45b8-9740-ce8ab188ce51" x="0" y="0" width="532" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ANTECEDENTES]]></text>
+			</staticText>
+		</band>
+		<band height="51" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="34c92107-f1bb-4810-9a61-4d9eaa568c2d" stretchType="RelativeToTallestObject" x="0" y="0" width="532" height="50"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{records}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="31">
+			<staticText>
+				<reportElement uuid="25e77568-c496-40f5-ba90-a27100c02250" x="0" y="0" width="532" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DECLARACIONES]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="75da3b66-21da-4220-bce2-5b0a35c077a1" stretchType="RelativeToTallestObject" x="0" y="0" width="532" height="50"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{statements}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="31">
+			<staticText>
+				<reportElement uuid="5cb94f62-707a-48c1-96cd-a09112449627" x="0" y="0" width="532" height="31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLAUSULAS]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="f66a8f31-b859-4c73-adf3-d61334b09a3a" stretchType="RelativeToTallestObject" x="0" y="0" width="532" height="50"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{clauses}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="35">
+			<staticText>
+				<reportElement uuid="83165f74-45fa-45e5-9b24-848cbdc1aa72" x="0" y="0" width="532" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[“Este programa es de carácter público, ajeno a cualquier partido político. Queda prohibido el uso para fines distintos a los  establecidos en el programa”]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

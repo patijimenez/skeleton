@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="validatedCoupons" pageWidth="612" pageHeight="792" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="07ef3938-5345-4dad-abc4-59895826c7fe">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="validatedCoupons" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<queryString language="json">
+		<![CDATA[validatedCoupons]]>
+	</queryString>
+	<field name="folio" class="java.lang.String">
+		<fieldDescription><![CDATA[folio]]></fieldDescription>
+	</field>
+	<field name="folioCoupon" class="java.lang.String">
+		<fieldDescription><![CDATA[folioCoupon]]></fieldDescription>
+	</field>
+	<field name="applicant" class="java.lang.String">
+		<fieldDescription><![CDATA[applicant]]></fieldDescription>
+	</field>
+	<field name="inadem" class="java.lang.String">
+		<fieldDescription><![CDATA[inadem]]></fieldDescription>
+	</field>
+	<field name="private" class="java.lang.String">
+		<fieldDescription><![CDATA[private]]></fieldDescription>
+	</field>
+	<pageHeader>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="3" y="0" width="95" height="20" backcolor="#DCDCDC" uuid="a5548470-faba-4c2c-9882-8287a87538b8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Solicitud]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="0" width="76" height="20" backcolor="#DCDCDC" uuid="e0602511-564d-43aa-b695-4dcbacd6f1b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cupón]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="178" y="0" width="255" height="20" backcolor="#DCDCDC" uuid="9eb3ae4b-c878-4cca-870f-5698a642719d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Beneficiario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="0" width="69" height="20" backcolor="#DCDCDC" uuid="ca9ca4e8-fdfd-4d86-9ceb-3fdea0c2e097"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[INADEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="506" y="0" width="69" height="20" backcolor="#DCDCDC" uuid="05cf0ceb-6116-41d4-90af-7274ebfafa14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Privado]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="95" height="20" isPrintWhenDetailOverflows="true" uuid="ffef77a4-2cf3-45cd-844d-cca89f93bdb1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="76" height="20" isPrintWhenDetailOverflows="true" uuid="427af23c-ce36-435b-a0c7-2caec7ddf569"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{folioCoupon}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToTallestObject" x="178" y="0" width="255" height="20" isPrintWhenDetailOverflows="true" uuid="436c9204-9588-4fa1-a760-2f1604a82d21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{applicant}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="69" height="20" isPrintWhenDetailOverflows="true" uuid="6e22dce6-c2e3-4e01-ae73-bcc8d7393dde"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inadem}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="506" y="0" width="69" height="20" isPrintWhenDetailOverflows="true" uuid="8d239a69-2a99-4355-bfc8-940c1a79ca35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{private}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

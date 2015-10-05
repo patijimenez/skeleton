@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="datosGenerales" pageWidth="550" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="550" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c7b41fad-f2cb-42a7-af8e-b61affd08cea">
+	<property name="ireport.zoom" value="1.996500000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[general]]>
+	</queryString>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[email]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[type]]></fieldDescription>
+	</field>
+	<field name="emailConfirmed" class="java.lang.String">
+		<fieldDescription><![CDATA[emailConfirmed]]></fieldDescription>
+	</field>
+	<field name="finishedProfile" class="java.lang.String">
+		<fieldDescription><![CDATA[finishedProfile]]></fieldDescription>
+	</field>
+	<field name="rfc" class="java.lang.String">
+		<fieldDescription><![CDATA[rfc]]></fieldDescription>
+	</field>
+	<field name="name" class="java.lang.String">
+		<fieldDescription><![CDATA[name]]></fieldDescription>
+	</field>
+	<field name="annualSales" class="java.lang.String">
+		<fieldDescription><![CDATA[annualSales]]></fieldDescription>
+	</field>
+	<field name="stratification" class="java.lang.String">
+		<fieldDescription><![CDATA[stratification]]></fieldDescription>
+	</field>
+	<field name="stratificationName" class="java.lang.String">
+		<fieldDescription><![CDATA[stratificationName]]></fieldDescription>
+	</field>
+	<field name="profileType" class="java.lang.String">
+		<fieldDescription><![CDATA[profileType]]></fieldDescription>
+	</field>
+	<field name="profileTypeName" class="java.lang.String">
+		<fieldDescription><![CDATA[profileTypeName]]></fieldDescription>
+	</field>
+	<field name="maleEmployeeTotal" class="java.lang.String">
+		<fieldDescription><![CDATA[maleEmployeeTotal]]></fieldDescription>
+	</field>
+	<field name="femaleEmployeeTotal" class="java.lang.String">
+		<fieldDescription><![CDATA[femaleEmployeeTotal]]></fieldDescription>
+	</field>
+	<field name="governmentName" class="java.lang.String">
+		<fieldDescription><![CDATA[governmentName]]></fieldDescription>
+	</field>
+	<field name="individualName" class="java.lang.String">
+		<fieldDescription><![CDATA[individualName]]></fieldDescription>
+	</field>
+	<field name="secondLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[secondLastName]]></fieldDescription>
+	</field>
+	<field name="firstLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[firstLastName]]></fieldDescription>
+	</field>
+	<field name="individualLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[individualLastName]]></fieldDescription>
+	</field>
+	<field name="individualSecondLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[individualSecondLastName]]></fieldDescription>
+	</field>
+	<field name="individualRfc" class="java.lang.String">
+		<fieldDescription><![CDATA[individualRfc]]></fieldDescription>
+	</field>
+	<field name="individualCurp" class="java.lang.String">
+		<fieldDescription><![CDATA[individualCurp]]></fieldDescription>
+	</field>
+	<field name="individualPhone" class="java.lang.String">
+		<fieldDescription><![CDATA[individualPhone]]></fieldDescription>
+	</field>
+	<field name="individualExtension" class="java.lang.String">
+		<fieldDescription><![CDATA[individualExtension]]></fieldDescription>
+	</field>
+	<field name="postalCode" class="java.lang.String">
+		<fieldDescription><![CDATA[address.postalCode]]></fieldDescription>
+	</field>
+	<field name="settlement" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlement]]></fieldDescription>
+	</field>
+	<field name="settlementType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlementType]]></fieldDescription>
+	</field>
+	<field name="settlementTypeName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.settlementTypeName]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[address.state]]></fieldDescription>
+	</field>
+	<field name="stateName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.stateName]]></fieldDescription>
+	</field>
+	<field name="municipality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.municipality]]></fieldDescription>
+	</field>
+	<field name="municipalityName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.municipalityName]]></fieldDescription>
+	</field>
+	<field name="locality" class="java.lang.String">
+		<fieldDescription><![CDATA[address.locality]]></fieldDescription>
+	</field>
+	<field name="localityName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.localityName]]></fieldDescription>
+	</field>
+	<field name="mainRoadType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.mainRoadType]]></fieldDescription>
+	</field>
+	<field name="mainRoadTypeName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.mainRoadTypeName]]></fieldDescription>
+	</field>
+	<field name="mainRoad" class="java.lang.String">
+		<fieldDescription><![CDATA[address.mainRoad]]></fieldDescription>
+	</field>
+	<field name="externalNumber1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.externalNumber1]]></fieldDescription>
+	</field>
+	<field name="externalNumber2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.externalNumber2]]></fieldDescription>
+	</field>
+	<field name="interiorNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[address.interiorNumber]]></fieldDescription>
+	</field>
+	<field name="otherRoadType1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoadType1]]></fieldDescription>
+	</field>
+	<field name="otherRoadType1Name" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoadType1Name]]></fieldDescription>
+	</field>
+	<field name="otherRoad1" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoad1]]></fieldDescription>
+	</field>
+	<field name="otherRoadType2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoadType2]]></fieldDescription>
+	</field>
+	<field name="otherRoadType2Name" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoadType2Name]]></fieldDescription>
+	</field>
+	<field name="otherRoad2" class="java.lang.String">
+		<fieldDescription><![CDATA[address.otherRoad2]]></fieldDescription>
+	</field>
+	<field name="posteriorType" class="java.lang.String">
+		<fieldDescription><![CDATA[address.posteriorType]]></fieldDescription>
+	</field>
+	<field name="posteriorTypeName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.posteriorTypeName]]></fieldDescription>
+	</field>
+	<field name="posteriorName" class="java.lang.String">
+		<fieldDescription><![CDATA[address.posteriorName]]></fieldDescription>
+	</field>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<textField>
+				<reportElement uuid="97f8c5e9-a02b-4044-aec7-68fa0525db2f" x="104" y="23" width="171" height="29" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{type}.equals("Gobierno")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{governmentName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8ca3d0d5-91b3-4b42-969f-14a3bdd0f5bc" x="104" y="23" width="171" height="29" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{type}.equals("Moral")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name} + " " + $F{firstLastName}  + "" +  $F{secondLastName}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="e8207620-267b-4c09-9af9-d0517ee9bfe7" stretchType="RelativeToBandHeight" x="104" y="23" width="171" height="29" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{type}.equals("Física")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name} + " " + $F{firstLastName}  + "" +  $F{secondLastName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="1d1e373a-162e-4955-a503-62560bd29af2" x="6" y="23" width="80" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("Gobierno") || $F{type}.equals("Moral") || $F{type}.equals("Otro")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Razón Social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1d1e373a-162e-4955-a503-62560bd29af2" x="6" y="23" width="80" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("Física")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="1adbb0b6-628d-4afa-b6c6-b2e65372f2ab" x="2" y="21" width="543" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="41fa41cc-fdc4-40d9-9e69-37ad4b604a02" x="281" y="23" width="87" height="15"/>
+				<textElement/>
+				<text><![CDATA[e-mail]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="90dbc84a-d3d3-4fcf-acac-c5bfe14af784" x="1" y="1" width="257" height="20" forecolor="#990000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Información del solicitante]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="be51e928-f2c9-437a-9ee3-a7ebad854e99" x="369" y="23" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7318e22e-b57e-4a8c-b2d1-8e3948655a74" stretchType="RelativeToBandHeight" x="104" y="22" width="171" height="29" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{type}.equals("Otro")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="71">
+			<staticText>
+				<reportElement uuid="f034f79f-f82b-4ee3-bd01-932d90bdeba2" x="6" y="1" width="97" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("Gobierno") || $F{type}.equals("Moral") || $F{type}.equals("Otro")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Representante Legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="678fb319-39d7-4702-950b-11cb9a660e23" x="6" y="31" width="97" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tipo de persona]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7d7d7006-db6a-4940-aeb5-101dfb4fad65" x="6" y="16" width="97" height="15"/>
+				<textElement/>
+				<text><![CDATA[RFC]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bc33aa80-937c-4a39-9156-852589ecd4bc" x="104" y="1" width="171" height="15">
+					<printWhenExpression><![CDATA[$F{type}.equals("Gobierno") || $F{type}.equals("Moral") || $F{type}.equals("Otro")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{individualName}+" "+$F{individualLastName} + " " +$F{individualSecondLastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9b0461cb-a883-4ffb-8e90-e1e0f1a2482d" x="104" y="16" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{rfc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bc59dad8-b8d8-4174-804b-26ffc298b12a" x="104" y="31" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="203">
+			<line>
+				<reportElement uuid="5fbd281d-c674-4fdb-9a59-8ab44902d983" x="8" y="30" width="537" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="01197ff3-329f-413a-8e0f-1af487d34990" x="281" y="62" width="87" height="15"/>
+				<textElement/>
+				<text><![CDATA[Número  exterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="86b85859-135c-4e46-985e-6451db7e534f" x="8" y="165" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tipo de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aea9292d-9148-462e-aa7f-22e9c2774323" x="8" y="47" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tipo Asentamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c0f9fa88-5e97-423e-817a-f966c6f5b8c9" x="281" y="77" width="87" height="15"/>
+				<textElement/>
+				<text><![CDATA[Número exterior 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="81c3f831-3dc5-4410-9999-7ceb549ccad7" x="281" y="47" width="87" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3652ae3b-1b66-4a77-aaaa-9241327f70f1" x="281" y="165" width="87" height="28"/>
+				<textElement/>
+				<text><![CDATA[Nombre de vialidad posterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fb261624-7c07-42bc-b00e-6f93697ed8f9" x="281" y="137" width="87" height="28"/>
+				<textElement/>
+				<text><![CDATA[Tipo de vialidad posterior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9aafc811-7efe-4129-b0eb-78adefcc20e5" x="8" y="135" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Tipo de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4a68439d-57cc-414e-9201-77eead2b7066" x="8" y="32" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Asentamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5e514af6-6ba2-4d16-85c7-b78f40dfab38" x="8" y="62" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Código Postal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="068651c5-65a2-4e1c-a62f-6690c167942a" mode="Transparent" x="8" y="77" width="95" height="15" backcolor="#FFFFFF"/>
+				<textElement/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="53dac1d4-6159-4aed-967d-f0ffe2082cfe" x="281" y="92" width="87" height="15">
+					<printWhenExpression><![CDATA[!$F{interiorNumber}.equals("null")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<text><![CDATA[Número Interior]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd61ae1a-f15e-4641-8b34-725044a0adc9" x="8" y="180" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nombre de vialidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="db03ba29-a3ec-466b-bce3-22fd497cbd52" x="8" y="107" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Localidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15e001f4-4d83-4321-a4d1-939d4f2a952f" x="8" y="150" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Nombre de vialidad]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="36f0cd42-7a72-4e4f-9852-e8d8ae27800e" x="7" y="134" width="280" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="3e596415-7610-4cc1-a557-15faf333dbda" x="281" y="32" width="87" height="15"/>
+				<textElement/>
+				<text><![CDATA[Calle]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3c5744c6-3743-4a9a-8f89-1cfaf2536d1d" x="8" y="92" width="95" height="15"/>
+				<textElement/>
+				<text><![CDATA[Municipio]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="8018de16-9ef6-48d0-a32f-b85033ad6e55" x="279" y="134" width="270" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<staticText>
+				<reportElement uuid="367ae517-e233-418a-a165-e0d71ef0848f" x="2" y="6" width="257" height="20" forecolor="#990000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Dirección del solicitante]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b1e1e5b7-e87b-45ea-903c-7f42b6337eaa" x="104" y="32" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{settlement}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d043680e-6346-4d37-a9f5-cd22ad0f6e69" x="104" y="47" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{settlementType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="72d3b810-7ed9-4600-8d3d-dccde2039e0c" x="104" y="62" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{postalCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3c54f117-ebf8-4682-93fd-0896b94688aa" x="104" y="107" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{localityName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="91fd7d31-1297-42cb-a1c5-9f9a2e93e41d" x="104" y="92" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{municipalityName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ababcc8d-4c79-48d5-8060-0a0057ac799f" x="104" y="77" width="171" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{stateName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ae037430-3e32-4f41-91f5-bd88eb992aaa" x="369" y="77" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{externalNumber2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0536f380-fe7e-4adc-9941-d7d7bd6c300f" x="369" y="92" width="176" height="15">
+					<printWhenExpression><![CDATA[!$F{interiorNumber}.equals("null")]]></printWhenExpression>
+				</reportElement>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{interiorNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b03b3d54-4c4a-40e6-a7ab-6d12ca8af13f" x="369" y="62" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{externalNumber1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0965d9d-2e3f-4f96-9ff7-71e47fe2f40d" x="369" y="47" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mainRoadTypeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b2be4bfd-2e89-4fb7-a61d-093a6b9bba20" x="369" y="32" width="176" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{mainRoad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eaba017e-7b92-4d0c-9e40-16763bdd8066" x="103" y="150" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otherRoadType1Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f6a155b7-c520-4245-97b9-b84b4cd517db" x="103" y="180" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otherRoadType2Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="74702f5a-6ae1-41d5-a20c-d27210a7a9ee" x="103" y="165" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otherRoadType2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6215dda6-209a-48c9-b30a-dfc1162ebf01" x="103" y="135" width="172" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{otherRoadType1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6db03558-924b-4e71-8956-76714899000c" x="370" y="165" width="175" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{posteriorName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a50dac28-25dd-404b-9c36-2328f2c36b4f" x="370" y="137" width="175" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{posteriorTypeName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

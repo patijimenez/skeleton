@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="actaEntregaRecepcion" pageWidth="612" pageHeight="752" columnWidth="532" leftMargin="40" rightMargin="40" topMargin="20" bottomMargin="20" uuid="ea26100d-7463-4a9b-8f50-24c1982d0af7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="991"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="fechaRegistro" class="java.lang.String"/>
+	<parameter name="folio" class="java.lang.String"/>
+	<parameter name="noRegistro" class="java.lang.String"/>
+	<parameter name="nombreConvocatoria" class="java.lang.String"/>
+	<parameter name="nombreProveedor" class="java.lang.String"/>
+	<parameter name="repLegalProveedor" class="java.lang.String"/>
+	<parameter name="rfcProveedor" class="java.lang.String"/>
+	<parameter name="correoProveedor" class="java.lang.String"/>
+	<parameter name="telProveedor" class="java.lang.String"/>
+	<parameter name="nombreBeneficiaro" class="java.lang.String"/>
+	<parameter name="repLegalBeneficiaro" class="java.lang.String"/>
+	<parameter name="rfcBeneficiaro" class="java.lang.String"/>
+	<parameter name="correoBeneficiaro" class="java.lang.String"/>
+	<parameter name="telBeneficiaro" class="java.lang.String"/>
+	<parameter name="estratificacion" class="java.lang.String"/>
+	<parameter name="totalInadem" class="java.lang.String"/>
+	<parameter name="totalPrivado" class="java.lang.String"/>
+	<parameter name="cadenaFirmadaUser" class="java.lang.String"/>
+	<parameter name="cadenaFirmadaProveedor" class="java.lang.String"/>
+	<parameter name="productos" class="net.sf.jasperreports.engine.data.JsonDataSource"/>
+	<parameter name="grandTotal" class="java.lang.String"/>
+	<parameter name="jobsRange" class="java.lang.String"/>
+	<parameter name="annualSalesRange" class="java.lang.String"/>
+	<parameter name="sector" class="java.lang.String"/>
+	<pageHeader>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="215" y="0" width="317" height="65" uuid="5b179891-9910-4963-8e65-51dfe52518cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[FORMATO DE RECEPCIÓN DE PRODUCTOS Y/O BIENES OBTENIDOS  POR CONCEPTO DE APOYO DEL FONDO NACIONAL EMPRENDEDOR DEL INSTITUTO NACIONAL DEL EMPRENDEDOR PARA MIPYMES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="16" width="211" height="47" uuid="4316d1ba-e2a5-4a11-b518-ff3ed0679d05"/>
+				<imageExpression><![CDATA["INADEM_logotipo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="103" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="114" y="0" width="150" height="20" uuid="8114c534-d434-43d0-85a7-b308096ad01d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[FECHA DE REGISTRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="114" y="21" width="150" height="20" uuid="085704b6-d5b9-4359-bc05-e3c29d5bca33"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[PROYECTO No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="114" y="42" width="150" height="20" uuid="0493d014-0ae3-4689-9c21-867735c93992"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[CONVOCATORIA / CONVENIO No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="114" y="63" width="150" height="20" uuid="fd615274-af5c-4524-9ab4-4931975a11ad"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DE LA CONVOCATORIA ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="270" y="0" width="262" height="20" uuid="ef3601f7-a581-4969-8d2f-e246375c68aa"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fechaRegistro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="270" y="21" width="262" height="20" uuid="6c274013-3d6b-4d58-99b0-4a3ac99101cc"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{folio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="270" y="42" width="262" height="20" uuid="033559bc-1ff7-49ae-94c4-825478277d20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{noRegistro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="270" y="63" width="262" height="40" uuid="e305840d-0480-4f04-a5da-30fbe1427b34"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreConvocatoria}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="29">
+			<line>
+				<reportElement x="0" y="24" width="532" height="1" uuid="a3035f62-cd38-421f-a106-635533cabc54"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="-1" y="1" width="532" height="25" uuid="4f01b055-8636-4ff1-963f-5142fa94d5de"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[I. Datos generales del proveedor]]></text>
+			</staticText>
+		</band>
+		<band height="78">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="139" height="15" uuid="a3f20243-0833-41fe-97c8-92732ed99ecf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Nombre del representante legal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="15" width="125" height="15" uuid="afc74fca-0f3b-4d00-99de-f6982fc16af5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[RFC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="60" width="125" height="15" uuid="28b0a92e-b4a9-4f45-90ad-3c2e99c1659e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Teléfono de contacto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="0" width="392" height="15" uuid="e64e61e3-9452-417c-8891-87650e13c68c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="30" width="392" height="15" uuid="ab315700-af1b-4d7d-a7fa-1c18b464257d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{repLegalProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="60" width="392" height="15" uuid="5c716aa6-f9c6-4093-8356-5dc05d2219a1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="15" width="392" height="15" uuid="5386c3d4-5467-4015-9c2e-d4ea9f3bd19f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rfcProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="45" width="392" height="15" uuid="f3e635a4-8657-4a4f-b761-ddef04eec86b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{correoProveedor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="45" width="125" height="15" uuid="503af377-1d48-485e-ba8c-540ba0fb66c5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[E-mail de contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="125" height="15" uuid="d1820980-bf01-4161-aaf8-dc522a17035d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Nombre o razón social]]></text>
+			</staticText>
+		</band>
+		<band height="29" splitType="Immediate">
+			<staticText>
+				<reportElement x="0" y="0" width="532" height="25" uuid="c5411d11-f05e-4ff3-96ec-b3981fbf83d9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[II. Datos generales del beneficiario]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="25" width="532" height="1" uuid="1d2ca349-ea28-4715-ab6e-71cdac9427c8"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="141">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="125" height="15" uuid="a8c58742-963a-4816-a504-202269732e4e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Nombre o razón social]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="123" width="125" height="15" uuid="2c06e801-e857-46cf-9833-cda1e0489184"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Teléfono de contacto]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="31" width="392" height="15" uuid="c60c7625-1b04-4ec4-a1b1-566ec6c21927"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{repLegalBeneficiaro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="139" height="15" uuid="fd13c2a2-bc25-48b4-bc96-68962cb9bac3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Nombre del representante legal]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="16" width="392" height="15" uuid="173ac150-160a-4c7e-80f8-a19313a04389"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rfcBeneficiaro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="0" width="392" height="15" uuid="13fb6f9c-5bcf-4ea7-b4e0-045a0c3f7d99"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombreBeneficiaro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="109" width="392" height="15" uuid="d694ba16-79af-4ac8-aa3e-b862209ace2f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{correoBeneficiaro}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="124" width="392" height="15" uuid="e39bb52e-d3fc-4f4a-b9ea-ea80b64875fe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{telBeneficiaro}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="15" width="125" height="15" uuid="0b505974-435a-4a1f-9f8e-b21f15b8dfb1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[RFC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="109" width="125" height="15" uuid="91742e6d-d352-4f28-b453-ae27cf511ef6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[E-mail de contacto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="45" width="125" height="15" uuid="d55bec5b-e78c-4e63-b8a6-929bb6ea9886"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Estratificación]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="46" width="392" height="15" uuid="520970ee-083b-4d94-b044-d3fc3d789518"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{estratificacion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="76" width="125" height="16" uuid="4b24bb4a-c444-42bf-b7d1-17c7885b3619"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Número de trabajadores]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="77" width="392" height="15" uuid="4ec1340f-811c-4c64-a1ba-8fd99f983d76"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jobsRange}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="93" width="392" height="15" uuid="356315ea-05f6-4b26-b998-513645a89d0d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{annualSalesRange}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="93" width="138" height="15" uuid="13f24929-fd52-4b3d-b39b-a9ff12925e4e"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Monto de ventas anuales (mdp)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="61" width="392" height="15" uuid="93193952-fffe-498c-bc38-d1f57f000265"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sector}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="62" width="125" height="15" uuid="a5196c4d-7aef-462e-a911-1761338aa075"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Sector]]></text>
+			</staticText>
+		</band>
+		<band height="29">
+			<staticText>
+				<reportElement x="0" y="0" width="532" height="25" uuid="455e8050-e658-4ab2-ae10-537a433b92e3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[III. Productos y/o servicios recibidos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="24" width="532" height="1" uuid="a77c2951-0d7e-451a-acb7-e7b35cfc75d6"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="50">
+			<subreport>
+				<reportElement stretchType="RelativeToBandHeight" x="1" y="3" width="530" height="45" isPrintWhenDetailOverflows="true" uuid="199497b4-20c6-4f59-a815-1af408a353aa"/>
+				<subreportParameter name="productos">
+					<subreportParameterExpression><![CDATA[$P{productos}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[$P{productos}]]></dataSourceExpression>
+				<subreportExpression><![CDATA["productosActaEntrega.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="45">
+			<textField isBlankWhenNull="true">
+				<reportElement x="468" y="23" width="63" height="20" uuid="6e63095c-491a-40ca-ba66-c6988bc1a161"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalPrivado}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="398" y="23" width="65" height="20" uuid="265c5425-e71e-48c5-a5fa-56529d548655"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalInadem}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="329" y="23" width="65" height="20" uuid="91b9d965-f8c8-492b-b32e-d8c7b79931c0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{grandTotal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="468" y="0" width="65" height="23" uuid="0bd5cb87-6660-481f-ab49-c7af7e961b3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Pago con recursos del beneficiario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="398" y="0" width="65" height="23" uuid="36ae6544-fe82-486a-a458-84748a9d1141"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Pago con recursos del FNE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="329" y="0" width="65" height="23" uuid="24a595d1-ae76-4f67-8301-4a16e239026c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[Total Montos]]></text>
+			</staticText>
+		</band>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="532" height="29" uuid="48bee103-4379-410f-8fb2-c7649942388e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Por medio de la presente manifiesto Bajo Protesta de Decir Verdad que recibí de conformidad los productos y/o servicios señalados en el Numeral III del presente formato.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

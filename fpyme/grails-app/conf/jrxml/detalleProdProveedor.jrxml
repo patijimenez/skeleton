@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="productosProveedor" language="groovy" pageWidth="550" pageHeight="792" columnWidth="510" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="59757c8d-4383-4d2d-a911-0bb2069799ad">
+	<property name="ireport.zoom" value="1.7715610000000206"/>
+	<property name="ireport.x" value="2"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[productos]]>
+	</queryString>
+	<field name="folio" class="java.lang.String"/>
+	<field name="quantity" class="java.lang.String"/>
+	<field name="solutionCode" class="java.lang.String"/>
+	<field name="solutionName" class="java.lang.String"/>
+	<field name="inademAmount" class="java.lang.Float"/>
+	<field name="proposerAmount" class="java.lang.Float"/>
+	<variable name="totalInadem" class="java.lang.Float" incrementType="Report" calculation="Sum">
+		<variableExpression><![CDATA[$F{inademAmount}+$F{inademAmount}]]></variableExpression>
+	</variable>
+	<variable name="totalProposer" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{inademAmount}]]></variableExpression>
+	</variable>
+	<columnHeader>
+		<band height="12" splitType="Stretch">
+			<staticText>
+				<reportElement x="435" y="0" width="75" height="12" forecolor="#666666" uuid="06970c75-0b19-4f8c-9fd0-6b2423c902ff"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto Beneficiario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="0" width="74" height="12" forecolor="#666666" uuid="57f08f8a-4971-465b-a600-29fc9d1c86b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto INADEM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="0" width="208" height="12" forecolor="#666666" uuid="aa7d4ef8-e480-4ba1-866e-534453094c1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Solución]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="50" height="12" forecolor="#666666" uuid="c9a0ec10-1942-4bd5-ad80-67fa4fe121c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="85" y="0" width="26" height="12" forecolor="#666666" uuid="9fb287ba-0b28-4ba8-aa43-103515a6378a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cant.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="86" height="12" forecolor="#666666" uuid="00699a3e-434d-4d90-b998-1fe268203a31"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="86" height="10" uuid="e62b523c-5a8b-4867-bc4e-fec199f26281"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{folio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="85" y="0" width="26" height="10" uuid="d312bb33-3673-4c21-8f65-c7d9984dac9e"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="0" width="50" height="10" uuid="17a41130-d32a-4e4d-898e-2e0ee80d216f"/>
+				<textElement textAlignment="Center">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solutionCode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="159" y="0" width="204" height="10" uuid="c0ba5dbd-a192-4955-a9ca-c6ae5e172d5f"/>
+				<textElement>
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solutionName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="364" y="0" width="71" height="10" uuid="e8066c8e-ad85-4d83-b115-da4fe0393e84"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{inademAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="436" y="0" width="71" height="10" uuid="b9294614-e7e9-4a68-be8a-e42ec8792c48"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proposerAmount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

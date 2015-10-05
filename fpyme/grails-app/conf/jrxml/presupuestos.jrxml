@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="presupuestos" pageWidth="550" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="550" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="20e250cd-5478-4e67-999c-bc86b8b5a449">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<queryString language="json">
+		<![CDATA[application.participations]]>
+	</queryString>
+	<field name="rubro" class="java.lang.String">
+		<fieldDescription><![CDATA[modality.name]]></fieldDescription>
+	</field>
+	<field name="description" class="java.lang.String">
+		<fieldDescription><![CDATA[description]]></fieldDescription>
+	</field>
+	<field name="amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[amount]]></fieldDescription>
+	</field>
+	<field name="participant" class="java.lang.String">
+		<fieldDescription><![CDATA[participant.name]]></fieldDescription>
+	</field>
+	<field name="estado" class="java.lang.String">
+		<fieldDescription><![CDATA[state.name]]></fieldDescription>
+	</field>
+	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="109" height="15" backcolor="#F5F5F5" uuid="96a6d796-d5b5-471d-85f5-e040ebea3e55"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Opaque" x="109" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="6f337329-9b79-4582-be5f-7ef0958cacb0"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="219" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="b3a3be76-dcad-4c04-97cd-7384c14cd6ba"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="329" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="c414c4df-64c0-48e3-9b37-8659f8567626"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="439" y="0" width="111" height="15" backcolor="#F5F5F5" uuid="bd2069ad-b557-429d-9664-dfc6a9266c69"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="0" width="97" height="15" forecolor="#666666" uuid="80387517-2f0d-43f7-9138-d3e97ade8399"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rubro de Apoyo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="0" width="100" height="15" forecolor="#666666" uuid="10391a88-6e82-459b-84e1-3e5283a98463"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="0" width="93" height="15" forecolor="#666666" uuid="70e9facf-d105-4695-98af-268ed16382d5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="0" width="97" height="15" forecolor="#666666" uuid="cc2b4d29-af4c-47dc-8c96-a17af87bc277"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="111" y="0" width="79" height="15" forecolor="#666666" uuid="bdb96875-bc42-4c6f-b21b-c3f58b10d316"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Aportante]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="109" height="19" uuid="4bad93a1-ebbd-435b-8270-17cdb5a152ff"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="109" y="0" width="110" height="19" uuid="4b6702f3-ca97-47f0-8b98-d2f112cfc23e"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="219" y="0" width="110" height="19" uuid="446f2b33-d8ec-44c8-b9c2-0b8e4bea5aba"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="439" y="0" width="111" height="19" uuid="00f7d71c-3bda-4f03-a1a7-77e62396a073"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement stretchType="RelativeToBandHeight" x="329" y="0" width="110" height="19" uuid="c711adaa-fa25-4042-a7ef-7b88d414c115"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" isPrintRepeatedValues="false" x="2" y="2" width="97" height="16" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" forecolor="#666666" uuid="faf782d9-8d8a-4d37-b0f4-e9d059a7d22d"/>
+				<textElement>
+					<font size="10" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rubro}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00" isBlankWhenNull="false">
+				<reportElement stretchType="RelativeToBandHeight" x="441" y="2" width="109" height="15" isPrintInFirstWholeBand="true" forecolor="#666666" uuid="0e2cf4b4-6b4a-444c-bca8-f106cc9ae511"/>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="220" y="2" width="109" height="15" isPrintWhenDetailOverflows="true" forecolor="#666666" backcolor="#666666" uuid="c5706348-dbc3-4475-bc1b-bc728460abba"/>
+				<textFieldExpression><![CDATA[$F{estado}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="111" y="2" width="108" height="15" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" forecolor="#666666" uuid="2cd8eedc-0c45-443b-b132-5dc20968764f"/>
+				<textFieldExpression><![CDATA[$F{participant}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="331" y="2" width="108" height="15" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true" forecolor="#666666" uuid="7c2838b1-2a15-4d8d-b07f-9c713f8a897a">
+					<printWhenExpression><![CDATA[!$F{description}.equals("null")]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="15">
+			<rectangle>
+				<reportElement x="439" y="0" width="111" height="15" backcolor="#F5F5F5" uuid="7068c6e1-a9d3-435c-9f36-2c9ef33217fb"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="441" y="0" width="95" height="15" forecolor="#666666" uuid="ea312ace-4839-464d-aea2-cee80288ce46"/>
+				<textFieldExpression><![CDATA[$V{total}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="219" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="0f87231c-1281-4cd8-89cd-649d8ec05c33"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="109" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="cced5493-6f7d-4076-a708-f896ea890f04"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="109" height="15" backcolor="#F5F5F5" uuid="a9f357ac-641f-420d-88c4-5eea81c65fe3"/>
+				<graphicElement>
+					<pen lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="329" y="0" width="110" height="15" backcolor="#F5F5F5" uuid="62889f0a-5d64-4d7c-a881-b2e2e8e93b44"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineColor="#999999"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="0" width="84" height="15" forecolor="#787878" uuid="6f28914f-f2d0-402e-94a6-3f850e52d888"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>

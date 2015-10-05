@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="span12">
+		<h1>Posibles errores del sistema</h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Clave</th>
+					<th>Descripción</th>
+					<th>Severidad</th>
+					<th>Origen</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-class="{'success':error.severity.name=='DEBUG', 'info':error.severity.name=='INFO','warning':error.severity.name=='WARNING','error':(error.severity.name=='FATAL' || error.severity.name=='ERROR')}" ng-repeat="error in errors">
+					<td>{{error.errorId}}</td>
+					<td>{{error.description}}</td>
+					<td>{{error.severity.name}}</td>
+					<td>{{error.origin.name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

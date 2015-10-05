@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="signatures" language="groovy" pageWidth="612" pageHeight="792" columnWidth="542" leftMargin="40" rightMargin="30" topMargin="20" bottomMargin="20" uuid="b9be807f-b215-44bc-9b5d-494f149b801a">
+    <property name="net.sf.jasperreports.awt.ignore.missing.font" value="true"/>
+	<parameter name="signs" class="java.lang.String"/>
+	<parameter name="dgaSignature" class="java.lang.String"/>
+	<parameter name="signatureFooter" class="java.lang.String"/>
+	<pageHeader>
+		<band height="83" splitType="Stretch">
+			<image>
+				<reportElement uuid="89d19e8d-28b9-4ca9-afed-d8e99ac0228e" x="5" y="5" width="211" height="61"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="25e77568-c496-40f5-ba90-a27100c02250" x="0" y="0" width="542" height="29"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HOJA DE FIRMAS]]></text>
+			</staticText>
+		</band>
+		<band height="50" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="75da3b66-21da-4220-bce2-5b0a35c077a1" stretchType="RelativeToTallestObject" x="0" y="0" width="542" height="50"/>
+				<textElement markup="html">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signs}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="30">
+			<staticText>
+				<reportElement uuid="12889e59-d4f2-4e8e-bc96-0cc574b33fe2" x="0" y="0" width="542" height="29"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRO]]></text>
+			</staticText>
+		</band>
+		<band height="50">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="803c38b4-0038-4412-a165-d26ba18461df" stretchType="RelativeToTallestObject" x="0" y="0" width="542" height="50"/>
+				<textElement markup="html">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dgaSignature}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="50">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="062fac7b-c083-4e0d-b350-ea1f6ec1b29e" stretchType="RelativeToTallestObject" x="0" y="0" width="542" height="50"/>
+				<textElement markup="html">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{signatureFooter}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

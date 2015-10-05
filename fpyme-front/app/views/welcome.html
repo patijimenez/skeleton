@@ -1,0 +1,1247 @@
+<div class="row">
+  <ul class="nav nav-pills pull-right">
+    <li><a href="{{baseUrl}}/app/auth/signOut">Salir</a></li>
+  </ul>
+</div>
+<div class="row">
+<div class="span9">
+<div ng-show="step=='finish'">
+  <h2>Verificar cuenta de correo</h2>
+  <p>Si aun no lo has hecho te recomendamos confirmar tu cuenta de correo para que puedas tener los siguientes beneficios.</p>
+  <div class="media">
+    <a class="pull-left"><img src="images/objetivo.png" alt="Objetivo"></a>
+    <div class="media-body">
+      <h4 class="media-heading">Noticias sobre solicitudes</h4>
+      Recibe noticias sobre cambios de estátus, requerimientos de información o avisos en general sobre tus solicitudes.
+    </div>
+  </div>
+  <div class="media">
+    <a class="pull-left"><img src="images/objetivo.png" alt="Objetivo"></a>
+    <div class="media-body">
+      <h4 class="media-heading">Recordatorio de FIEL</h4>
+      Recibe recordatorios cuando tu FIEL esté a punto de expirar, y una ve que haya expirado.
+    </div>
+  </div>
+  <div class="media">
+    <a class="pull-left"><img src="images/objetivo.png" alt="Objetivo"></a>
+    <div class="media-body">
+      <h4 class="media-heading">Noticias sobre convocatorias</h4>
+      Recibe notificaciones cuando se publiquen, o cierren nuevas convocatorias.
+    </div>
+  </div>
+  <div class="media">
+    <a class="pull-left"><img src="images/objetivo.png" alt="Objetivo"></a>
+    <div class="media-body">
+      <h4 class="media-heading">Seguridad</h4>
+      Recibe avisos cuando se modifique la contraseña de tu cuenta.
+    </div>
+  </div>
+  <p>Ahora estamos listos para comenzar a usar el sistema emprendedor</p>
+  <a href="{{baseUrl}}/" class="btn btn-success btn-large">Comenzar</a>
+</div>
+<div ng-show="step=='complement'">
+<form name="individualForm" ng-show="profileType=='individual'" class="form-horizontal">
+  <div class="control-group" ng-class="{'error': individualForm.rfc.$invalid && individualForm.rfc.$dirty}">
+    <label class="control-label" for="rfc">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+            popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      RFC *
+    </label>
+    <div class="controls">
+      <div ng-show="profile.fiel">
+        <input readonly="readonly" name="rfc" type="text" ng-model="individual.rfc" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+      </div>
+      <div ng-show="!profile.fiel">
+        <input name="rfc" type="text" ng-model="individual.rfc" ng-disabled="true" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+      </div>
+      <span class="help-inline" ng-show="individualForm.rfc.$error.rfc">El RFC es inválido.</span>
+      <span class="help-inline" ng-show="individualForm.rfc.$error.required">Este campo es obligatorio.</span>
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': individualForm.curp.$invalid && individualForm.curp.$dirty}">
+    <label class="control-label" for="rfc">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteCURP.message}}"
+            popover-title="{{messageHelp.regSolicitanteCURP.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      CURP *</label>
+    <div class="controls">
+      <div ng-show="isRIF">
+        <input name="curp" type="text" ng-model="individual.curp" required="required" curp="curp">
+      </div>
+      <div ng-show="!isRIF">
+        <div ng-show="profile.fiel">
+          <input readonly="false" name="curp" type="text" ng-model="individual.curp" required="required" curp="curp" >
+        </div>
+        <div ng-show="!profile.fiel">
+          <input name="curp" type="text" ng-model="individual.curp" required="required" curp="curp" >
+        </div>
+      </div>
+      <span class="help-inline" ng-show="individualForm.curp.$error.curp">El CURP es inválido.</span>
+      <span class="help-inline" ng-show="individualForm.curp.$error.required">Este campo es obligatorio.</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteNombre.message}}"
+            popover-title="{{messageHelp.regSolicitanteNombre.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Nombre(s) *</label>
+    <div class="controls">
+      <input name="name" type="text" ng-model="individual.name" required="required">
+      <span class="help-inline" ng-show="individualForm.name.$error.required">Este campo es obligatorio.</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="firstLastName">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoP.message}}"
+            popover-title="{{messageHelp.regSolicitanteApellidoP.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Apellido Paterno *</label>
+    <div class="controls">
+      <input name="firstLastName" type="text" ng-model="individual.firstLastName" required="required">
+      <span class="help-inline" ng-show="individualForm.firstLastName.$error.required">Este campo es obligatorio.</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="secondLastName">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoM.message}}"
+            popover-title="{{messageHelp.regSolicitanteApellidoM.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Apellido Materno</label>
+    <div class="controls">
+      <input type="text" ng-model="individual.secondLastName">
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': individualForm.email.$error.email}">
+    <label class="control-label" for="email">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+            popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Email *</label>
+    <div class="controls">
+      <input name="email" type="email" ng-model="individual.email" required="required">
+      <span class="help-inline" ng-show="individualForm.email.$error.required">Este campo es obligatorio.</span>
+      <span class="help-inline" ng-show="individualForm.email.$error.email">El formato de correo es inválido.</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteTel.message}}"
+            popover-title="{{messageHelp.regSolicitanteTel.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Teléfono *</label>
+    <div class="controls">
+      <input ng-pattern="/^(\d)+$/" name="phone" type="text" ng-model="individual.phone" required="required">
+      <span class="help-inline" ng-show="individualForm.phone.$error.required">Este campo es obligatorio.</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+			<span class="pull-left" popover="{{messageHelp.regSolicitanteExt.message}}"
+            popover-title="{{messageHelp.regSolicitanteExt.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span>
+      Extensión</label>
+    <div class="controls">
+      <input ng-pattern="/^(\d)+$/" name="extension" type="text" ng-model="individual.extension">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button ng-click="updateIndividual()" type="submit" class="btn btn-success" ng-disabled="individualForm.$invalid">Confirmar datos</button>
+    </div>
+  </div>
+</form>
+<form name="companyForm" ng-show="profileType=='company'" class="form-horizontal">
+  <h2>Datos generales</h2>
+  <div class="row">
+    <div class="span4">
+      <div class="control-group" ng-class="{'error': companyForm.rfc.$invalid && companyForm.rfc.$dirty}">
+        <label class="control-label" for="rfc">RFC *</label>
+        <div class="controls">
+          <input name="rfc" readonly="readonly" ng-disabled="true" type="text" ng-model="company.rfc" required="required" rfc-moral="rfc-moral" ng-minlength="12" maxlength="12">
+          <span class="help-inline" ng-show="companyForm.rfc.$error.rfc">El RFC es inválido.</span>
+          <span class="help-inline" ng-show="companyForm.rfc.$error.required">Este campo es obligatorio.</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="name">Razón Social *</label>
+        <div class="controls">
+          <input name="name" type="text" ng-model="company.name" required="required">
+                                                    <span class="help-inline" ng-show="companyForm.name.$error.required">
+                                                        Este campo es obligatorio.
+                                                    </span>
+        </div>
+      </div>
+      <div class="control-group" ng-class="{'error': companyForm.email.$error.email || company.usernameExists}">
+        <label class="control-label" for="email">Email *</label>
+        <div class="controls">
+          <input name="email" type="email" ng-model="company.email" required="required">
+                                <span class="help-inline" ng-show="company.usernameExists">
+                                    Este usuario no está disponible
+                                </span>
+                                <span class="help-inline" ng-show="companyForm.email.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+                                <span class="help-inline" ng-show="companyForm.email.$error.email">
+                                    El formato de correo es inválido.
+                                </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h4>Representante legal</h4>
+  <div class="control-group" ng-class="{'error': companyForm.individualRfc.$invalid && companyForm.rfc.$dirty}">
+    <label class="control-label" for="individualRfc">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                              popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      RFC *
+    </label>
+    <div class="controls">
+      <input readonly="readonly" name="individualRfc" type="text" ng-model="company.individualRfc" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+                            <span class="help-inline" readonly="readonly" ng-show="companyForm.individualRfc.$error.rfc">
+                                El RFC es inválido.
+                            </span>
+                            <span class="help-inline" ng-show="companyForm.individualRfc.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': companyForm.individualCurl.$invalid && companyForm.individualCurp.$dirty}">
+    <label class="control-label" for="individualCurp" readonly="readonly" ng-disabled="true">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteCURP.message}}"
+                              popover-title="{{messageHelp.regSolicitanteCURP.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      CURP *
+    </label>
+    <div class="controls">
+      <input readonly="readonly" name="individualCurp" type="text" ng-model="company.individualCurp" required="required" curp="curp">
+                            <span class="help-inline" ng-show="companyForm.individualCurp.$error.curp">
+                                El CURP es inválido.
+                            </span>
+                            <span class="help-inline" ng-show="companyForm.individualCurp.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteNombre.message}}"
+                              popover-title="{{messageHelp.regSolicitanteNombre.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Nombre(s) *
+    </label>
+    <div class="controls">
+      <input name="name" type="text" ng-model="company.individualName" required="required">
+                                                <span class="help-inline" ng-show="companyForm.name.$error.required">
+                                                    Este campo es obligatorio.
+                                                </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="firstLastName">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoP.message}}"
+                              popover-title="{{messageHelp.regSolicitanteApellidoP.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Apellido Paterno *
+    </label>
+    <div class="controls">
+      <input name="individualLastName" type="text" ng-model="company.individualLastName" required="required">
+                                                <span class="help-inline" ng-show="companyForm.individualLastName.$error.required">
+                                                    Este campo es obligatorio.
+                                                </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="secondLastName">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoM.message}}"
+                              popover-title="{{messageHelp.regSolicitanteApellidoM.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Apellido Materno
+    </label>
+    <div class="controls">
+      <input type="text" ng-model="company.individualSecondLastName">
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': companyForm.individualEmail.$error.email}">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+                              popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Email *
+    </label>
+    <div class="controls">
+      <input name="individualEmail" type="email" ng-model="company.individualEmail" required="required">
+                            <span class="help-inline" ng-show="companyForm.individualEmail.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+                            <span class="help-inline" ng-show="companyForm.individualEmail.$error.email">
+                                El formato de correo es inválido.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteTel.message}}"
+                              popover-title="{{messageHelp.regSolicitanteTel.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Teléfono *
+    </label>
+    <div class="controls">
+      <input name="individualPhone" type="text" ng-model="company.individualPhone" required="required">
+                            <span class="help-inline" ng-show="companyForm.individualPhone.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteExt.message}}"
+                              popover-title="{{messageHelp.regSolicitanteExt.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Extensión
+    </label>
+    <div class="controls">
+      <input name="extension" type="text" ng-model="company.individualExtension">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button ng-click="updateCompany()" type="submit" class="btn btn-success" ng-disabled="companyForm.$invalid">
+        Siguiente
+      </button>
+    </div>
+  </div>
+</form>
+<form name="governmentForm" ng-show="profileType=='government'" class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">Estado *</label>
+    <div class="controls">
+      <select name="state" ng-model="government.state" ng-required="showState" ng-options="t.id as t.name for t in states">
+      </select>
+    </div>
+  </div>
+  <div class="control-group" ng-show="showMunicipality">
+    <label class="control-label">Municipio *</label>
+    <div class="controls">
+      <select name="municipality" ng-model="government.municipality" ng-options="t.id as t.name for t in municipalities">
+      </select>
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': governmentForm.rfc.$invalid && governmentForm.rfc.$dirty}">
+    <label class="control-label" for="rfc">RFC *</label>
+    <div class="controls">
+      <input name="rfc" type="text" readonly="readonly" ng-disabled="true" ng-model="government.rfc" required="required" rfc-moral="rfc-moral" ng-minlength="12" maxlength="12">
+                                            <span class="help-inline" ng-show="governmentForm.rfc.$error.rfc">
+                                                El RFC es inválido.
+                                            </span>
+                                            <span class="help-inline" ng-show="governmentForm.rfc.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">Nombre de entidad de gobierno *</label>
+    <div class="controls">
+      <input name="governmentName" type="text" ng-model="government.governmentName" required="required">
+                                            <span class="help-inline" ng-show="governmentForm.governmentName.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">Nombre(s) *</label>
+    <div class="controls">
+      <input name="name" type="text" ng-model="government.name" required="required">
+                                            <span class="help-inline" ng-show="governmentForm.name.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="firstLastName">Apellido Paterno *</label>
+    <div class="controls">
+      <input name="firstLastName" type="text" ng-model="government.firstLastName" required="required">
+                                            <span class="help-inline" ng-show="governmentForm.firstLastName.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="secondLastName">Apellido Materno</label>
+    <div class="controls">
+      <input type="text" ng-model="government.secondLastName">
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': governmentForm.email.$error.email || government.usernameExists}">
+    <label class="control-label" for="email">Email *</label>
+    <div class="controls">
+      <input name="email" type="email" ng-model="government.email" required="required">
+                        <span class="help-inline" ng-show="government.usernameExists">
+                            Este usuario no está disponible
+                        </span>
+                        <span class="help-inline" ng-show="governmentForm.email.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+                        <span class="help-inline" ng-show="governmentForm.email.$error.email">
+                            El formato de correo es inválido.
+                        </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Teléfono *</label>
+    <div class="controls">
+      <input ng-pattern="/^(\d)+$/" name="phone" type="text" ng-model="government.phone" required="required">
+                        <span class="help-inline" ng-show="governmentForm.phone.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Extensión</label>
+    <div class="controls">
+      <input name="extension" type="text" ng-model="government.extension">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button ng-click="updateGovernment()" type="submit" class="btn btn-success" ng-disabled="governmentForm.$invalid">
+        Registrarse
+      </button>
+    </div>
+  </div>
+</form>
+<form name="otherForm" ng-show="profileType=='other'" class="form-horizontal">
+  <div class="control-group" ng-class="{'error': otherForm.rfc.$invalid && otherForm.rfc.$dirty}">
+    <label class="control-label" for="rfc">RFC *</label>
+    <div class="controls">
+      <input name="rfc" ng-disabled="true" readonly="readonly" type="text" ng-model="other.rfc" required="required" rfc-moral="rfc-moral" ng-minlength="12" maxlength="12">
+                                            <span class="help-inline" ng-show="otherForm.rfc.$error.rfc">
+                                                El RFC es inválido.
+                                            </span>
+                                            <span class="help-inline" ng-show="otherForm.rfc.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">Razón Social *</label>
+    <div class="controls">
+      <input name="name" type="text" ng-model="other.name" required="required">
+                                            <span class="help-inline" ng-show="otherForm.name.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': otherForm.email.$error.email || other.usernameExists}">
+    <label class="control-label" for="email">Email *</label>
+    <div class="controls">
+      <input name="email" type="email" ng-model="other.email" required="required">
+                                            <span class="help-inline" ng-show="other.usernameExists">
+                                                Este usuario no está disponible
+                                            </span>
+                                            <span class="help-inline" ng-show="otherForm.email.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+                                            <span class="help-inline" ng-show="otherForm.email.$error.email">
+                                                El formato de correo es inválido.
+                                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Teléfono *</label>
+    <div class="controls">
+      <input ng-pattern="/^(\d)+$/" name="phone" type="text" ng-model="other.phone" required="required">
+                        <span class="help-inline" ng-show="otherForm.phone.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Extensión</label>
+    <div class="controls">
+      <input name="extension" type="text" ng-model="other.extension">
+    </div>
+  </div>
+  <h4>Representante legal</h4>
+  <div class="control-group" ng-class="{'error': otherForm.individualRfc.$invalid && otherForm.rfc.$dirty}">
+    <label class="control-label" for="individualRfc">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                              popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      RFC *
+    </label>
+    <div class="controls">
+      <input name="individualRfc"  readonly="readonly" type="text" ng-model="other.individualRfc" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+                            <span class="help-inline" ng-show="otherForm.individualRfc.$error.rfc">
+                                El RFC es inválido.
+                            </span>
+                            <span class="help-inline" ng-show="otherForm.individualRfc.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': otherForm.individualCurl.$invalid && otherForm.individualCurp.$dirty}">
+    <label class="control-label" for="individualCurp" readonly="readonly">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteCURP.message}}"
+                              popover-title="{{messageHelp.regSolicitanteCURP.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      CURP *
+    </label>
+    <div class="controls">
+      <input name="individualCurp" readonly="readonly" type="text" ng-model="other.individualCurp" required="required" curp="curp">
+                            <span class="help-inline" ng-show="otherForm.individualCurp.$error.curp">
+                                El CURP es inválido.
+                            </span>
+                            <span class="help-inline" ng-show="otherForm.individualCurp.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="name">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteNombre.message}}"
+                              popover-title="{{messageHelp.regSolicitanteNombre.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Nombre(s) *
+    </label>
+    <div class="controls">
+      <input name="name" type="text" ng-model="other.individualName" required="required">
+                                                <span class="help-inline" ng-show="otherForm.name.$error.required">
+                                                    Este campo es obligatorio.
+                                                </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="firstLastName">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoP.message}}"
+                              popover-title="{{messageHelp.regSolicitanteApellidoP.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Apellido Paterno *
+    </label>
+    <div class="controls">
+      <input name="individualFirstLastName" type="text" ng-model="other.individualFirstLastName" required="required">
+                                                <span class="help-inline" ng-show="otherForm.individualFirstLastNAme.$error.required">
+                                                    Este campo es obligatorio.
+                                                </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="secondLastName">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoM.message}}"
+                              popover-title="{{messageHelp.regSolicitanteApellidoM.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Apellido Materno
+    </label>
+    <div class="controls">
+      <input type="text" ng-model="other.individualSecondLastName">
+    </div>
+  </div>
+  <div class="control-group" ng-class="{'error': otherForm.individualEmail.$error.email}">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+                              popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Email *
+    </label>
+    <div class="controls">
+      <input name="individualEmail" type="email" ng-model="other.individualEmail" required="required">
+                            <span class="help-inline" ng-show="otherForm.individualEmail.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+                            <span class="help-inline" ng-show="otherForm.individualEmail.$error.email">
+                                El formato de correo es inválido.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteTel.message}}"
+                              popover-title="{{messageHelp.regSolicitanteTel.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Teléfono *
+    </label>
+    <div class="controls">
+      <input name="individualPhone" type="text" ng-model="other.individualPhone" required="required">
+                            <span class="help-inline" ng-show="otherForm.individualPhone.$error.required">
+                                Este campo es obligatorio.
+                            </span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">
+                        <span class="pull-left" popover="{{messageHelp.regSolicitanteExt.message}}"
+                              popover-title="{{messageHelp.regSolicitanteExt.defaultMessage}}" popover-trigger="mouseenter">
+                          <a><i class="icon-question-sign"></i></a>
+                        </span>
+      Extensión
+    </label>
+    <div class="controls">
+      <input name="extension" type="text" ng-model="other.individualExtension">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button ng-click="updateOther()" type="submit" class="btn btn-success" ng-disabled="otherForm.$invalid">
+        Registrarse
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+<div ng-show="step=='address'">
+<h2>Dirección</h2>
+<p>Necesitamos capturar tu dirección, tanto los datos de tu localidad como los de las vialidades.</p>
+<p><strong>Intenta llenar el código postal primero</strong>, podemos prellenar algunos campos de esa manera.</p>
+<form name="addressForm" class="form-horizontal">
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="postalCode">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteCP.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteCP.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Código Postal *
+      </label>
+      <div class="controls">
+        <input ng-model="address.postalCode" type="text" id="postalCode" name="postalCode" placeholder="Código postal" required="required">
+                                <span class="help-inline" ng-show="addressForm.postalCode.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span9">
+    <div class="alert alert-block alert-info" ng-show="showPossibleSettlements">
+      <button type="button" class="close" ng-click="closePossibleSettlements()">&times;</button>
+      <h4>Asentamientos encontrados</h4>
+      <p>
+        Hemos encontrado los siguientes asentamientos selecciona el asentamiento en el que vives
+        para ayudarte a prellenar algunos datos.
+      </p>
+      <ul>
+        <li ng-repeat="settlement in possibleSettlements">
+          <a ng-click="prefillSettlement(settlement.id)">{{settlement.name}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="settlement">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteAsenamiento.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteAsenamiento.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Asentamiento *
+      </label>
+      <div class="controls">
+        <input ng-model="address.settlement" type="text" id="settlement" name="settlement" placeholder="Asentamiento" required="required">
+                                <span class="help-inline" ng-show="addressForm.settlement.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="settlementType">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoAsenamiento.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteTipoAsenamiento.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Tipo de asentamiento *
+      </label>
+      <div class="controls">
+        <select name="settlementType" id="settlementType" ng-model="address.settlementType" ng-options="t.id as t.name for t in settlementType" placeholder="Tipo de asentamiento" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.settlementType.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="state">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteEntidadFederativa.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteEntidadFederativa.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Entidad Federativa *
+      </label>
+      <div class="controls">
+        <select name="state" id="state" ng-model="address.state" ng-options="s.id as s.name for s in states" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.state.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="municipality">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteMunicipio.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteMunicipio.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Municipio *
+      </label>
+      <div class="controls">
+        <select name="municipality" id="municipality" ng-model="address.municipality" ng-options="m.id as m.name for m in municipalities" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.municipality.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="locality">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteLocalidad.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteLocalidad.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Localidad *
+      </label>
+      <div class="controls">
+        <select name="locality" id="locality" ng-model="address.locality" ng-options="l.id as l.name for l in possibleLocalities" required="">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.locality.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" ng-show="address.locality">
+  <div class="span9">
+    <div class="alert alert-block alert-info" ng-show="street">
+      <button type="button" class="close" ng-click="closeStreet()">&times;</button>
+      <p>
+        Su calle es <a ng-click="prefillStreet()">{{street}}</a>?
+      </p>
+    </div>
+    <div id="map-canvas" style="width: 100%; height: 400px"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <h4>Vialidad principal</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="mainRoadType">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoVialidad.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteTipoVialidad.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Tipo de vialidad *
+      </label>
+      <div class="controls">
+        <select name="mainRoadType" id="mainRoadType" ng-model="address.mainRoadType" ng-options="t.id as t.name for t in roadTypes" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.mainRoadType.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="mainRoad">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreVialidad.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNombreVialidad.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Nombre vialidad *
+      </label>
+      <div class="controls">
+        <input ng-model="address.mainRoad" type="text" id="mainRoad" name="mainRoad" placeholder="Nombre vialidad principal" required="required">
+                                <span class="help-inline" ng-show="addressForm.mainRoad.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="externalNumber1">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNumExterior1.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNumExterior1.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Número exterior 1 *
+      </label>
+      <div class="controls">
+        <input ng-model="address.externalNumber1" type="text" id="externalNumber1" name="externalNumber1" placeholder="Número exterior 1" required="required">
+                                <span class="help-inline" ng-show="addressForm.externalNumber1.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="externalNumber2">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNumExterior2.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNumExterior2.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Número exterior 2
+      </label>
+      <div class="controls">
+        <input ng-model="address.externalNumber2" type="text" id="externalNumber2" name="externalNumber2" placeholder="Número exterior 2">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="interiorNumber">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNumInterior.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNumInterior.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Número interior
+      </label>
+      <div class="controls">
+        <input ng-model="address.interiorNumber" type="text" id="interiorNumber" name="interiorNumber" placeholder="Número interior">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span9">
+    <h4>Entre vialidades</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="otherRoadType1">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoVialidad1.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteTipoVialidad1.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Tipo de vialidad 1 *
+      </label>
+      <div class="controls">
+        <select name="otherRoadType1" id="otherRoadType1" ng-model="address.otherRoadType1" ng-options="t.id as t.name for t in roadTypes" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.otherRoadType1.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="otherRoad1">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreVialidad1.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNombreVialidad1.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Nombre vialidad 1 *
+      </label>
+      <div class="controls">
+        <input ng-model="address.otherRoad1" type="text" id="otherRoad1" name="otherRoad1" placeholder="Nombre vialidad 1" required="required">
+                                <span class="help-inline" ng-show="addressForm.otherRoad1.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="otherRoadType2">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoVialidad2.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteTipoVialidad2.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Tipo de vialidad 2 *
+      </label>
+      <div class="controls">
+        <select name="otherRoadType2" id="otherRoadType2" ng-model="address.otherRoadType2" ng-options="t.id as t.name for t in roadTypes" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.otherRoadType2.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="otherRoad2">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreVialidad2.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNombreVialidad2.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Nombre vialidad 2 *
+      </label>
+      <div class="controls">
+        <input ng-model="address.otherRoad2" type="text" id="otherRoad2" name="otherRoad2" placeholder="Nombre vialidad 2" required="required">
+                                <span class="help-inline" ng-show="addressForm.otherRoad2.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="posteriorType">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoVialidadPost.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteTipoVialidadPost.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Tipo de vialidad posterior *
+      </label>
+      <div class="controls">
+        <select name="posteriorType" id="posteriorType" ng-model="address.posteriorType" ng-options="t.id as t.name for t in roadTypes" required="required">
+        </select>
+                                <span class="help-inline" ng-show="addressForm.posteriorType.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+  <div class="span4">
+    <div class="control-group">
+      <label class="control-label" for="posteriorName">
+                                <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreVialidadPost.message}}"
+                                      popover-title="{{messageHelp.regSolicitanteNombreVialidadPost.defaultMessage}}" popover-trigger="mouseenter">
+                                  <a><i class="icon-question-sign"></i></a>
+                                </span>
+        Nombre vialidad posterior *
+      </label>
+      <div class="controls">
+        <input ng-model="address.posteriorName" type="text" id="posteriorName" name="posteriorName" placeholder="Nombre vialidad posterior" required="required">
+                                <span class="help-inline" ng-show="addressForm.posteriorName.$error.required">
+                                    Este campo es obligatorio.
+                                </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="control-group">
+  <div class="controls">
+    <button ng-click="submitAddress(address)" type="submit" class="btn btn-success" ng-disabled="addressForm.$invalid || disableSubmitAddress">
+      Continuar
+    </button>
+  </div>
+</div>
+</form>
+</div>
+<div ng-show="step=='rifSAT'">
+  <div class="span8">
+    <div class="alert alert-error" ng-show="qrErrorMessage">{{qrErrorMessage}}</div>
+    <legend>Documentos de registro (PDF)</legend>
+    <div ng-show="satDocs.status">
+      <div class="alert alert-info alert-block">
+        Tu documentación ha sido registrado exitosamente en el sistema.<span ng-hide="disableRifButtons">Puedes cambiarla haciendo click <span class="btn-link" ng-click="satDocs.status = false">aquí</span>.</span>
+      </div>
+      <div>
+        <table class="table table-bordered">
+          <thead>
+          <th>Tipo</th>
+          <th>Nombre</th>
+          </thead>
+          <tbody>
+          <tr ng-repeat="document in satDocs.documents">
+            <td>{{document.description}}</td>
+            <td><a href="{{baseUrl}}/app/document/downloadDocument/{{document.hexPath}}">{{document.name}}</a></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <form ng-show="!satDocs.status" id="qrForm" ng-upload="" name="qrForm" action="{{baseUrl}}/app/legalDocument/uploadQrRif" method="post">
+      <fieldset>
+        <label>Cédula de Identificación Fiscal (QR)</label>
+        <input type="file" name="qrDoc"  placeholder="Cédula de Identificación Fiscal (QR)" required="" />
+        <label>Identificación oficial vigente con fotografía</label>
+        <input type="file" name="ifeDoc"  placeholder="Identificación oficial vigente con fotografía" required="" /><br />
+        <button ng-disabled="disableRifButtons" class="btn btn-info" upload-submit="uploadQrComplete(content,completed)" type="submit">Cargar documentos</button>
+        <a ng-disabled="disableRifButtons" class="btn btn-danger" ng-show="satDocs.status == false && satDocs.documents" ng-click="satDocs.status = true">No cambiar documentos</a>
+      </fieldset>
+    </form>
+  </div>
+  <div ng-show="selectedBansefiOffice" class="span8">
+    <legend>Elige la sucursal de Bansefi</legend>
+    <div class="well">
+      <strong>{{selectedBansefiOffice.office_name}}</strong><br/>
+      {{selectedBansefiOffice.address}}
+      <div class="controls">
+        <br />
+        <a ng-show="satDocs && satDocs.status == true" ng-disabled="disableRifButtons" ng-click="completeSatRifRegister()" class="btn btn-success">Completar Registro</a>
+        <a ng-disabled="disableRifButtons" ng-click="selectedBansefiOffice=null" class="btn btn-info">Cambiar Sucursal</a>
+      </div>
+    </div>
+  </div>
+  <div ng-show="!selectedBansefiOffice" class="span8">
+    <div>
+      <legend>Elige la sucursal de Bansefi</legend>
+      <label class="control-label">Entidad:</label>
+      <div class="controls">
+        <select name="profileType" ng-model="bansefiOffice"  ng-options="entity as entity.entity.name for entity in bansefiOffices"></select>
+      </div>
+    </div>
+    <div>
+      <div ng-repeat="office in bansefiOffice.offices">
+        <a ng-click="bansefiOfficeClick(office)" href>
+          <div class="thumbnail fluid-flashcar">
+            <strong>{{office.office_name}}</strong><br/>
+            {{office.address}}
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div ng-show="step=='fiel' && (profileType=='company' || profileType=='other')">
+  <div class="alert alert-error" ng-show="fielCompanyError">
+    <strong>Fiel de persona física</strong> La fiel cargada es de una persona física, no de la persona moral.
+  </div>
+  <div class="alert alert-error" ng-show="fielError">
+    <strong>Problema al cargar la fiel</strong>
+    Parece que ha ocurrido un problema al cargar tu fiel, revise que sea un archivo .cer válido
+    y en caso de que el problema persista ponte en contacto con el SAT.
+  </div>
+  <div class="media" ng-show="subject">
+    <div class="row">
+      <div class="span3">
+        <div class="pull-left"><img src="images/emprendedor.png" alt=""></div>
+        <div class="media-body">
+          <h4 class="media-heading" style="padding-top: 5px">FIEL Cargada</h4>
+          <dl>
+            <dt>Nombre</dt>
+            <dd>{{subject.name}}</dd>
+            <dt>RFC Empresa</dt>
+            <dd>{{companySubject.rfc}}</dd>
+            <dt>RFC Representante</dt>
+            <dd>{{companySubject.individualRfc}}</dd>
+            <dt>CURP Representante</dt>
+            <dd>{{companySubject.individualCurp}}</dd>
+            <dt>Válida desde</dt>
+            <dd>{{fiel.startingDate | date:'fullDate'}}</dd>
+            <dt>Válida hasta</dt>
+            <dd>{{fiel.endingDate | date:'fullDate'}}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="span6" ng-show="!profile.allowDuplicateRFC && rfcExists">
+        <div class="alert alert-error">
+          <strong>RFC Duplicado</strong>
+          El RFC de la FIEL cargada se encuentra asociado a otro usuario. Favor de cargar la FIEL correspondiente al RFC <strong>{{profile.rfc}}</strong>
+        </div>
+      </div>
+      <div class="span6" ng-show="rfcExistsAndIsAllowed">
+        <div class="alert alert-warning">
+          <strong>RFC Duplicado</strong>
+          El RFC asociado a la FIEL cargada ya ha sido ocupado por otro usuario. Puedes continuar y el departamento jurídico validará tu información.
+        </div>
+      </div>
+      <div class="span6" ng-show="profile.allowDuplicateRFC || !rfcExists">
+        <h4>Enhorabuena</h4>
+        <p>
+          Parece que has cargado tu FIEL correctamente, si los datos son correctos podemos seguir
+          con los siguientes pasos, recuerda que podrás modificar estos datos directamente en tu perfil.
+        </p>
+        <div class="alert alert-error alert-block" ng-show="fiel.expired">
+          <h4>Tu FIEL ha expirado</h4>
+          No puedes continuar con el proceso de registro debido
+          a que tu fiel está vencida. Ponte en contacto con el <a target="_blank" href="http://www.sat.gob.mx/sitio_internet/e_sat/tu_firma/">SAT para renovarla</a>
+        </div>
+        <div class="alert alert-warning alert-block" ng-show="fiel.notYetValid">
+          <h4>Tu FIEL todavía no entra en su periodo de vigencia</h4>
+          Podrás empezar a usarla a partir del {{fiel.startingDate | date:'fullDate' }}
+        </div>
+        <div class="alert alert-warning alert-block" ng-show="companySubject.rfc != profile.rfc">
+          <h4>Tu FIEL no coincide con el RFC capturado</h4>
+          <p>
+            El RFC capturado del usuario es <strong>{{profile.rfc}}</strong>,
+            mientras que la fiel tiene <strong>{{companySubject.rfc}}</strong>.
+            Si deseas que actualicemos tu perfil con el RFC <strong>{{companySubject.rfc}}</strong>, da click sobre el
+            siguiente botón:
+          </p>
+          <a ng-click="actualizaCompanyRfc()" class="btn btn-warning">Actualizar RFC</a>
+        </div>
+        <a ng-click="saveCompanyFiel()" ng-disabled="!canSaveCompanyFiel()" class="btn btn-primary">Continuar</a>
+      </div>
+    </div>
+  </div>
+  <form ng-upload="" action="{{baseUrl}}/app/fiel/uploadTmp">
+    <fieldset>
+      <legend>Sube tu Firma Electrónica Avanzada</legend>
+      <label><span class="pull-left" popover="{{messageHelp.regSolicitanteFirmaElectronicaA.message}}"
+                   popover-title="{{messageHelp.regSolicitanteFirmaElectronicaA.defaultMessage}}" popover-trigger="mouseenter">
+			  <a><i class="icon-question-sign"></i></a>
+			</span> FIEL</label>
+      <input type="file" name="fiel" required="required">
+      <span class="help-block">Sube el certificado público (.cer) de tu FIEL.</span>
+      <button upload-submit="uploadComplete(content, completed)" type="submit" class="btn">Cargar</button>
+    </fieldset>
+  </form>
+</div>
+<div ng-show="step=='fiel' && profileType!='company' && profileType!='other' && !isRIF">
+  <div class="alert alert-error" ng-show="fielError">
+    <strong>Problema al cargar la FIEL</strong>
+    Parece que ha ocurrido un problema al cargar tu fiel, revise que sea un archivo válido con extensi&oacute;n .cer
+    y en caso de que el problema persista ponte en contacto con el SAT.
+  </div>
+  <div class="alert alert-error" ng-show="fielIndividualError">
+    <strong>Fiel de persona moral</strong>
+    La fiel cargada es de una persona moral, no de la persona física.
+  </div>
+  <div class="media" ng-show="subject && !fielIndividualError">
+    <div class="row">
+      <div class="span3">
+        <div class="pull-left"><img src="images/emprendedor.png" alt=""></div>
+        <div class="media-body">
+          <h4 class="media-heading" style="padding-top: 5px">FIEL Cargada</h4>
+          <dl>
+            <dt>Nombre</dt>
+            <dd>{{subject.name}}</dd>
+            <dt>RFC</dt>
+            <dd>{{subject.rfc}}</dd>
+            <dt>CURP</dt>
+            <dd>{{subject.serial}}</dd>
+            <dt>Email</dt>
+            <dd>{{subject.email}}</dd>
+            <dt>Válida desde</dt>
+            <dd>{{fiel.startingDate | date:'fullDate'}}</dd>
+            <dt>Válida hasta</dt>
+            <dd>{{fiel.endingDate | date:'fullDate'}}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="span6" ng-show="!profile.allowDuplicateRFC && rfcExists">
+        <div class="alert alert-error">
+          <strong>RFC Duplicado</strong>
+          El RFC de la FIEL cargada se encuentra asociado a otro usuario. Favor de cargar la FIEL correspondiente al RFC <strong>{{profile.rfc}}</strong>
+        </div>
+      </div>
+      <div class="span6" ng-show="rfcExistsAndIsAllowed">
+        <div class="alert alert-warning">
+          <strong>RFC Duplicado</strong>
+          El RFC asociado a la FIEL <center></center>argada ya ha sido ocupado por otro usuario. Puedes continuar y el departamento jurídico validará tu información.
+        </div>
+      </div>
+      <div class="span6" ng-show="profile.allowDuplicateRFC || !rfcExists">
+        <h4>Enhorabuena</h4>
+        <p>
+          Parece que has cargado tu FIEL correctamente, si los datos son correctos podemos seguir
+          con los siguientes pasos, recuerda que podrás modificar estos datos directamente en tu perfil.
+        </p>
+        <div class="alert alert-error alert-block" ng-show="fiel.expired">
+          <h4>Tu FIEL ha expirado</h4>
+          No puedes continuar con el proceso de registro debido
+          a que tu fiel está vencida. Ponte en contacto con el <a target="_blank" href="http://www.sat.gob.mx/sitio_internet/e_sat/tu_firma/">SAT para renovarla</a>
+        </div>
+        <div class="alert alert-warning alert-block" ng-show="fiel.notYetValid">
+          <h4>Tu FIEL todavía no entra en su periodo de vigencia</h4>
+          Podrás empezar a usarla a partir del {{fiel.startingDate | date:'fullDate' }}
+        </div>
+        <div class="alert alert-warning alert-block" ng-show="subject.rfc != profile.rfc">
+          <h4>Tu FIEL no coincide con el RFC capturado</h4>
+          <p>
+            El RFC capturado del usuario es <strong>{{profile.rfc}}</strong>,
+            mientras que la fiel tiene <strong>{{subject.rfc}}</strong>.
+            Si deseas podemos actualizar tu perfil con el RFC <strong>{{subject.rfc}}</strong> y nombre
+            <input name="firstName" type="text" ng-model="subject.firstName" required="required">
+            <input name="lastName1" type="text" ng-model="subject.lastName1">
+            <input name="lastName2" type="text" ng-model="subject.lastName2">
+            , da click sobre el siguiente botón:
+          </p>
+          <a ng-click="actualizaRfc()" class="btn btn-warning">Actualizar RFC</a>
+        </div>
+        <a ng-click="saveFiel()" ng-disabled="!canSaveFiel()" class="btn btn-primary">Continuar</a>
+      </div>
+    </div>
+  </div>
+  <form ng-upload="" action="{{baseUrl}}/app/fiel/uploadTmp">
+    <fieldset>
+      <legend>Sube tu Firma Electrónica Avanzada</legend>
+      <label>FIEL</label>
+      <input type="file" name="fiel" required="required">
+      <span class="help-block">Sube el certificado público (.cer) de tu FIEL.</span>
+      <button upload-submit="uploadComplete(content, completed)" type="submit" class="btn">Cargar</button>
+      <button ng-click="skipFiel()" type="button" class="btn" ng-show="showSkipFIEL">Omitir Fiel</button>
+    </fieldset>
+  </form>
+</div>
+<div class="hero-unit" ng-show="step=='startup'">
+  <h1>Bienvenido al Sistema Emprendedor</h1>
+  <p>Antes de participar en las convocatorias es importante que llenes los datos de tu perfil.</p>
+  <p>Una vez completado el registro puedes modificar éstos datos en la sección de "Mi perfil"</p>
+  <p><a class="btn btn-primary btn-large" ng-click="showFiel()">Completar Perfil </a></p>
+</div>
+</div>
+<div class="span3" ng-show="showSomething">
+  <h4>Bienvenido</h4>
+  <dl ng-show="profile.type=='Física'">
+    <dt>Nombre</dt>
+    <dd>{{profile.name}} {{profile.firstLastName}} {{profile.secondLastName}}</dd>
+    <dt>Perfil</dt>
+    <dd>{{profile.type}}</dd>
+    <dt>Email</dt>
+    <dd>{{profile.email}}</dd>
+    <dt>RFC</dt>
+    <dd>{{profile.rfc}}</dd>
+  </dl>
+  <div ng-show="rifSAT==false">
+    <h4>Siguientes pasos</h4>
+    <p>Para poder participar necesitas completar tu perfil, estos son los siguientes pasos</p>
+    <ul>
+      <li ng-show="profileType != 'student' && profileType != 'government' && !isRIF" ng-class="{'selectedStep': step == 'fiel'}">Subir FIEL</li>
+      <li ng-class="{'selectedStep': step == 'address'}">Capturar dirección</li>
+      <li ng-class="{'selectedStep': step == 'complement'}">Capturar datos generales</li>
+      <li ng-class="{'selectedStep': step == 'finish'}">Verificar cuenta de correo</li>
+    </ul>
+  </div>
+</div>
+</div>
