@@ -2,7 +2,7 @@
 
 ##Introducción
 
-**Emprendedor** es un proyecto creado por los super desarrolladores de Licasian México, desarrollado sobre Groovy (Java Interpreter) y el Framework Grails, quienes han puesto tiempo, esfuerzo y tacos en hacer que esta herramienta cumpla con los requerimientos que necesita la dependecia del Gobierno INADEM.
+**Nueva Aplicación** es un proyecto creado por los super desarrolladores de Licasian México, desarrollado sobre Groovy (Java Interpreter) y el Framework Grails, quienes han puesto tiempo, esfuerzo y tacos.
 
 
 ##Índice
