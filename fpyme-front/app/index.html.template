@@ -395,7 +395,7 @@
     <script src="scripts/controllers/firmaCanjeCupon.js"></script>     
     <script src="scripts/controllers/evaluacionSeguimiento.js"></script>
     <script src="scripts/services/trackingEvaluationService.js"></script>
-    <script src="scripts/controllers/asignacionDespacho.js"></script>
+
     <script src="scripts/controllers/reportesDespacho.js"></script>
     <script src="scripts/controllers/reportesAsignadosEvaluacion.js"></script>
     <script src="scripts/controllers/welcomeTrackingUser.js"></script>
@@ -446,62 +446,7 @@
     <script src="scripts/controllers/vistaInformeSeguimientoDocs.js"></script>
     <script src="scripts/controllers/technicalSecretaryCommentDialog.js"></script>
     <script src="scripts/controllers/validationAssignmentResume.js"></script>
-    <script src="scripts/controllers/historialSolicitudes.js"></script>
-    <script src="scripts/controllers/listaExpMinistracionAsignadas.js"></script>
-    <script src="scripts/controllers/cuestionariovitrina.js"></script>
-    <script src="scripts/controllers/resumencuestionariovitrina.js"></script>
-    <script src="scripts/controllers/guiaNormativa.js"></script>
-    <script src="scripts/services/guiaNormativaService.js"></script>
-    <script src="scripts/controllers/listaConvocatoriasNormativa.js"></script>
-    <script src="scripts/controllers/solicitudaclaracion.js"></script>
-    <script src="scripts/services/feedbackservice.js"></script>
-    <script src="scripts/controllers/aclaracionespendientes.js"></script>
-    <script src="scripts/controllers/feedbackapplication.js"></script>
-    <script src="scripts/controllers/solicitudretroalimentacion.js"></script>
-    <script src="scripts/controllers/listaaclaraciones.js"></script>
-    <script src="scripts/controllers/responderaclaraciones.js"></script>
-    <script src="scripts/controllers/listaaclaracionesevaluador.js"></script>
-    <script src="scripts/controllers/listaaclaracionessedeco.js"></script>
-    <script src="scripts/controllers/loadAllMinistration.js"></script>
-    <script src="scripts/controllers/cargaDocsPendingMinistration.js"></script>
-    <script src="scripts/controllers/criterioevaldialog.js"></script>
-    <script src="scripts/controllers/cuestionariovitrina.js"></script>
-    <script src="scripts/controllers/resumencuestionariovitrina.js"></script>
-    <script src="scripts/controllers/loadAllMinistration.js"></script>
-    <script src="scripts/controllers/cargaDocsPendingMinistration.js"></script>
-    <script src="scripts/controllers/applicationdocshistory.js"></script>
-    <script type="text/javascript" src="scripts/controllers/boardTracking.js"></script>
-    <script src="scripts/directives/applicationDetail.js"></script>
-    <script src="scripts/controllers/councilDetailAlertas.js"></script>
-    <script src="scripts/directives/normativeDetail.js"></script>
-    <script src="scripts/controllers/applicationResume.js"></script>
-    <script src="scripts/directives/tfnDetail.js"></script>
-    <script src="scripts/controllers/responderalerta.js"></script>
-    <script src="scripts/controllers/informeseguimientobansefi.js"></script>
-    <script src="scripts/controllers/detalleaclaracion.js"></script>
-    <script src="scripts/controllers/listaalertasevaluador.js"></script>
-    <script src="scripts/controllers/responderalertaevaluador.js"></script>
-    <script src="scripts/controllers/detallealerta.js"></script>
-    <script src="scripts/controllers/detallealertaporsolicitud.js"></script>
-    <script src="scripts/controllers/cuestionarioConvocatoriaDos.js"></script>
-    <script src="scripts/controllers/configExtraPoints.js"></script>
-    <script src="scripts/services/extraPointsService.js"></script>
-    <script src="scripts/directives/statalDetail.js"></script>
-    <script src="scripts/controllers/callanalysis.js"></script>
-    <script src="scripts/controllers/listaconvocatorias.js"></script>
-    <script src="scripts/controllers/detalleCuestionarioConvocatoriaDos.js"></script>
-    <script src="scripts/controllers/rifTrackingEvaluation.js"></script>
-    <script src="scripts/controllers/listrifreports.js"></script>
-    <script src="scripts/controllers/signRifEvaluation.js"></script>
-    <script src="scripts/controllers/rifReportApplicantReview.js"></script>
-    <script src="scripts/controllers/signRifBillsReview.js"></script>
-    <script src="scripts/controllers/rifReportEvaluationDetail.js"></script>
-<script src="scripts/controllers/detallesolicitudreposicion.js"></script>
-<script src="scripts/controllers/crearsolicitudreposicion.js"></script>
-<script src="scripts/controllers/respondersolicitudreposicion.js"></script>
-<script src="scripts/controllers/listasolicitudreposicion.js"></script>
-<script src="scripts/controllers/listasolicitudreposicionevaluador.js"></script>
-<script src="scripts/controllers/listaposiblereposicion.js"></script>
+
     <!-- endbuild -->
 
 

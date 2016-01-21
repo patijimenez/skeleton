@@ -57,6 +57,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         compile "com.lucasian.crypt:signer-bouncy:0.0.2"
         compile "org.crazycake:shiro-redis:2.4.2.3-RELEASE"
         compile "org.quartz-scheduler:quartz:2.1.1"

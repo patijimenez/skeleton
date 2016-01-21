@@ -1,8 +1,8 @@
 dataSource {
   pooled = true
   driverClassName = "org.h2.Driver"
-  username = "sa"
-  password = ""
+  username = "skeleton"
+  password = "skeleton"
 }
 hibernate {
   cache.use_second_level_cache = true
@@ -13,13 +13,15 @@ hibernate {
 environments {
   development {
     dataSource {
-      driverClassName = "oracle.jdbc.OracleDriver"
+        dbCreate = "create" // one of 'create', 'create-drop', 'update', 'validate', ''
+        url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+//      driverClassName = "oracle.jdbc.OracleDriver"
 //      dbCreate = "update"
-      url = "jdbc:oracle:thin:@10.100.30.12:1521:qadgi2"
-      dialect = org.hibernate.dialect.Oracle10gDialect
-      pooled = true
-      username = "FPYME_LECT"
-      password = "SerqI1406"
+//      url = "jdbc:oracle:thin:@10.100.30.12:1521:qadgi2"
+//      dialect = org.hibernate.dialect.Oracle10gDialect
+//      pooled = true
+//      username = "FPYME_LECT"
+//      password = "SerqI1406"
 
       /*Producction */
       /*url = "jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.30.28)(PORT = 1521)) (ADDRESS = (PROTOCOL = TCP)(HOST = 10.100.30.29)(PORT = 1521)) (LOAD_BALANCE = yes) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = INADEM) (FAILOVER_MODE = (TYPE = select) (METHOD = BASIC))))"
