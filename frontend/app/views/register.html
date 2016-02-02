@@ -1,0 +1,707 @@
+<div class="row">
+    <div class="span8">
+        <h2>Registro de usuarios</h2>
+        <h4 ng-show="rifSAT">Crezcamos Juntos</h4>
+        <br />
+        <form class="form-horizontal" ng-show="step =='proposers' && personTypes">
+          <div class="control-group">
+            <label class="control-label">
+                <span class="pull-left" popover="{{messageHelp.regSolicitantePersonaJur.message}}"
+                    popover-title="{{messageHelp.regSolicitantePersonaJur.defaultMessage}}" data-placement="right"
+                    popover-trigger="mouseenter">
+                  <a><i class="icon-question-sign"></i></a>
+                </span>
+                Personalidad Jurídica:
+            </label>
+            <div class="controls">
+              <select name="profileType" ng-model="profileType"ng-change="profileTypeChange(profileType)">
+                <option value="FISICA">Persona física</option>
+                <option value="MORAL">Persona moral</option>
+                <option value="GOBIERNO">Gobierno</option>
+              </select>
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">
+                <span class="pull-left" popover="{{messageHelp.regSolicitanteTipoPersona.message}}"
+                      popover-title="{{messageHelp.regSolicitanteTipoPersona.defaultMessage}}" popover-trigger="mouseenter">
+                  <a><i class="icon-question-sign"></i></a>
+                </span>
+                Tipo de Persona:
+            </label>
+            <div class="controls">
+              <select name="personType" ng-change="personTypeChange(personType)" ng-model="personType" ng-options="p.name for p in listPersonTypes">
+              </select>
+            </div>
+          </div>
+          <div class="control-group" ng-show="personType.relations">
+            <label class="control-label">Proponentes a elegir:</label>
+            <div class="controls">
+              <div ng-repeat="proposer in personType.relations">
+                <label ng-show="proposer.individualProfileType">
+                  <input ng-show="proposer.individualProfileType" type="checkbox" ng-model="proposer.selected" ng-click="addProposer(proposer)" /> {{proposer.individualProfileType.name}}
+                </label>
+                <label ng-show="proposer.otherProfileType">
+                  <input ng-show="proposer.otherProfileType" type="checkbox" ng-model="proposer.selected" ng-click="addProposer(proposer)" /> {{proposer.otherProfileType.name}}
+                </label>
+                <label ng-show="proposer.governmentProfileType">
+                  <input ng-show="proposer.governmentProfileType" type="checkbox" ng-model="proposer.selected" ng-click="addProposer(proposer)" /> {{proposer.governmentProfileType.name}}
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
+            <button ng-click="step='register'" class="btn btn-success" ng-show="okProposers && !personType.requireStratification">
+              Siguiente
+            </button>
+            <button ng-click="showStratification()" class="btn btn-success" ng-show="showStratificationBtn">
+              Siguiente
+            </button>
+          </div>
+        </form>
+        <form name="individualForm" ng-show="profileType=='FISICA' && step=='register'" class="form-horizontal">
+            <div class="control-group" ng-class="{'error': (individualForm.rfc.$invalid && individualForm.rfc.$dirty) || (isAllowedToRegister == false)}">
+                <label class="control-label" for="rfc">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    RFC *
+                </label>
+                <div class="controls">
+                    <input name="rfc" type="text" ng-model="individual.rfc" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+                    <span class="help-inline" ng-show="!individualForm.rfc.$error.rfc && (isAllowedToRegister == false)">
+                        Este RFC ya ha sido utilizado por otro usuario.
+                    </span>
+                    <span class="help-inline" ng-show="!individualForm.rfc.$error.rfc && rfcExistsAndIsAllowed">
+                        Este RFC ya ha sido tomado por otro usuario. Puedes continuar y el departamento jurídico validará tu información
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.rfc.$error.rfc">
+                        El RFC es inválido.
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.rfc.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div ng-show="rifSAT"  class="control-group" ng-class="{'error': individualForm.curp.$invalid && individualForm.curp.$dirty}">
+              <label class="control-label" for="curp">
+                  <span class="pull-left" popover="{{messageHelp.regSolicitanteCURP.message}}"
+                    popover-title="{{messageHelp.regSolicitanteCURP.defaultMessage}}" popover-trigger="mouseenter">
+                    <a><i class="icon-question-sign"></i></a>
+                  </span>
+                  CURP *
+              </label>
+              <div class="controls">
+                  <div>
+                    <input name="curp" type="text" ng-model="individual.curp" ng-required="rifSAT" curp="curp">
+                    <span class="help-inline" ng-show="individualForm.curp.$error.curp">
+                      El CURP es inválido.
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.curp.$error.required">
+                      Este campo es obligatorio.
+                    </span>
+                  </div>
+
+              </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteNombre.message}}"
+                          popover-title="{{messageHelp.regSolicitanteNombre.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Nombre(s) *
+                </label>
+                <div class="controls">
+                    <input name="name" type="text" ng-model="individual.name" required="required">
+                    <span class="help-inline" ng-show="individualForm.name.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="firstLastName">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoP.message}}"
+                          popover-title="{{messageHelp.regSolicitanteApellidoP.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Apellido Paterno *
+                </label>
+                <div class="controls">
+                    <input name="firstLastName" type="text" ng-model="individual.firstLastName" required="required">
+                    <span class="help-inline" ng-show="individualForm.firstLastName.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="secondLastName">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoM.message}}"
+                          popover-title="{{messageHelp.regSolicitanteApellidoM.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Apellido Materno
+                </label>
+                <div class="controls">
+                    <input type="text" ng-model="individual.secondLastName">
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': individualForm.email.$error.email || individual.usernameExists}">
+                <label class="control-label" for="email">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Email *
+                </label>
+                <div class="controls">
+                    <input name="email" type="email" ng-model="individual.email" required="required">
+                    <span class="help-inline" ng-show="individual.usernameExists">
+                        Este usuario no está disponible
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.email.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.email.$error.email">
+                        El formato de correo es inválido.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': individual.email != individual.confirmEmail}">
+                <label class="control-label" for="confirmEmail">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Email *
+                </label>
+                <div class="controls">
+                    <input name="confirmEmail" type="email" ng-model="individual.confirmEmail" required="required">
+                    <span class="help-inline" ng-show="individual.email != individual.confirmEmail">
+                        Los correos no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': individualForm.password.$error.minlength}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="password" type="password" ng-model="individual.password" required="required" ng-minlength="8">
+                    <span class="help-inline" ng-show="individualForm.password.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="individualForm.password.$error.minlength">
+                        La contraseña debe de ser de al menos 8 caracteres.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': individual.password != individual.confirmPassword}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="confirmPassword" type="password" ng-model="individual.confirmPassword" required="required">
+                    <span class="help-inline" ng-show="individual.password != individual.confirmPassword">
+                        Las contraseñas no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <a ng-click="openTerms()" class="btn">Ver términos</a>
+                </label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="individual.terms" required="required">
+                        He leido y acepto los términos y condiciones
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="registerIndividual()" type="submit" class="btn btn-success" ng-disabled="hideSubmit || individual.usernameExists || (isAllowedToRegister == false) || individualForm.$invalid || (individual.password != individual.confirmPassword) || (individual.email != individual.confirmEmail)">
+                        Registrarse
+                    </button>
+                  <a class="btn" ng-click="returnToProposersStep()">Regresar</a>
+                </div>
+            </div>
+        </form>
+        <form name="companyForm" ng-show="profileType=='' && step=='register'" class="form-horizontal">
+            <div class="control-group" ng-class="{'error': (companyForm.rfc.$invalid && companyForm.rfc.$dirty) || company.rfcExists}">
+                <label class="control-label" for="rfc">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    RFC *
+                </label>
+                <div class="controls">
+                    <input name="rfc" type="text" ng-model="company.rfc" required="required" rfc-moral="rfc-moral" ng-minlength="12" maxlength="12">
+                    <span class="help-inline" ng-show="company.rfcExists">
+                        El RFC no está disponible.
+                    </span>
+                    <span class="help-inline" ng-show="companyForm.rfc.$error.rfc">
+                        El RFC es inválido.
+                    </span>
+                    <span class="help-inline" ng-show="companyForm.rfc.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRazonSocial.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRazonSocial.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Razón Social *
+                </label>
+                <div class="controls">
+                    <input name="name" type="text" ng-model="company.name" required="required">
+                    <span class="help-inline" ng-show="companyForm.name.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': companyForm.email.$error.email || company.usernameExists}">
+                <label class="control-label" for="email">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Email *
+                </label>
+                <div class="controls">
+                    <input name="email" type="email" ng-model="company.email" required="required">
+                    <span class="help-inline" ng-show="company.usernameExists">
+                        Este usuario no está disponible
+                    </span>
+                    <span class="help-inline" ng-show="companyForm.email.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="companyForm.email.$error.email">
+                        El formato de correo es inválido.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': company.email != company.confirmEmail}">
+                <label class="control-label" for="confirmEmail">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Email *
+                </label>
+                <div class="controls">
+                    <input name="confirmEmail" type="email" ng-model="company.confirmEmail" required="required">
+                    <span class="help-inline" ng-show="company.email != company.confirmEmail">
+                        Los correos no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': companyForm.password.$error.minlength}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="password" type="password" ng-model="company.password" required="required" ng-minlength="8">
+                    <span class="help-inline" ng-show="companyForm.password.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="companyForm.password.$error.minlength">
+                        La contraseña debe de ser de al menos 8 caracteres.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': company.password != company.confirmPassword}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="confirmPassword" type="password" ng-model="company.confirmPassword" required="required">
+                    <span class="help-inline" ng-show="company.password != company.confirmPassword">
+                        Las contraseñas no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <a ng-click="openTerms()" class="btn">Ver términos</a>
+                </label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="company.terms" required="required">
+                        He leido y acepto los términos y condiciones
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="registerCompany()" type="submit" class="btn btn-success" ng-disabled="hideSubmit || company.usernameExists || company.rfcExists || companyForm.$invalid || (company.password != company.confirmPassword) || (company.email != company.confirmEmail) || !canRegister">
+                        Registrarse
+                    </button>
+                  <a class="btn" ng-click="returnToProposersStep()">Regresar</a>
+                </div>
+            </div>
+        </form>
+        <form name="governmentForm" ng-show="profileType=='GOBIERNO' && step=='register'" class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteEstado.message}}"
+                        popover-title="{{messageHelp.regSolicitanteEstado.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Estado *
+                </label>
+                <div class="controls">
+                    <select name="state" ng-model="government.state" required>
+                        <option ng-repeat="state in states" value="{{state.id}}">{{state.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" ng-show="showMunicipality">
+                <label class="control-label">Municipio *</label>
+                <div class="controls">
+                    <select name="municipality" ng-model="government.municipality">
+                        <option ng-repeat="municipality in municipalities" value="{{municipality.id}}">{{municipality.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': (governmentForm.rfc.$invalid && governmentForm.rfc.$dirty) || (isAllowedToRegister == false)}">
+                <label class="control-label" for="rfc">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    RFC *
+                </label>
+                <div class="controls">
+                    <input name="rfc" type="text" ng-model="government.rfc" required="required" rfc-individual-or-moral="rfc-individual-or-moral" ng-minlength="12">
+                    <span class="help-inline" ng-show="!governmentForm.rfc.$error.rfc && isAllowedToRegister == false">
+                        Este RFC ya ha sido utilizado por otro usuario.
+                    </span>
+                    <span class="help-inline" ng-show="!governmentForm.rfc.$error.rfc && rfcExistsAndIsAllowed">
+                        Este RFC ya ha sido tomado por otro usuario. Puedes continuar y el departamento jurídico validará tu información
+                    </span>
+                    <span class="help-inline" ng-show="governmentForm.rfc.$error.rfc">
+                        El RFC es inválido.
+                    </span>
+                    <span class="help-inline" ng-show="governmentForm.rfc.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreEntidadGobierno.message}}"
+                          popover-title="{{messageHelp.regSolicitanteNombreEntidadGobierno.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Nombre de entidad de gobierno *
+                </label>
+                <div class="controls">
+                    <input name="governmentName" type="text" ng-model="government.governmentName" required="required">
+                    <span class="help-inline" ng-show="governmentForm.governmentName.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteNombreRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteNombreRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Nombre del representante *
+                </label>
+                <div class="controls">
+                    <input name="name" type="text" ng-model="government.name" required="required">
+                    <span class="help-inline" ng-show="governmentForm.name.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="firstLastName">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoPRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteApellidoPRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Apellido Paterno del representante *
+                </label>
+                <div class="controls">
+                    <input name="firstLastName" type="text" ng-model="government.firstLastName" required="required">
+                    <span class="help-inline" ng-show="governmentForm.firstLastName.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="secondLastName">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteApellidoMRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteApellidoMRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Apellido Materno del representante
+                </label>
+                <div class="controls">
+                    <input type="text" ng-model="government.secondLastName">
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': governmentForm.email.$error.email || government.usernameExists}">
+                <label class="control-label" for="email">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteEmailRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteEmailRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+					Email del representante *                    
+                </label>
+                <div class="controls">
+                    <input name="email" type="email" ng-model="government.email" required="required">
+                    <span class="help-inline" ng-show="government.usernameExists">
+                        Este usuario no está disponible
+                    </span>
+                    <span class="help-inline" ng-show="governmentForm.email.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="governmentForm.email.$error.email">
+                        El formato de correo es inválido.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': government.email != government.confirmEmail}">
+                <label class="control-label" for="confirmEmail">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfEmailRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfEmailRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Email *
+                </label>
+                <div class="controls">
+                    <input name="confirmEmail" type="email" ng-model="government.confirmEmail" required="required">
+                    <span class="help-inline" ng-show="government.email != government.confirmEmail">
+                        Los correos no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': governmentForm.password.$error.minlength}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteContrasenaRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteContrasenaRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="password" type="password" ng-model="government.password" required="required" ng-minlength="8">
+                    <span class="help-inline" ng-show="governmentForm.password.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="governmentForm.password.$error.minlength">
+                        La contraseña debe de ser de al menos 8 caracteres.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': government.password != government.confirmPassword}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfContrasenaRepresentante.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfContrasenaRepresentante.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="confirmPassword" type="password" ng-model="government.confirmPassword" required="required">
+                    <span class="help-inline" ng-show="government.password != government.confirmPassword">
+                        Las contraseñas no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <a ng-click="openTerms()" class="btn">Ver términos</a>
+                </label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="government.terms" required="required">
+                        He leido y acepto los términos y condiciones
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="registerGovernment()" type="submit" class="btn btn-success" ng-disabled="hideSubmit || government.usernameExists || (isAllowedToRegister == false) || governmentForm.$invalid || (government.password != government.confirmPassword) || (government.email != government.confirmEmail)">
+                        Registrarse
+                    </button>
+                  <a class="btn" ng-click="returnToProposersStep()">Regresar</a>
+                </div>
+            </div>
+        </form>
+        <form name="otherForm" ng-show="profileType=='MORAL' && step=='register'" class="form-horizontal">
+            <div class="control-group" ng-class="{'error': (otherForm.rfc.$invalid && otherForm.rfc.$dirty) || (isAllowedToRegister == false)}">
+                <label class="control-label" for="rfc">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRFC.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRFC.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    RFC *
+                </label>
+                <div class="controls">
+                    <input name="rfc" type="text" ng-model="other.rfc" required="required" rfc-moral="rfc-moral" ng-minlength="12" maxlength="12">
+                    <span class="help-inline" ng-show="!otherForm.rfc.$error.rfc &&  (isAllowedToRegister == false)">
+                        Este RFC ya ha sido utilizado por otro usuario.
+                    </span>
+                    <span class="help-inline" ng-show="!otherForm.rfc.$error.rfc && rfcExistsAndIsAllowed">
+                        Este RFC ya ha sido tomado por otro usuario. Puedes continuar y el departamento jurídico validará tu información
+                    </span>
+                    <span class="help-inline" ng-show="otherForm.rfc.$error.rfc">
+                        El RFC es inválido.
+                    </span>
+                    <span class="help-inline" ng-show="otherForm.rfc.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="name">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteRazonSocial.message}}"
+                          popover-title="{{messageHelp.regSolicitanteRazonSocial.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Razón Social *
+                </label>
+                <div class="controls">
+                    <input name="name" type="text" ng-model="other.name" required="required">
+                    <span class="help-inline" ng-show="otherForm.name.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': otherForm.email.$error.email || other.usernameExists}">
+                <label class="control-label" for="email">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Email *
+                </label>
+                <div class="controls">
+                    <input name="email" type="email" ng-model="other.email" required="required">
+                    <span class="help-inline" ng-show="other.usernameExists">
+                        Este usuario no está disponible
+                    </span>
+                    <span class="help-inline" ng-show="otherForm.email.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="otherForm.email.$error.email">
+                        El formato de correo es inválido.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': other.email != other.confirmEmail}">
+                <label class="control-label" for="confirmEmail">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfEmail.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfEmail.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Email *
+                </label>
+                <div class="controls">
+                    <input name="confirmEmail" type="email" ng-model="other.confirmEmail" required="required">
+                    <span class="help-inline" ng-show="other.email != other.confirmEmail">
+                        Los correos no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': otherForm.password.$error.minlength}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="password" type="password" ng-model="other.password" required="required" ng-minlength="8">
+                    <span class="help-inline" ng-show="otherForm.password.$error.required">
+                        Este campo es obligatorio.
+                    </span>
+                    <span class="help-inline" ng-show="otherForm.password.$error.minlength">
+                        La contraseña debe de ser de al menos 8 caracteres.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group" ng-class="{'error': other.password != other.confirmPassword}">
+                <label class="control-label" for="password">
+                    <span class="pull-left" popover="{{messageHelp.regSolicitanteConfContrasena.message}}"
+                          popover-title="{{messageHelp.regSolicitanteConfContrasena.defaultMessage}}" popover-trigger="mouseenter">
+                      <a><i class="icon-question-sign"></i></a>
+                    </span>
+                    Confirmar Contraseña *
+                </label>
+                <div class="controls">
+                    <input name="confirmPassword" type="password" ng-model="other.confirmPassword" required="required">
+                    <span class="help-inline" ng-show="other.password != other.confirmPassword">
+                        Las contraseñas no coinciden.
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">
+                    <a ng-click="openTerms()" class="btn">Ver términos</a>
+                </label>
+                <div class="controls">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="other.terms" required="required">
+                        He leido y acepto los términos y condiciones
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="registerOther()" type="submit" class="btn btn-success" ng-disabled="hideSubmit || other.usernameExists || (isAllowedToRegister == false) || otherForm.$invalid || (other.password != other.confirmPassword) || (other.email != other.confirmEmail)">
+                        Registrarse
+                    </button>
+                    <a class="btn" ng-click="returnToProposersStep()">Regresar</a>
+                </div>
+            </div>
+        </form>
+        <div ng-show="step=='stratification'">
+            <div  ng-include="'views/welcomeGeneralDataInner.html'"></div>
+        </div>
+    </div>
+    <div ng-show="!rifSAT" class="span4">
+        <div>
+            <h4>Beneficios:</h4>
+            <ul>
+                <li>Participación en las convocatorias del INADEM</li>
+            </ul>
+        </div>
+        <br>
+        <div>
+            <h4>Olvidé mi contraseña:</h4>
+            <p>
+                En caso de que hayas olvidado tu contraseña la puedes recuperar en esta <a href="#/recover">liga</a>
+            </p>
+        </div>
+    </div>
+</div>
+

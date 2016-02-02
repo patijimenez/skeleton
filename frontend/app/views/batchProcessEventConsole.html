@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div>
+  <h1>BATCH PROCESS CONSOLE</h1>
+  <h4 ng-show="data">Event ID: {{data.processId}}</h4>
+</div>
+<div class="row">
+  <div class="span12">
+    <a href="{{baseUrl}}/#/batchProcessEvents/{{data.processId}}">Regresar a lista de eventos del proeceso.</a><br />
+    <a href="{{baseUrl}}/#/batchProcessBoard">Regresar a lista de procesos.</a>
+    <dl>
+      <dt>Console Log:</dt>
+      <dd>
+        <pre id="consoleLog">
+        {{data.consoleLog}}
+        <span id="spnbottom"></span>
+        </pre>
+      </dd>
+    </dl>
+  </div>
+</div>

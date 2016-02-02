@@ -1,0 +1,245 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <title>Sistema Emprendedor</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <base href="http://localhost:9000/" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
+    <!--link type="text/css" rel="stylesheet" href="http://www.encuentra.gob.mx/css/apf.css"/-->
+    <link rel="stylesheet" href="components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="components/sir-trevor-js/sir-trevor-icons.css" />
+    <link rel="stylesheet" href="components/sir-trevor-js/sir-trevor.css" />
+    <link rel="stylesheet" href="components/select2/select2.css" />
+    <link rel="stylesheet" href="components/codemirror/lib/codemirror.css" />
+    <link rel="stylesheet" href="https://codemirror.net/theme/solarized.css" />
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="scripts/providers/guiders/guiders-1.3.0.css" />
+</head>
+<body ng-app="fpymeFrontApp">
+<!--[if lt IE 7]>
+<p class="chromeframe">Estas usando un explorador muy viejo. <a href="http://browsehappy.com/">Actualizalo ahora</a>.</p>
+<![endif]-->
+<!--[if lt IE 8]>
+<p class="chromeframe">Estas usando un explorador muy viejo. <a href="http://browsehappy.com/">Actualizalo ahora</a>.</p>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="components/es5-shim/es5-shim.js"></script>
+<script src="components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- Header -->
+<div class="header container">
+    <div class="row logos-bar">
+        <div class="span9">
+            <img src="images/logos/fondo_pyme_logotype.jpg" title="Logo INADEM Completo" />
+            <!-- <img src="images/logos/fondo_pyme_logotype_alone.jpg" title="Logo INADEM Solo" /> -->
+        </div>
+        <div class="span3">
+            <form id="search" method="get" action="#" class="searchField">
+        <span class="search-container">
+              <div id="gobmx-searchbox-container-se"></div>
+            </span>
+                <!--input(type="text",name="search", value="Buscar")-->
+                <input type="submit" value="buscar"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--- Show errors here!---->
+<div class="container" ng-controller="NotificationsCtrl" style="display: none">
+    <div class="row" ng-show="configParams.showErrors && !permissions.errorDetail">
+        <div class="span12">
+            <button class="btn" ng-click="requestNotificationPermission()" ng-show="false && hasPermission() == 1">Aceptar notificationes</button>
+            <div ng-repeat="notification in notifications" ng-show="notification.errorKey">
+                <alert type="notification.type" close="closeNotification($index)">
+                    <div ng-show="notification.async">
+                        <strong>{{notification.title}}</strong>
+                        <p style="word-wrap: break-word">{{notification.message}}</p>
+                    </div>
+                    <div ng-show="!notification.async" style="word-wrap: break-word">
+                        Ocurrió un error en la aplicación, ¡ayudanos reportandolo!
+                        <p ng-show="notification.errorKey">
+                            <a ng-href="#/e/{{notification.errorKey}}">Ayudanos a reportar el error</a>
+                        </p>
+                    </div>
+                </alert>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="permissions.errorDetail">
+        <div class="span12">
+            <button class="btn" ng-click="requestNotificationPermission()" ng-show="false && hasPermission() == 1">Aceptar notificationes</button>
+            <alert ng-repeat="notification in notifications" type="notification.type" close="closeNotification($index)">
+                <div ng-show="notification.async">
+                    <strong>{{notification.title}}</strong>
+                    <p style="word-wrap: break-word">{{notification.message}}</p>
+                </div>
+                <div ng-show="!notification.async" style="word-wrap: break-word">
+                    Error:
+                    {{notification.description}}
+                    <br />
+                    Detalle:
+                    {{notification.msg}}
+                    <p ng-show="notification.errorKey">
+                        <a ng-href="#/error/{{notification.errorKey}}">Ver más detalles</a>
+                    </p>
+                </div>
+            </alert>
+        </div>
+    </div>
+</div>
+<ng-include src="'views/mensaje.html'"></ng-include>
+<!-- Add your site or application content here -->
+<div class="container mainContainer" ng-view></div>
+
+<div class="container footer" id="footer">
+    <div class="row" id="footerINADEM">
+        <div class="span12">
+            <p class="copy">Fondo Nacional Emprendedor - ALGUNOS DERECHOS RESERVADOS © 2014</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12 centered-footer">
+            <div style="border-top: 4px double #d6d6d6;"></div>
+            <a class="logo-pyme-footer" href="/">
+                <img src="images/logos/fondo_pyme_logotype_mini.png" />
+            </a>
+            <p>Insurgentes Sur 1940, Col. Florida, CP 01030, Del. Álvaro Obregón<br /> México, Distrito Federal,Tel. (55) 5229-6100 | 01(800) 08 32-666 [ECONOMIA]</p>
+            <br />
+            <p>
+                Este programa es de carácter público, no es patrocinado ni promovido por partido político
+                alguno y sus recursos provienen de los impuestos que pagan todos los contribuyentes.<br />Está prohibido el uso de este programa con fines políticos, electorales, de lucro y otros
+                distintos a los establecidos. Quien haga uso indebido de los recursos de este programa
+                deberá ser denunciado y sancionado de acuerdo con la ley aplicable y ante la autoridad competente.<br /><br /><a href="http://www.sistemaemprendedor.gob.mx/politicas_de_privacidad.html" target="_blank">Políticas de Privacidad </a>
+            </p>
+        </div>
+    </div>
+</div>
+
+    <script src="components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCiofpAJbIAp9m4xDjpfpXn_rO2ahaB0f8&sensor=false"></script>
+    <!-- endbuild -->
+    <script src="components/lodash/dist/lodash.min.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-resource/angular-resource.js"></script>
+    <script src="components/angular-cookies/angular-cookies.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/ngUpload/ng-upload.min.js"></script>
+    <script src="components/angular-i18n/angular-locale_es-419.js"></script>
+    <script src="components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="components/Eventable/eventable.js"></script>
+    <script src="components/sir-trevor-js/sir-trevor.min.js"></script>
+    <script src="components/angular-ui-date/src/date.js"></script>
+    <script src="components/select2/select2.min.js"></script>
+    <script src="components/select2/select2_locale_es.js"></script>
+    <script src="components/angular-ui-select2/src/select2.js"></script>
+    <script src="components/codemirror/lib/codemirror.js"></script>
+    <script src="components/codemirror/mode/sql/sql.js"></script>
+    <script src="components/codemirror/mode/groovy/groovy.js"></script>
+    <script src="components/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="components/angular-ui-codemirror/ui-codemirror.js"></script>
+    <script src="components/spin.js/spin.js"></script>
+    <script src="components/angular-ui-utils/ui-utils.min.js"></script>
+    <script src="components/tinymce/tinymce.min.js"></script>
+    <script src="components/angular-ui-tinymce/src/tinymce.js"></script>
+    <script src="scripts/providers/guiders/guiders-1.3.0.js"></script>
+    <script src="components/postal.js/lib/postal.min.js"></script>
+    <script src="components/stringjs/lib/string.min.js"></script>
+    <script src="components/html-md/dist/md.min.js"></script>
+    <script src="components/marked/lib/marked.js"></script>
+    <script src="components/checklist-model/checklist-model.js"></script>
+    <script src="components/bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.js"></script>
+    <!-- build:js scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/register.js"></script>
+    <script src="scripts/services/loggedService.js"></script>
+    <script src="scripts/services/notificationsService.js"></script>
+    <script src="scripts/controllers/errors.js"></script>
+    <script src="scripts/controllers/notifications.js"></script>
+    <script src="scripts/services/windowNotifications.js"></script>
+    <script src="scripts/services/errorHttpInterceptor.js"></script>
+    <script src="scripts/services/registrationService.js"></script>
+    <script src="scripts/services/catalogService.js"></script>
+    <script src="scripts/controllers/welcome.js"></script>
+    <script src="scripts/controllers/recover.js"></script>
+    <script src="scripts/controllers/error.js"></script>
+    <script src="scripts/services/urlService.js"></script>
+    <script src="scripts/controllers/recoverPassword.js"></script>
+    <script src="scripts/controllers/tokenConfirm.js"></script>
+    <script src="scripts/controllers/dashboard.js"></script>
+    <script src="scripts/controllers/changePassword.js"></script>
+    <script src="scripts/controllers/menu.js"></script>
+    <script src="scripts/services/developerService.js"></script>
+    <script src="scripts/controllers/developer.js"></script>
+    <script src="scripts/filters/ellipsize.js"></script>
+    <script src="scripts/controllers/db.js"></script>
+    <script src="scripts/controllers/proposerDialog.js"></script>
+    <script src="scripts/services/configService.js"></script>
+    <script src="scripts/controllers/e.js"></script>
+    <script src="scripts/controllers/scripting.js"></script>
+    <script src="scripts/controllers/runScripts.js"></script>
+    <script src="scripts/controllers/administraReportes.js"></script>
+    <script src="scripts/services/jobService.js"></script>
+    <script src="scripts/controllers/message.js"></script>
+    <script src="scripts/services/messageService.js"></script>
+    <script src="scripts/services/userService.js"></script>
+
+    <script src="scripts/directives/ngHtmlCompile.js"></script>
+    <script src="scripts/controllers/su.js"></script>
+    <script src="scripts/controllers/sessions.js"></script>
+    <script src="scripts/controllers/adminRoles.js"></script>
+    <script src="scripts/controllers/helpDialog.js"></script>
+
+    <script src="scripts/controllers/batchProcessBoard.js"></script>
+    <script src="scripts/services/batchProcessService.js"></script>
+    <script src="scripts/controllers/batchProcessEvents.js"></script>
+    <script src="scripts/controllers/batchProcessLog.js"></script>
+    <script src="scripts/controllers/batchProcessEventConsole.js"></script>
+    <script src="scripts/controllers/userData.js"></script>
+
+
+<!-- endbuild -->
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+<!--script type="text/javascript" src="http://www.encuentra.gob.mx/api/gobmxWidgetAPI-min.js"></script>
+<script type="text/javascript" src="http://www.encuentra.gob.mx/properties/gobmxWidgetAPI-conf.js"></script-->
+<!--script>
+    _gmx.loadGobMXsearchAPI({container:'gobmx-searchbox-container-se',client:'se',newWindow:true});
+
+</script-->
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-41849378-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    //Validacion del dominio
+    var host = location.hostname;
+    var tipoHost = host.indexOf("prologyca") > -1;
+    if(tipoHost){
+      document.getElementById('footerINADEM').style.display = 'none';
+    }
+</script>
+</body>
+</html>

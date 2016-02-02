@@ -1,0 +1,1149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet author="iamedu (generated)" id="1367486609677-1">
+        <createTable tableName="CAT_DIRECCION_GENERAL">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_DIRECCIONPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-2">
+        <createTable tableName="CAT_ENTIDAD_FEDERATIVA">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_ENTIDAD_FPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-3">
+        <createTable tableName="CAT_ESTRATIFICACION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_ESTRATIFIPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-4">
+        <createTable tableName="CAT_MENSAJE_LEYENDA">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_MENSAJE_LPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="message" type="longvarchar">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-5">
+        <createTable tableName="CAT_MUNICIPIO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_MUNICIPIOPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ENTIDAD_FEDERATIVA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-6">
+        <createTable tableName="CAT_PLANTILLA_CORREO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_PLANTILLAPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="body" type="longvarchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_alias" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="from_mail" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="key" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="original_body" type="longvarchar">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-7">
+        <createTable tableName="cat_plantilla_correo_bccs">
+            <column name="mail_template_id" type="bigint"/>
+            <column name="bccs_string" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-8">
+        <createTable tableName="CAT_PROGRAMA">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_PROGRAMAPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_DIRECCION" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-9">
+        <createTable tableName="CAT_PROPONENTE">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_PROPONENTPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_PROPONENTE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-10">
+        <createTable tableName="CAT_RAZON_RECHAZO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_RAZON_RECPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPCION" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-11">
+        <createTable tableName="CAT_SECTOR">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_SECTORPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-12">
+        <createTable tableName="CAT_SEPOMEX_ASENTAMIENTO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_SEPOMEX_APK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_CIUDAD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MUNICIPIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_ASENTAMIENTO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ENTIDAD_FEDERATIVA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-13">
+        <createTable tableName="CAT_SEPOMEX_CIUDAD">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_SEPOMEX_CPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MUNICIPIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ENTIDAD_FEDERATIVA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-14">
+        <createTable tableName="CAT_SEPOMEX_CP">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_SEPOMEX_CPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_CIUDAD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MUNICIPIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CODIGO_POSTAL" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ASENTAMIENTO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_ASENTAMIENTO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ENTIDAD_FEDERATIVA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-15">
+        <createTable tableName="CAT_SEPOMEX_TIPO_ASENTAMIENTO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_SEPOMEX_TPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-16">
+        <createTable tableName="CAT_TIPO_ASENTAMIENTO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_TIPO_ASENPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-17">
+        <createTable tableName="CAT_TIPO_EVAUADOR">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_TIPO_EVAUPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-18">
+        <createTable tableName="CAT_TIPO_PROPONENTE">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_TIPO_PROPPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-19">
+        <createTable tableName="CAT_TIPO_VIALIDAD">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CAT_TIPO_VIALPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-20">
+        <createTable tableName="CONVOCATORIA">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CONVOCATORIAPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FECHA_CIERRE" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_GENERICO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRESUPUESTO_MAXIMO" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="true" name="NECESITA_FIRMA" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_PROGRAMA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FECHA_INICIO" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-21">
+        <createTable tableName="CONVOCATORIA_APOYO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CONVOCATORIA_PK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-22">
+        <createTable tableName="convocatoria_estado">
+            <column name="ID_CONVOCATORIA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ESTADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-23">
+        <createTable tableName="CONVOCATORIA_GENERAL">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CONVOCATORIA_PK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-24">
+        <createTable tableName="convocatoria_proponente">
+            <column name="ID_CONVOCATORIA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_PROPONENTE" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-25">
+        <createTable tableName="convocatoria_sector">
+            <column name="ID_CONVOCATORIA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_SECTOR" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-26">
+        <createTable tableName="CONVOCATORIA_TIC">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CONVOCATORIA_PK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-27">
+        <createTable tableName="correccion_documento">
+            <column name="ID_INFORMACION_SUBSANADA" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_DOCUMENTO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-28">
+        <createTable tableName="CRITERIO_EVALUACION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="CRITERIO_EVALPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MODALIDAD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PUNTOS" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-29">
+        <createTable tableName="DIRECCION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="DIRECCIONPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_PERFIL_SOLICITANTE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE_VIALIDAD_POSTERIOR" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_VIALIDAD_POSTERIOR" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NUMERO_EXTERIOR1" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NUMERO_EXTERIOR2" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NUMERO_INTERIOR" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="LOCALIDAD" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MUNICIPIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COLONIA" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CODIGO_POSTAL" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE_VIALIDAD1" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE_VIALIDAD2" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_VIALIDAD1" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_VIALIDAD2" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_TIPO_ASENTAMIENTO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ESTADO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CALLE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-30">
+        <createTable tableName="DIRECTOR_GENERAL">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="DIRECTOR_GENEPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-31">
+        <createTable tableName="DOCUMENTO_CONVOCATORIA">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="DOCUMENTO_CONPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="call_to_proposals_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RUTA" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-32">
+        <createTable tableName="DOCUMENTO_SESION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="DOCUMENTO_SESPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_SESION_CONSEJO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPCION" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RUTA" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-33">
+        <createTable tableName="DOCUMENTO_SOLICITUD">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="DOCUMENTO_SOLPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_APLICACION" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPCION" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MULTIVERSION" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RUTA" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-34">
+        <createTable tableName="EVALUACION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACIONPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_APLICACION" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-35">
+        <createTable tableName="EVALUACION_CONSEJO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACION_COPK"/>
+            </column>
+            <column name="ID_SESION_CONSEJO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-36">
+        <createTable tableName="evaluacion_evento_evaluacion">
+            <column name="evaluation_evaluation_events_id" type="bigint"/>
+            <column name="evaluation_event_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-37">
+        <createTable tableName="EVALUACION_FINANCIERA">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACION_FIPK"/>
+            </column>
+            <column name="ID_USUARIO_ASIGNADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-38">
+        <createTable tableName="EVALUACION_NEGOCIO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACION_NEPK"/>
+            </column>
+            <column name="ID_USUARIO_ASIGNADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-39">
+        <createTable tableName="EVALUACION_NORMATIVA">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACION_NOPK"/>
+            </column>
+            <column name="ID_USUARIO_ASIGNADO" type="bigint"/>
+            <column name="EVALUACION_EXITOSA" type="boolean"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-40">
+        <createTable tableName="EVALUACION_TECNICA">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUACION_TEPK"/>
+            </column>
+            <column name="ID_USUARIO_ASIGNADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-41">
+        <createTable tableName="EVALUADOR">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVALUADORPK"/>
+            </column>
+            <column name="CURP" type="varchar(255)"/>
+            <column name="ID_TIPO_EVALUADOR" type="bigint"/>
+            <column name="PUESTO" type="varchar(255)"/>
+            <column name="RFC" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-42">
+        <createTable tableName="EVENTO_EVALUACION">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="EVENTO_EVALUAPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FECHA_EVENTO" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-43">
+        <createTable tableName="FIEL">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FIELPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="applicant_profile_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CERTIFICADO" type="binary(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FECHA_TERMINO" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RFC" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SERIE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FECHA_INICIO" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-44">
+        <createTable tableName="FISICA_HISTORICO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="FISICA_HISTORPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-45">
+        <createTable tableName="HISTORICO_GOBIERNO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="HISTORICO_GOBPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-46">
+        <createTable tableName="INFORMACION_SUBSANADA">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="INFORMACION_SPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-47">
+        <createTable tableName="MODALIDAD">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="MODALIDADPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="call_to_proposals_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="call_type_parent_id" type="bigint"/>
+            <column name="has_children" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PRESUPUESTO_MAXIMO" type="decimal(19,2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PORCENTAJE" type="float">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-48">
+        <createTable tableName="MORAL_HISTORICO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="MORAL_HISTORIPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-49">
+        <createTable tableName="PEFIL_FISICA">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PEFIL_FISICAPK"/>
+            </column>
+            <column name="CURP" type="varchar(255)"/>
+            <column name="RFC" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-50">
+        <createTable tableName="PEFIL_GOBIERNO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PEFIL_GOBIERNPK"/>
+            </column>
+            <column name="ID_MUNICIPIO" type="bigint"/>
+            <column name="ID_ESTADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-51">
+        <createTable tableName="PEFIL_MORAL">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PEFIL_MORALPK"/>
+            </column>
+            <column name="ID_ESTRATIFICACION" type="bigint"/>
+            <column name="NOMBRE" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-52">
+        <createTable tableName="PERFIL">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PERFILPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_SOLICITANTE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-53">
+        <createTable tableName="PERFIL_HISTORICO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PERFIL_HISTORPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_DIRECCION" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_FIEL" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="application_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-54">
+        <createTable tableName="REQUISITO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="REQUISITOPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MODALIDAD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="RUTA_FORMATO" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="OBLIGATORIO" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-55">
+        <createTable tableName="ROL">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ROLPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOMBRE" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-56">
+        <createTable tableName="rol_permiso">
+            <column name="role_id" type="bigint"/>
+            <column name="PERMISO" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-57">
+        <createTable tableName="SESION_CONSEJO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SESION_CONSEJPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="URL_BROADCAST" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-58">
+        <createTable tableName="SOLICITANTE">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SOLICITANTEPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-59">
+        <createTable tableName="SOLICITUD">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SOLICITUDPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_PERFIL_SOLICITANTE" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-60">
+        <createTable tableName="SOLICITUD_APOYO">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SOLICITUD_APOPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-61">
+        <createTable tableName="solicitud_estado">
+            <column name="ID_SOLICITUD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_ESTADO" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-62">
+        <createTable tableName="SOLICITUD_GENERAL">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SOLICITUD_GENPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-63">
+        <createTable tableName="solicitud_modalidad">
+            <column name="ID_SOLICITUD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_MODALIDAD" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-64">
+        <createTable tableName="solicitud_sector">
+            <column name="ID_SOLICITUD" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_SECTOR" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-65">
+        <createTable tableName="SOLICITUD_TIC">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="SOLICITUD_TICPK"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-66">
+        <createTable tableName="USUARIO">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="USUARIOPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="true" name="ACTIVO" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EMAIL_CONFIRMED" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USUARIO" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-67">
+        <createTable tableName="usuario_permiso">
+            <column name="user_id" type="bigint"/>
+            <column name="PERMISO" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-68">
+        <createTable tableName="usuario_rol">
+            <column name="ID_USUARIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-69">
+        <createTable tableName="usuario_roles">
+            <column name="role_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ID_USUARIO" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-70">
+        <addPrimaryKey columnNames="ID_USUARIO, role_id" tableName="usuario_rol"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-140">
+        <createIndex indexName="call_type_parent_id_uniq_1367486609480" tableName="MODALIDAD" unique="true">
+            <column name="call_type_parent_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-141">
+        <createIndex indexName="application_id_uniq_1367486609496" tableName="PERFIL_HISTORICO" unique="true">
+            <column name="application_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-71">
+        <addForeignKeyConstraint baseColumnNames="ID_ENTIDAD_FEDERATIVA" baseTableName="CAT_MUNICIPIO" constraintName="FK9794FA84DC0ECC53" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-72">
+        <addForeignKeyConstraint baseColumnNames="mail_template_id" baseTableName="cat_plantilla_correo_bccs" constraintName="FKADFFA2956F893FB0" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_PLANTILLA_CORREO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-73">
+        <addForeignKeyConstraint baseColumnNames="ID_DIRECCION" baseTableName="CAT_PROGRAMA" constraintName="FKF2089CC638C04C04" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_DIRECCION_GENERAL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-74">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_PROPONENTE" baseTableName="CAT_PROPONENTE" constraintName="FK6A01D88578AB75D6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_PROPONENTE" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-75">
+        <addForeignKeyConstraint baseColumnNames="ID_CIUDAD" baseTableName="CAT_SEPOMEX_ASENTAMIENTO" constraintName="FKF8B43161FFED560B" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SEPOMEX_CIUDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-76">
+        <addForeignKeyConstraint baseColumnNames="ID_ENTIDAD_FEDERATIVA" baseTableName="CAT_SEPOMEX_ASENTAMIENTO" constraintName="FKF8B43161DC0ECC53" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-77">
+        <addForeignKeyConstraint baseColumnNames="ID_MUNICIPIO" baseTableName="CAT_SEPOMEX_ASENTAMIENTO" constraintName="FKF8B43161707A0A2C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_MUNICIPIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-78">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_ASENTAMIENTO" baseTableName="CAT_SEPOMEX_ASENTAMIENTO" constraintName="FKF8B4316116A75F36" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SEPOMEX_TIPO_ASENTAMIENTO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-79">
+        <addForeignKeyConstraint baseColumnNames="ID_ENTIDAD_FEDERATIVA" baseTableName="CAT_SEPOMEX_CIUDAD" constraintName="FK65CA29F1DC0ECC53" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-80">
+        <addForeignKeyConstraint baseColumnNames="ID_MUNICIPIO" baseTableName="CAT_SEPOMEX_CIUDAD" constraintName="FK65CA29F1707A0A2C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_MUNICIPIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-81">
+        <addForeignKeyConstraint baseColumnNames="ID_ASENTAMIENTO" baseTableName="CAT_SEPOMEX_CP" constraintName="FKEE7FD686FFA959F9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SEPOMEX_ASENTAMIENTO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-82">
+        <addForeignKeyConstraint baseColumnNames="ID_CIUDAD" baseTableName="CAT_SEPOMEX_CP" constraintName="FKEE7FD686FFED560B" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SEPOMEX_CIUDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-83">
+        <addForeignKeyConstraint baseColumnNames="ID_ENTIDAD_FEDERATIVA" baseTableName="CAT_SEPOMEX_CP" constraintName="FKEE7FD686DC0ECC53" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-84">
+        <addForeignKeyConstraint baseColumnNames="ID_MUNICIPIO" baseTableName="CAT_SEPOMEX_CP" constraintName="FKEE7FD686707A0A2C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_MUNICIPIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-85">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_ASENTAMIENTO" baseTableName="CAT_SEPOMEX_CP" constraintName="FKEE7FD68616A75F36" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SEPOMEX_TIPO_ASENTAMIENTO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-86">
+        <addForeignKeyConstraint baseColumnNames="ID_PROGRAMA" baseTableName="CONVOCATORIA" constraintName="FK8DDD6AF66EB3E33E" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_PROGRAMA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-87">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_GENERICO" baseTableName="CONVOCATORIA" constraintName="FK8DDD6AF66BB741E" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="MODALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-88">
+        <addForeignKeyConstraint baseColumnNames="ID_CONVOCATORIA" baseTableName="convocatoria_estado" constraintName="FK6A0092CFD33620DF" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CONVOCATORIA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-89">
+        <addForeignKeyConstraint baseColumnNames="ID_ESTADO" baseTableName="convocatoria_estado" constraintName="FK6A0092CF68EA0394" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-90">
+        <addForeignKeyConstraint baseColumnNames="ID_CONVOCATORIA" baseTableName="convocatoria_proponente" constraintName="FK8EAE6545D33620DF" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CONVOCATORIA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-91">
+        <addForeignKeyConstraint baseColumnNames="ID_PROPONENTE" baseTableName="convocatoria_proponente" constraintName="FK8EAE654563C819D9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_PROPONENTE" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-92">
+        <addForeignKeyConstraint baseColumnNames="ID_CONVOCATORIA" baseTableName="convocatoria_sector" constraintName="FK8117B0CFD33620DF" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CONVOCATORIA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-93">
+        <addForeignKeyConstraint baseColumnNames="ID_SECTOR" baseTableName="convocatoria_sector" constraintName="FK8117B0CF3A2BC477" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SECTOR" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-94">
+        <addForeignKeyConstraint baseColumnNames="ID_DOCUMENTO" baseTableName="correccion_documento" constraintName="FK4FC4EB84C5A07154" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="DOCUMENTO_SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-95">
+        <addForeignKeyConstraint baseColumnNames="ID_INFORMACION_SUBSANADA" baseTableName="correccion_documento" constraintName="FK4FC4EB8450F8FCE8" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="INFORMACION_SUBSANADA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-96">
+        <addForeignKeyConstraint baseColumnNames="ID_MODALIDAD" baseTableName="CRITERIO_EVALUACION" constraintName="FK53E8C8FF544672A6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="MODALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-97">
+        <addForeignKeyConstraint baseColumnNames="ID_ESTADO" baseTableName="DIRECCION" constraintName="FK6CB05D1068EA0394" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-98">
+        <addForeignKeyConstraint baseColumnNames="ID_MUNICIPIO" baseTableName="DIRECCION" constraintName="FK6CB05D10707A0A2C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_MUNICIPIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-99">
+        <addForeignKeyConstraint baseColumnNames="ID_PERFIL_SOLICITANTE" baseTableName="DIRECCION" constraintName="FK6CB05D1037D2AA92" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="PERFIL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-100">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_ASENTAMIENTO" baseTableName="DIRECCION" constraintName="FK6CB05D10C08775B9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_ASENTAMIENTO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-101">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_VIALIDAD1" baseTableName="DIRECCION" constraintName="FK6CB05D108865DB14" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_VIALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-102">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_VIALIDAD2" baseTableName="DIRECCION" constraintName="FK6CB05D108865DB15" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_VIALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-103">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_VIALIDAD_POSTERIOR" baseTableName="DIRECCION" constraintName="FK6CB05D108D4B0929" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_VIALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-104">
+        <addForeignKeyConstraint baseColumnNames="call_to_proposals_id" baseTableName="DOCUMENTO_CONVOCATORIA" constraintName="FK5FAF42C17AFD8701" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CONVOCATORIA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-105">
+        <addForeignKeyConstraint baseColumnNames="ID_SESION_CONSEJO" baseTableName="DOCUMENTO_SESION" constraintName="FKBC6BB4123364B5E1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SESION_CONSEJO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-106">
+        <addForeignKeyConstraint baseColumnNames="ID_APLICACION" baseTableName="DOCUMENTO_SOLICITUD" constraintName="FK5566029953A0693C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-107">
+        <addForeignKeyConstraint baseColumnNames="ID_APLICACION" baseTableName="EVALUACION" constraintName="FK500E38ED53A0693C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-108">
+        <addForeignKeyConstraint baseColumnNames="ID_SESION_CONSEJO" baseTableName="EVALUACION_CONSEJO" constraintName="FK8DC2EE273364B5E1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SESION_CONSEJO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-109">
+        <addForeignKeyConstraint baseColumnNames="evaluation_evaluation_events_id" baseTableName="evaluacion_evento_evaluacion" constraintName="FK4A8F67857B0306C4" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="EVALUACION" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-110">
+        <addForeignKeyConstraint baseColumnNames="evaluation_event_id" baseTableName="evaluacion_evento_evaluacion" constraintName="FK4A8F6785C2D485FA" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="EVENTO_EVALUACION" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-111">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO_ASIGNADO" baseTableName="EVALUACION_FINANCIERA" constraintName="FKA948E748A2557595" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-112">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO_ASIGNADO" baseTableName="EVALUACION_NEGOCIO" constraintName="FKC2328618A2557595" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-113">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO_ASIGNADO" baseTableName="EVALUACION_NORMATIVA" constraintName="FK50D8C093A2557595" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-114">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO_ASIGNADO" baseTableName="EVALUACION_TECNICA" constraintName="FKFF5F2CF9A2557595" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-115">
+        <addForeignKeyConstraint baseColumnNames="ID_TIPO_EVALUADOR" baseTableName="EVALUADOR" constraintName="FKD108BBFF2EE9DD7A" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_TIPO_EVAUADOR" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-116">
+        <addForeignKeyConstraint baseColumnNames="applicant_profile_id" baseTableName="FIEL" constraintName="FK20ECAA80ADF97C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="PERFIL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-117">
+        <addForeignKeyConstraint baseColumnNames="call_to_proposals_id" baseTableName="MODALIDAD" constraintName="FK27762A8B7AFD8701" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CONVOCATORIA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-118">
+        <addForeignKeyConstraint baseColumnNames="call_type_parent_id" baseTableName="MODALIDAD" constraintName="FK27762A8BBB46DC2B" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="MODALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-119">
+        <addForeignKeyConstraint baseColumnNames="ID_ESTADO" baseTableName="PEFIL_GOBIERNO" constraintName="FK90E19CE868EA0394" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-120">
+        <addForeignKeyConstraint baseColumnNames="ID_MUNICIPIO" baseTableName="PEFIL_GOBIERNO" constraintName="FK90E19CE8707A0A2C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_MUNICIPIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-121">
+        <addForeignKeyConstraint baseColumnNames="ID_ESTRATIFICACION" baseTableName="PEFIL_MORAL" constraintName="FKE407B0F0263D897C" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ESTRATIFICACION" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-122">
+        <addForeignKeyConstraint baseColumnNames="ID_SOLICITANTE" baseTableName="PERFIL" constraintName="FK8C765DCC628D18A" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITANTE" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-123">
+        <addForeignKeyConstraint baseColumnNames="application_id" baseTableName="PERFIL_HISTORICO" constraintName="FK6056791D4F408AF3" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-124">
+        <addForeignKeyConstraint baseColumnNames="ID_DIRECCION" baseTableName="PERFIL_HISTORICO" constraintName="FK6056791DB390EAB9" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="DIRECCION" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-125">
+        <addForeignKeyConstraint baseColumnNames="ID_FIEL" baseTableName="PERFIL_HISTORICO" constraintName="FK6056791DCA6F036A" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="FIEL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-126">
+        <addForeignKeyConstraint baseColumnNames="ID_MODALIDAD" baseTableName="REQUISITO" constraintName="FKCFACDDE3544672A6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="MODALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-127">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="rol_permiso" constraintName="FK2AAB2125894F78E1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ROL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-128">
+        <addForeignKeyConstraint baseColumnNames="ID_PERFIL_SOLICITANTE" baseTableName="SOLICITUD" constraintName="FK556ACE8437D2AA92" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="PERFIL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-129">
+        <addForeignKeyConstraint baseColumnNames="ID_ESTADO" baseTableName="solicitud_estado" constraintName="FKD050776168EA0394" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_ENTIDAD_FEDERATIVA" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-130">
+        <addForeignKeyConstraint baseColumnNames="ID_SOLICITUD" baseTableName="solicitud_estado" constraintName="FKD050776143BF4109" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-131">
+        <addForeignKeyConstraint baseColumnNames="ID_MODALIDAD" baseTableName="solicitud_modalidad" constraintName="FK789ED6D0544672A6" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="MODALIDAD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-132">
+        <addForeignKeyConstraint baseColumnNames="ID_SOLICITUD" baseTableName="solicitud_modalidad" constraintName="FK789ED6D043BF4109" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-133">
+        <addForeignKeyConstraint baseColumnNames="ID_SECTOR" baseTableName="solicitud_sector" constraintName="FKE76795613A2BC477" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="CAT_SECTOR" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-134">
+        <addForeignKeyConstraint baseColumnNames="ID_SOLICITUD" baseTableName="solicitud_sector" constraintName="FKE767956143BF4109" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="SOLICITUD" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-135">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="usuario_permiso" constraintName="FKA1DA8B842E7A3CC1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-136">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO" baseTableName="usuario_rol" constraintName="FK3118953ED8BEAABC" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-137">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="usuario_rol" constraintName="FK3118953E894F78E1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ROL" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-138">
+        <addForeignKeyConstraint baseColumnNames="ID_USUARIO" baseTableName="usuario_roles" constraintName="FK4D484A6CD8BEAABC" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="USUARIO" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="iamedu (generated)" id="1367486609677-139">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="usuario_roles" constraintName="FK4D484A6C894F78E1" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="ROL" referencesUniqueColumn="false"/>
+    </changeSet>
+</databaseChangeLog>

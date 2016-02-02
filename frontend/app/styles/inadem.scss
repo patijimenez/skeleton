@@ -1,0 +1,329 @@
+@charset "UTF-8";
+@import "compass";
+$printSerifFontFamily:  "Times New Roman", Times, serif !default;
+$printSerifFontSize:    18px !default;
+
+/*
+ *
+ */
+@font-face {
+font-family: 'TrajanProRegular';
+  src: url("../fonts/trajanpro-regular.eot");
+  src: url("../fonts/trajanpro-regular.eot") format('embedded-opentype'), url("../fonts/trajanpro-regular.woff") format('woff'), url("../fonts/trajanpro-regular.ttf") format('truetype'), url("../fonts/trajanpro-regular.svg") format('svg');
+}
+
+/*
+ * Logos
+ */
+.logos-bar {
+  min-height: 100px;
+  margin-top: 30px;
+}
+
+.search-container {
+  display: block;
+  float: right;
+  padding: 0px;
+  margin-top: 40px;
+  border: 4px solid #f1f1f1;
+}
+
+/*
+ * Select Form
+ */
+
+.select-proponents{
+  overflow: auto; 
+  margin-bottom: -50px;
+}
+/*
+ * Búsquedas
+ */
+.search-container input {
+  margin: 0px;
+  padding: 6px 30px 6px 15px;
+  width: 190px;
+  font-size: 11px;
+  font-family: "Arial";
+  color: #7f7f7f;
+  border: 1px solid #d6d6d6;
+  background: #fafafa url("../images/icons/search.png") no-repeat 202px center !important;
+  outline: none;
+}
+
+.search-container #search-gobmx-button-cell {
+  display: none;
+}
+
+.searchField input[type="submit"] {
+  display: none;
+}
+
+/*
+ * Menu
+ */
+.menu-apf {
+  clear: both;
+  padding-top: 10px;
+  min-height: 70px;
+  text-align: center;
+  background: url("../images/menu/menu-middle.jpg") repeat-x center top;
+}
+.menu-apf a {
+  font-size: 14px;
+  font-family: "TrajanProRegular";
+  text-decoration: none;
+  color: #646463;
+}
+.menu-apf a:hover, .menu-apf a.active {
+  color: #d31245;
+}
+.menu-apf li {
+  padding: 0px 0px 0px 60px;
+  display: inline;
+  background: url("../images/menu/bg_mainMenu-bullet.png") no-repeat 26px center;
+}
+.menu-apf li:first-child {
+  padding-left: 0px;
+  background: none;
+}
+
+// Footer
+.copy {
+  padding: 10px !important;
+  font-size: 12px;
+  font-family: "TrajanProRegular";
+  text-align: center;
+  text-transform: uppercase;
+  border: 4px double #d6d6d6;
+  border-left: none;
+  border-right: none;
+}
+
+.centered-footer {
+  text-align:center;
+  margin-top: 100px;
+  min-height: 400px;
+}
+
+.logo-pyme-footer {
+  display: block;
+  margin: -30px auto 25px;
+  width: 200px;
+  height: 33px;
+  border: 32px solid #fafafa;
+  border-top: none;
+  border-bottom: none;
+}
+
+#footer p {
+  padding: 0px 50px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.5em;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  margin: 0px 0;
+  text-align: center;
+}
+.jumbotron h1 {
+  font-size: 60px;
+  line-height: 1;
+}
+.jumbotron .lead {
+  font-size: 24px;
+  line-height: 1.25;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+.print-text {
+  font-family: $printSerifFontFamily;
+  font-size:   $printSerifFontSize;
+}
+
+.selectedStep {
+  color: #d14;
+}
+
+.mainContainer {
+  min-height: 500px;
+}
+
+.thumbnail {
+  background-color: white !important;
+}
+
+.flashcard {
+  min-height: 400px;
+  padding-left: 10px;
+  @include border-radius(20px, 20px);
+}
+
+.medium-flashcard {
+  min-height: 560px;
+  padding-left: 10px;
+  @include border-radius(20px, 20px);
+}
+
+.large-flashcard {
+  min-height: 830px;
+  padding-left: 10px;
+  @include border-radius(20px, 20px);
+}
+
+.fluid-flashcard {
+  min-height: 400px;
+  height: 100%;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  @include border-radius(20px, 20px);
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+table {
+    background: white;
+}
+
+th {
+  background-color: #efefef;
+  background-image: -moz-linear-gradient(top, #ffffff, #eaeaea);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #eaeaea));
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#ffffff', EndColorStr = '#eaeaea');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#eaeaea')";
+  color: #666666;
+  font-weight: bold;
+  line-height: 1.7em;
+  padding: 0.2em 0.6em;
+}
+
+thead th {
+  white-space: nowrap;
+}
+
+th a {
+  display: block;
+  text-decoration: none;
+}
+
+th a:link, th a:visited {
+  color: #666666;
+}
+
+th a:hover, th a:focus {
+  color: #333333;
+}
+
+th.sortable a {
+  background-position: right;
+  background-repeat: no-repeat;
+  padding-right: 1.1em;
+}
+
+th.asc a {
+  background-image: url(../images/skin/sorted_asc.gif);
+}
+
+th.desc a {
+  background-image: url(../images/skin/sorted_desc.gif);
+}
+
+
+.call-buttons {
+  padding-top: 20px;
+}
+
+ul.empty-list li {
+  list-style-type: none;
+}
+
+ul.styled-list li {
+  list-style-type: circle;
+}
+
+input:invalid,
+textarea:invalid,
+select:invalid,
+input.ng-invalid,
+textarea.ng-invalid,
+select.ng-invalid {
+  border-color: lighten(#e9322d, 25%) !important;
+  -webkit-box-shadow: 0 0 6px lighten(#f8b9b7, 25%) !important;
+  -moz-box-shadow: 0 0 6px lighten(#f8b9b7, 25%) !important;
+  box-shadow: 0 0 6px lighten(#f8b9b7, 25%) !important;
+}
+
+input:focus:invalid:focus,
+textarea:focus:invalid:focus,
+select:focus:invalid:focus,
+input:focus.ng-invalid:focus,
+textarea:focus.ng-invalid:focus,
+select:focus.ng-invalid:focus {
+  border-color: #e9322d !important;
+  -webkit-box-shadow: 0 0 6px #f8b9b7 !important;
+  -moz-box-shadow: 0 0 6px #f8b9b7 !important;
+  box-shadow: 0 0 6px #f8b9b7 !important;
+}
+
+.mce-toolbar {
+  display: none !important;
+}
+
+.mce-statusbar {
+  display: none !important;
+}
+
+.st-text-block i {
+    color: red;
+}
+
+.menuv {
+  border: 1px solid #ACCFE8;
+  border-width: 1px 1px 0 1px;
+  width: 150px;
+  font: 110% "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.menuv ul, li {
+  list-style-type: none;
+}
+
+.menuv ul {
+  margin: 0;
+  padding: 0;
+}
+
+.menuv li {
+  border-bottom: 1px solid #ACCFE8;
+}
+
+.menuv a {
+  text-decoration: none;
+  color: #3366CC;
+  background: #F0F7FC;
+  display: block;
+  padding: 3px 6px;
+  width: 138px;
+}
+
+.menuv a:hover {
+  background: #DBEBF6;
+}

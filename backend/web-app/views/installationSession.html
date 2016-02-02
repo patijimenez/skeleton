@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+    <div class="offset1 span4">
+        <h4>Registrar sesión de instalación</h4>
+        <form ng-upload="" action="{{baseUrl}}/app/installationSession/uploadTmpFile">
+            <div class="alert alert-info" ng-show="saved">
+                Se ha registrado la sesion de instalacion.
+            </div>
+            <div class="alert alert-info" ng-show="uploaded">
+                Se ha cargado el archivo correctamente.
+            </div>
+            <div class="alert alert-error alert-block" ng-show="notPdf">
+                <h4>El archivo cargado no es PDF</h4>
+                Debes seleccionar un archivo con extension .pdf
+            </div>
+            <div class="alert alert-error alert-block" ng-show="saveError">
+                <h4>Error</h4>
+                Ha ocurrido un error.
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="state">Estado</label>
+                <div class="controls">
+                    <input readonly="readonly" name="state" type="text" ng-model="state" required="required">
+                </div>
+            </div>
+            <fieldset>
+                <label>Archivo</label>
+                <input type="file" name="tmpDocument" required="required">
+                <span class="help-inline" ng-show="tmpDocument.$error.required">
+                    Este campo es obligatorio.
+                </span>
+                <span class="help-block">Sube tu archivo</span>
+                <button upload-submit="uploadComplete(content, completed)" type="submit" class="btn btn-success">Actualizar</button>
+            </fieldset>
+        </form>
+        <!--<form name="sessionForm" class="form-horizontal">
+            <input type="hidden" name="filePath" ng-model="filePath" />
+            <div class="control-group">
+                <div class="controls">
+                    <button ng-click="registerSession()" type="submit" class="btn btn-success" ng-disabled="notPdf">Actualizar</button>
+                </div>
+            </div>
+        </form>-->
+    </div>
+    <div class="span7">
+        <document-viewer ng-show="viewDoc" doc-id="pathHex" doc-base="/emprende/app/document" img-format="png">
+    </div>
+</div>

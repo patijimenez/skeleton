@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="span12">
+		<h1>Oops ocurrió un error :(</h1>
+		<dl>
+			<dt>Tipo de error</dt>
+			<dd>{{error.errorCode}}</dd>
+		</dl>
+		<dl>
+			<dt>Mensaje</dt>
+      <dd>
+        <pre>
+{{error.message}}
+        </pre>
+      </dd>
+		</dl>
+		<dl>
+			<dt>Id de error</dt><dt>
+			<dd>{{error.key}}</dd>
+		</dt></dl>
+		<dl>
+			<dt>Fecha</dt><dt>
+			<dd>{{error.dateCreated}}</dd>
+		</dt></dl>
+		<dl ng-show="error.businessId">
+			<dt>Id de trámite</dt>
+			<dd>{{error.businessId}}</dd>
+		</dl>
+	</div>
+</div>

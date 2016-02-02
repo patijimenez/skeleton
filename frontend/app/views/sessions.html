@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+  <div class="offset6 span6">
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Total de sesiones</td>
+          <td>{{sessionData.totalSessions}}</td>
+        </tr>
+        <tr>
+          <td>Sesiones anónimas</td>
+          <td>{{sessionData.anonymousSessions}}</td>
+        </tr>
+        <tr>
+          <td>Sesiones de usuario</td>
+          <td>{{sessionData.loggedInSessions}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <table class="table table-hover table-condensed">
+      <thead>
+        <tr>
+          <th>Id de sesión</th>
+          <th>DN de Usuario</th>
+          <th>Fecha de inicio</th>
+          <th>Última interacción</th>
+          <th>Navegador</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="session in sessions">
+          <td>{{session.key}}</td>
+          <td>{{session.user}}</td>
+          <td>{{session.startTime | date:'medium'}}</td>
+          <td>{{session.lastAccess | date:'medium'}}</td>
+          <td>{{session.agent.operatingSystem}} - {{session.agent.browser}} {{session.agent.version}}</td>
+          <td>
+            <button class="btn btn-danger" ng-click="endSession(session.key)">Terminar sesión</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

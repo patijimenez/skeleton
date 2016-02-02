@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="span8">
+        <h2>Recuperar contraseña</h2>
+        <p>
+        Si tienes problemas para recordar tu contraseña, te podemos ayudar,
+        escribe tu dirección de correo electrónico y te haremos llegar una
+        liga para actualizar tu contraseña.
+        </p>
+        <form name="recoverForm">
+          <fieldset>
+            <legend>Recuperación por medio de correo electrónico</legend>
+            <label>Email</label>
+            <input name="email" type="email" ng-model="email" placeholder="Email" required="required">
+            <span class="help-block">Te enviaremos una liga para recuperar tu contraseña</span>
+            <button ng-click="recoverPassword()" type="submit" class="btn" ng-disabled="disableSubmit || recoverForm.$invalid">Recuperar</button>
+          </fieldset>
+        </form>
+    </div>
+    <div modal="shouldBeOpen" close="close()" options="opts">
+        <div class="modal-header">
+            <h4>Problema al enviar el correo</h4>
+        </div>
+        <div class="modal-body">
+            Ha ocurrido un problema al enviar el correo, revise que el nombre de usuario esté escrito correctamente.
+        </div>
+        <div class="modal-footer">
+            <button class="btn cancel" ng-click="close()">Cancel</button>
+        </div>
+    </div>
+</div>

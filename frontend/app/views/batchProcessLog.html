@@ -1,0 +1,96 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div>
+  <h1>BATCH PROCESS LOG TASKS</h1>
+  <h3 ng-show="process">Process: {{process.name}} ({{ process.id }})</h3>
+  <h4 ng-show="event">Event ID: {{event.id}}</h4>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div ng-show="message" class="alert alert-info">
+      <span>{{message}}</span>
+    </div>
+    <div ng-show="errorMessage" class="alert alert-error">
+      <span>{{errorMessage}}</span>
+    </div>
+    <a id="save-spinner" href=""></a>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="span12">
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="navbar-form pull-left">
+            <table class="span10">
+              <tbody>
+              <tr>
+                <td>Estatus:</td>
+                <td>
+                  <select ng-model="searchCriteria" ng-options="status for status in taskStatusList"></select>
+                  <button ng-disabled="searching" ng-click="listBatchProcessTasksLog()" class="btn" >Buscar</button>
+                  <button ng-click="clean()" class="btn" >Limpiar</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <a href="{{baseUrl}}/#/batchProcessEvents/{{process.id}}">Regresar a lista de eventos del proeceso.</a><br />
+      <a href="{{baseUrl}}/#/batchProcessBoard">Regresar a lista de procesos.</a>
+      <br/>
+      <table class="table tale-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th></th>
+          <th>ID</th>
+          <th>Estatus</th>
+          <th>Inicio de Ejecución</th>
+          <th>Fin de Ejecución</th>
+          <th>Parametros</th>
+          <th>Resultado</th>
+          <th>Código de Error</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="taskLog in tasksLogList">
+          <td style="background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, white), color-stop(1, #eaeaea));">
+            {{($index+1)+offset}}
+          </td>
+          <td><a href ng-click="detail(taskLog)">{{taskLog.id}}</a></td>
+          <td>{{taskLog.status}}</td>
+          <td>{{taskLog.startExecution}}</td>
+          <td>{{taskLog.endExecution}}</td>
+          <td>{{taskLog.parameters}}</td>
+          <td>{{taskLog.result}}</td>
+          <td><a target="_blank" href="{{baseUrl}}/#/error/{{taskLog.errorCode}}">{{taskLog.errorCode}}</a></td>
+          <td><a ng-show="taskLog.status != 'OK'" ng-click="executeSingleTask(taskLog)" href>Ejecutar</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span12">
+      <div class="navbar navbar-fixed-bottom">
+        <div class="navbar-inner">
+          <div class="container">
+            <pagination boundary-links="true" num-pages="noOfPages" current-page="currentPage" max-size="max"></pagination>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

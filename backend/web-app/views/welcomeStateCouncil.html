@@ -1,0 +1,287 @@
+<div class="row">
+    <div class="span9">
+        <div ng-show="step=='startup'">
+            <h3>Bienvenido al Sistema Emprendedor</h3>
+            <p class="lead">
+            Usted está ingresando por primera vez al Sistema Emprendedor (Sistema) en su carácter de <strong><em>Consejero Estatal</em></strong>, por lo que usted deberá someterse a estos Términos y Condiciones de Uso. 
+            </p>
+            <div style="max-height: 250px; overflow: auto; margin-bottom: 30px">
+
+                <p>
+                Nos reservamos el derecho de modificar en forma unilateral estos Términos y Condiciones de Uso, en todo o en parte, en cualquier momento y sin previo aviso ni comunicación alguna. Podrán ser modificados también de la misma manera, el diseño, la presentación o configuración y los requisitos de registro o logeo al Sistema, sin que ello genere derecho a reclamo o indemnización alguna a favor del usuario.
+                </p>
+
+                <p>
+                Usted debe leer siempre estos Términos y Condiciones de Uso antes de utilizar el Sistema, ya que los mismos podrían haber cambiado.
+                </p>
+
+                <p>
+                A efectos de un pleno uso del Sistema, usted podrá registrarse y acceder a todos los servicios o módulos que su perfil lo permita. Usted deberá completar el formulario de registro en todos sus campos con datos válidos, exactos, precisos y asume el compromiso de actualizar, completar y corregir sus datos personales conforme resulte necesario. El Sistema podrá utilizar diversos medios para identificar a sus usuarios, pero no se responsabiliza por la certeza de los datos personales provistos por los usuarios. Los usuarios garantizan y responden, en cualquier caso, de la veracidad, exactitud, vigencia y autenticidad de los datos personales ingresados.
+                </p>
+
+                <p>
+                El Instituto Nacional del Emprendedor (INADEM)  se reserva el derecho de solicitar algún comprobante y/o dato adicional a efectos de corroborar los datos personales, así como de suspender temporal o definitivamente a aquellos usuarios cuyos datos no hayan podido ser confirmados.
+                </p>
+
+                <p>
+                El usuario accederá a su Cuenta Personal (la Cuenta) mediante el ingreso de su nombre de usuario y clave de seguridad personal elegida. El usuario se obliga a mantener la confidencialidad de su clave de seguridad.
+                </p>
+
+                <p>
+                La Cuenta es personal, única e intransferible, y está prohibido que un mismo usuario registre o posea más de una Cuenta. En caso que el Sistema detecte distintas cuentas personales que contengan datos coincidentes o relacionados, podrá cancelar, suspender o inhabilitarlas en forma unilateral e inmediata.
+                </p>
+
+                <p>
+                El usuario será responsable por todas las operaciones que se efectúen con su cuenta, pues el acceso a la misma está restringido al ingreso y uso de su clave de seguridad o contraseña, de conocimiento exclusivo del usuario. El usuario se compromete a notificar al administrador del sistema en forma inmediata y por medio idóneo y eficiente, cualquier uso no autorizado de su Cuenta personal, así como el ingreso por terceros no autorizados a la misma. 
+                </p>
+
+                <p>
+                El INADEM se reserva el derecho de rechazar cualquier solicitud de registro o de cancelar un registro previamente aceptado por el Sistema, sin que esté obligado a comunicar o exponer las razones de su decisión y sin que ello genere algún derecho a indemnización o resarcimiento a favor del usuario.
+                </p>
+
+                El usuario se compromete a no:
+                <ul>
+                    <li>Transmitir a través del  Sistema cualquier virus, archivo o programa que sea dañino o invasivo, o que pueda dañar, piratear, desactivar, interferir o interrumpir su operación.</li>
+                    <li>Reproducir, duplicar, copiar, vender, revender, vincular o de otra forma explotar para cualquier propósito comercial, alguna parte, uso o acceso al Sistema.</li>
+                    <li>Modificar, adaptar, traducir, hacer ingeniería inversa, descompilar o desensamblar cualquier parte del Sistema.</li>
+                    <li>Crear copias “espejo” de cualquier parte del Sistema.</li>
+                    <li>Crear una base de datos descargando y almacenando el contenido del Sistema.</li>
+                </ul>
+
+                <p>
+                Para utilizar todos los servicios o módulos del Sistema, los usuarios deberán facilitar determinados datos de carácter personal. Su información personal se procesa y almacena en servidores o medios magnéticos que mantienen altos estándares de seguridad y protección tanto física como tecnológica.
+                </p>
+
+                <p>
+                La información de su Cuenta está protegida por una contraseña elegida por usted. El acceso a su Cuenta requiere necesariamente su nombre de usuario y su contraseña. Le recomendamos que no divulgue ni proporcione su contraseña y nombre de usuario a nadie y la cambie de cuando en cuando para garantizar su seguridad, usted será responsable de mantener el secreto de su nombre de usuario, contraseña y/o cualquier otra información de su Cuenta personal.
+                </p>
+
+                <p>
+                El Sistema puede contener información cuya propiedad intelectual es de terceros, por lo que  Usted no puede utilizar el material descargado para propósitos comerciales.
+                </p>
+
+                <p>
+                Estos Términos y Condiciones de Uso se regirán por las leyes de México, Distrito Federal, renunciando el usuario a cualquier otra jurisdicción que por motivo de domicilio, presente o futuro pudiera corresponderle y por lo tanto se somete a la jurisdicción de los juzgados domiciliados en la Ciudad de México, D.F. Si cualquiera de las disposiciones de estos términos fuese no aplicable, ilegítima, nula o por cualquier razón imposible de hacer o cumplir, entonces dicha disposición se considerará nula con respecto a estos términos y no afectará la validez y vigencia de las restantes disposiciones.
+                </p>
+            </div>
+            <p style="text-align: center"><a class="btn btn-success btn-large" ng-click="showFiel()">Acepto términos y condiciones</a></p>
+        </div>
+        <div ng-show="step=='fiel'">
+            <div class="alert alert-error" ng-show="fielError">
+                <strong>Problema al cargar la fiel</strong>
+                Parece que ha ocurrido un problema al cargar tu fiel, revise que sea un archivo .cer válido
+                y en caso de que el problema persista ponte en contacto con el SAT.
+            </div>
+            <div class="media" ng-show="subject">
+                <div class="row">
+                    <div class="span3">
+                        <div class="pull-left">
+                            <img src="images/emprendedor.png" alt="">
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading" style="padding-top: 5px">FIEL Cargada</h4>
+                            <dl>
+                                <dt>Nombre</dt>
+                                <dd>{{subject.name}}</dd>
+                                <dt>RFC</dt>
+                                <dd>{{subject.rfc}}</dd>
+                                <dt>CURP</dt>
+                                <dd>{{subject.serial}}</dd>
+                                <dt>Email</dt>
+                                <dd>{{subject.email}}</dd>
+                                <dt>Válida desde</dt>
+                                <dd>{{fiel.startingDate | date:'fullDate'}}</dd>
+                                <dt>Válida hasta</dt>
+                                <dd>{{fiel.endingDate | date:'fullDate'}}</dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="span6">
+                        <h4>Enhorabuena</h4>
+                        <p>
+                            Parece que has cargado tu FIEL correctamente, si los datos son correctos podemos seguir
+                            con los siguientes pasos, recuerda que podrás modificar estos datos directamente en tu
+                            perfil.
+                        </p>
+                        <div class="alert alert-error alert-block" ng-show="fiel.expired">
+                            <h4>Tu FIEL ha expirado</h4>
+                            No puedes continuar con el proceso de registro debido
+                            a que tu fiel está vencida. Ponte en contacto con el <a target="_blank" href="http://www.sat.gob.mx/sitio_internet/e_sat/tu_firma/">SAT para renovarla</a>
+                        </div>
+                        <div class="alert alert-warning alert-block" ng-show="fiel.notYetValid">
+                            <h4>Tu FIEL todavía no entra en su periodo de vigencia</h4>
+                            Podrás empezar a usarla a partir del {{fiel.startingDate | date:'fullDate' }}
+                        </div>
+                        <div class="alert alert-warning alert-block" ng-show="subject.rfc != user.rfc">
+                            <h4>Tu FIEL no coincide con el RFC capturado</h4>
+                            <p>
+                                El RFC capturado del usuario es <strong>{{user.rfc}}</strong>,
+                                mientras que la fiel tiene <strong>{{subject.rfc}}</strong>.
+                                Si deseas podemos actualizar tu perfil con el rfc <strong>{{subject.rfc}}</strong>, da click sobre el
+                                siguiente botón:
+                            </p>
+                            <a ng-click="actualizaRfc()" class="btn btn-warning">Actualizar RFC</a>
+                        </div>
+                        <a ng-click="saveFiel()" ng-disabled="!canSaveFiel()" class="btn btn-primary">Continuar</a>
+                    </div>
+                </div>
+            </div>
+            <form ng-upload="" action="{{baseUrl}}/app/fiel/uploadTmp">
+                <fieldset>
+                    <legend>Sube tu Firma Electrónica Avanzada</legend>
+                    <label>FIEL</label>
+                    <input type="file" name="fiel" required="required">
+                    <span class="help-block">Sube el certificado público (.cer) de tu FIEL.</span>
+                    <button upload-submit="uploadComplete(content, completed)" type="submit" class="btn">Cargar</button>
+                </fieldset>
+            </form>
+        </div>
+        <div ng-show="step=='complement'">
+            <form name="userForm" class="form-horizontal">
+                <div class="control-group" ng-class="{'error': userForm.rfc.$invalid && userForm.rfc.$dirty}">
+                    <label class="control-label" for="rfc">RFC *</label>
+                    <div class="controls">
+                        <input readonly="readonly" name="rfc" type="text" ng-model="user.rfc" required="required" rfc="rfc" ng-minlength="13" maxlength="13">
+                        <span class="help-inline" ng-show="userForm.rfc.$error.rfc">
+                            El RFC es inválido.
+                        </span>
+                        <span class="help-inline" ng-show="userForm.rfc.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group" ng-class="{'error': userForm.curp.$invalid && userForm.curp.$dirty}">
+                    <label class="control-label" for="rfc" readonly="readonly">CURP *</label>
+                    <div class="controls">
+                        <input readonly="readonly" name="curp" type="text" ng-model="user.curp" required="required" curp="curp">
+                        <span class="help-inline" ng-show="userForm.curp.$error.curp">
+                            El CURP es inválido.
+                        </span>
+                        <span class="help-inline" ng-show="userForm.curp.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="name">Nombre(s) *</label>
+                    <div class="controls">
+                        <input name="name" type="text" ng-model="user.name" required="required">
+                                            <span class="help-inline" ng-show="userForm.name.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="firstLastName">Apellido Paterno *</label>
+                    <div class="controls">
+                        <input name="firstLastName" type="text" ng-model="user.firstLastName" required="required">
+                                            <span class="help-inline" ng-show="userForm.firstLastName.$error.required">
+                                                Este campo es obligatorio.
+                                            </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="secondLastName">Apellido Materno</label>
+                    <div class="controls">
+                        <input type="text" ng-model="user.secondLastName">
+                    </div>
+                </div>
+                <div class="control-group" ng-class="{'error': userForm.email.$error.email}">
+                    <label class="control-label" for="email">Email *</label>
+                    <div class="controls">
+                        <input name="email" type="email" ng-model="user.email" required="required">
+                        <span class="help-inline" ng-show="userForm.email.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+                        <span class="help-inline" ng-show="userForm.email.$error.email">
+                            El formato de correo es inválido.
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">Teléfono *</label>
+                    <div class="controls">
+                        <input name="phone" type="text" ng-model="user.phone" required="required">
+                        <span class="help-inline" ng-show="userForm.phone.$error.required">
+                            Este campo es obligatorio.
+                        </span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="email">Extensión</label>
+                    <div class="controls">
+                        <input name="extension" type="text" ng-model="user.extension">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <button ng-click="updateUser()" type="submit" class="btn btn-success" ng-disabled="userForm.$invalid">
+                            Confirmar datos
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div ng-show="step=='password'">
+            <form name="passwordForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Escribe tu contraseña nueva</legend>
+                    <div class="control-group" ng-class="{'error': passwordForm.password.$error.minlength}">
+                        <label class="control-label" for="password">Contraseña *</label>
+                        <div class="controls">
+                            <input name="password" type="password" ng-model="password" required="required" ng-minlength="8">
+                                                      <span class="help-inline" ng-show="passwordForm.password.$error.required">
+                                                          Este campo es obligatorio.
+                                                      </span>
+                                                      <span class="help-inline" ng-show="passwordForm.password.$error.minlength">
+                                                          La contraseña debe de ser de al menos 8 caracteres.
+                                                      </span>
+                        </div>
+                    </div>
+                    <div class="control-group" ng-class="{'error': password != confirmPassword}">
+                        <label class="control-label" for="password">Confirmar Contraseña *</label>
+                        <div class="controls">
+                            <input name="confirmPassword" type="password" ng-model="confirmPassword" required="required">
+                                                      <span class="help-inline" ng-show="password != confirmPassword">
+                                                          Las contraseñas no coinciden.
+                                                      </span>
+                        </div>
+                    </div>
+                    <button ng-click="changePassword()" type="submit" class="btn" ng-disabled="disableSubmit || passwordForm.$invalid || password != confirmPassword">Actualizar</button>
+                </fieldset>
+            </form>
+        </div>
+        <div ng-show="step=='finish'">
+            <h2>REgistro terminado</h2>
+
+            <p>
+                Hemos terminado con el registro.
+            </p>
+            <p>
+                Ahora estamos listos para comenzar a usar el sistema emprendedor
+            </p>
+            <a href="{{baseUrl}}/" class="btn btn-success btn-large">Comenzar</a>
+        </div>
+    </div>
+    <div class="span3">
+        <h4>Bienvenido</h4>
+        <dl ng-show="profile.type=='Física'">
+            <dt>Nombre</dt>
+            <dd>{{profile.name}} {{profile.firstLastName}} {{profile.secondLastName}}</dd>
+            <dt>Perfil</dt>
+            <dd>{{profile.type}}</dd>
+            <dt>Email</dt>
+            <dd>{{profile.email}}</dd>
+            <dt>RFC</dt>
+            <dd>{{profile.rfc}}</dd>
+        </dl>
+        <h4>Siguientes pasos</h4>
+        <p>Para poder participar necesitas completar tu perfil, estos son los siguientes pasos</p>
+        <ul>
+            <li ng-class="{'selectedStep': step == 'fiel'}">Subir FIEL</li>
+            <li ng-class="{'selectedStep': step == 'complement'}">Capturar datos generales</li>
+            <li ng-class="{'selectedStep': step == 'password'}">Modificar su password</li>
+            <li ng-class="{'selectedStep': step == 'finish'}">Verificar cuenta de correo</li>
+        </ul>
+    </div>
+</div>

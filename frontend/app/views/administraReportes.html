@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="span12" ng-include="" src="'views/menu.html'"></div>
+</div>
+<div class="row">
+  <h1>Administra reportes </h1>
+
+  <div>
+    <div class="alert alert-error alert-block" ng-show="showError">
+      {{resultMessage}}
+    </div>
+    <div class="alert alert-info alert-block" ng-show="showInfo">
+      {{resultMessage}}
+    </div>
+  </div>
+  <div class="span12">
+    <div class="navbar-form pull-left" action="list">
+      <input type="text" placeholder="Buscar por nombre" class="search-query" ng-model="searchCriteria" style="width: 600px">
+      <button ng-click="JobsList()" class="btn">Buscar</button>
+      <p></p>
+    </div>
+    <table class="table table-bordered table-hover">
+      <thead>
+      <title>Lista de reportes</title>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Estatus</th>
+      <th>Destinatarios</th>
+      <th>Frecuencia</th>
+      <th>Lenguaje</th>
+      <th>Accion</th>
+      </thead>
+      <tbody>
+      <tr ng-repeat="reporte in reportsList">
+        <td>{{reporte.id}}</td>
+        <td><a ng-click="viewReport(reporte)">{{reporte.name}}</a></td>
+        <td>{{reporte.status}}</td>
+        <td>{{reporte.prettyTo}}</td>
+        <td>{{reporte.cronExpression}}</td>
+        <td>{{reporte.language}}</td>
+        <td>
+          <button class="btn btn-warning" type="button" ng-click="pauseJob(reporte)">Pausar</button>
+          <button class="btn btn-info" type="button" ng-click="resumeJob(reporte)">Reiniciar</button>
+          <button class="btn btn-danger" type="button" ng-click="deleteJob(reporte)">Eliminar</button>
+          <button class="btn btn-success" type="button" ng-click="sendNow(reporte)">Enviar ahora</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <pagination ng-click="JobsList()" boundary-links="true" num-pages="noOfPages" current-page="currentPage" max-size="maxSize"></pagination>
+  </div>
+  <form>
+    <div class="fluid">
+      <div class="span6">
+        <fieldset>
+          <h2>Datos generales</h2>
+          <label>Nombre del reporte</label>
+          <input type="text" ng-model="name" placeholder="Nombre del reporte"/>
+          <label>Expresion CRON</label>
+          <input type="text" ng-model="cronExpression" placeholder="*    *    *    *    *"/>
+          <label>Descripcion</label>
+          <input type="text" ng-model="description" class="input-xxlarge"/>
+          <label>Lenguaje</label>
+          <select ng-model="language">
+            <option value="sql">Sql</option>
+            <option value="groovy">Groovy</option>
+          </select>
+
+        </fieldset>
+      </div>
+      <div class="span6">
+        <h3>Destinatarios</h3>
+
+        <div class="input-append">
+          <input name="email" type="email" ng-model="email" required="required" placeholder="e-mail">
+          <button class="btn" type="button" ng-click="addDestinatario()">Agregar</button>
+        </div>
+        <table class="table table-bordered">
+          <head>
+            <th>
+              Destinatarios
+            </th>
+            <th></th>
+          </head>
+          <tr ng-repeat="item in reporte.listaDestinatarios">
+            <td>
+              {{item}}
+            </td>
+            <td>
+              <button ng-click="deleteDestinatario(item)" class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="span12">
+      <label for="consulta">Consulta</label>
+      <textarea ui-codemirror="adminOptions" ng-model="query"></textarea>
+      <br/>
+      <button class="btn btn-primary" type="button" ng-click="saveReport()">Guardar</button>
+      <button class="btn" type="button" ng-click="clean()">Limpiar</button>
+    </div>
+    <br/>
+  </form>
+</div>
