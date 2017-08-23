@@ -60,20 +60,20 @@ Donde el primer parámetro `-Xmx2048m` indica la máxima cantidad de memoria RAM
 
 En caso de no tener esta variable se puede agregar ingresando la siguiente línea en la consola:
 ```
-export JAVA_OPTS=$(-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m)
+export JAVA_OPTS=-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m
 ```
 
 ###Proxy en JAVA_OPTS
 
 Si hay un proxy de tipo Socks en la red en la que se encuentra se deben añadir 2 parámetros extra a la variable `JAVA_OPTS` que indican la configuración del Proxy. Para agregarlas basta hacer lo siguiente:
 ```
-export JAVA_OPTS=$(-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m -DsocksProxyHost=localhost -DsocksProxyPort=9988)
+export JAVA_OPTS=-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m -DsocksProxyHost=localhost -DsocksProxyPort=9988
 ```
 
 Donde el último parámetro `socksProxyPort` indica el puerto por el cual están saliendo las peticiones; si el proxy está ejecutando en un puerto diferente se debe de indicar en la consola, por ejemplo para el puerto **8080**:
 
 ```
-export JAVA_OPTS=$(-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m -DsocksProxyHost=localhost -DsocksProxyPort=8080)
+export JAVA_OPTS=-Xms2048m -Xmx2048m -XX:MaxPermSize=512m -XX:ReservedCodeCacheSize=256m -DsocksProxyHost=localhost -DsocksProxyPort=8080
 ```
 
 Ya por último, para acelerar la compilación vamos a abrir un archivo de configuración del Grails que se encuentra en la siguiente ruta del **Directorio Base** `./fpyme/grails-app/conf/DataSource.groovy` y comentaremos la directiva `dbCreate` de la siguiente manera:
